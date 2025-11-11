@@ -36,8 +36,8 @@ export default {
   aboutBody:
     "Osallistuin Suomen suurimman terveydenhuollon dataportaalin (HUS DataLake) kehittämiseen ja paransin datan saavutettavuutta. Hallitsen <b>Reactin</b>, <b>TypeScriptin</b>, <b>GraphQL:n</b>, <b>Node.js:n</b>, <b>Dockerin</b>, <b>Kubernetesin</b>, <b>Terraformin</b> ja <b>Azure-pilven</b>. Työskentelin LLM-pohjaisten tekoälyprototyyppien parissa, mm. ICT Days -demon ja Uuden lastensairaalan diagnoosityökalun, joka nopeuttaa oireisiin perustuvia hakuja.",
   aboutLocation: "Suomi, Espoo",
-  aboutEducation: "Hive Helsinki -alumni",
-  aboutExperience: "Yli 2 vuotta työkokemusta",
+  aboutEducation: "Hive Helsinki Alumni",
+  aboutExperience: "Yli 3 vuotta työkokemusta",
   /* ---------- Projektien otsikot ---------- */
   projectHusDatalakeTitle:
     "Osallistuminen HUS DataLake -alustan kehittämiseen reaaliaikaisen terveydenhuollon datan saatavuuden mahdollistamiseksi",

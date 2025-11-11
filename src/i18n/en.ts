@@ -36,7 +36,7 @@ export default {
     "Contributed to Finland’s largest healthcare data platform (HUS DataLake), improving data accessibility. Proficient in <b>React</b>, <b>TypeScript</b>, <b>GraphQL</b>, <b>Node.js</b>, <b>Docker</b>, <b>Kubernetes</b>, <b>Terraform</b>, and <b>Azure Cloud</b>. Worked on LLM-based AI prototypes, including a demo at ICT Days and a diagnostic tool piloted at the New Children’s Hospital for faster symptom-based searches.",
   aboutLocation: "Finland, Espoo",
   aboutEducation: "Hive Helsinki Alumni",
-  aboutExperience: "2+ years professional work experience",
+  aboutExperience: "3+ years professional work experience",
   /* ---------- Project titles ---------- */
   projectHusDatalakeTitle:
     "Contributing to the HUS DataLake platform for real-time healthcare data access",
