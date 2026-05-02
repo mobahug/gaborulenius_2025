@@ -5,8 +5,8 @@ import App from "./App";
 import { Provider as JotaiProvider } from "jotai";
 import { I18nWrapper } from "./i18n/i18nWrapper";
 import { SelectedThemeProvider } from "./components/SelectedThemeProvider";
-import { VideoScroller } from "./components/VideoScroller";
 import Seo from "./components/Seo";
+import DeferredVideoScroller from "./components/DeferredVideoScroller";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <I18nWrapper>
         <SelectedThemeProvider>
           <Seo />
-          <VideoScroller />
+          <DeferredVideoScroller />
           <CssBaseline />
           <App />
         </SelectedThemeProvider>

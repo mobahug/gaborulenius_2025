@@ -25,9 +25,9 @@ export default {
   labelLeaves: "Leaves",
   labelFireflies: "Fireflies",
   /* ---------- Home titles ---------- */
-  homeGreeting: "Hello, I’m {name}",
+  homeGreeting: "…a Full-Stack Developer based in Espoo.",
   homeSubtitle:
-    "Full-Stack Developer at Tieto Caretech in Espoo, Finland, specializing in cloud-native and AI-based healthcare solutions.",
+    "Currently at Tieto Caretech, building cloud-native, AI-powered healthcare solutions.",
   homeBtnExplore: "Explore My Work",
   homeBtnDownloadCv: "Download My CV",
   /* ---------- About titles ---------- */

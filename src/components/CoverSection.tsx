@@ -10,7 +10,9 @@ const CoverSection: React.FC = () => {
   const coverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let animationFrameId: number | null = null;
+
+    const updateCover = () => {
       if (coverRef.current) {
         const scrollY = window.scrollY;
         const fadeOutPoint = 300;
@@ -23,8 +25,23 @@ const CoverSection: React.FC = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (animationFrameId !== null) {
+        return;
+      }
+
+      animationFrameId = window.requestAnimationFrame(() => {
+        animationFrameId = null;
+        updateCover();
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    updateCover();
     return () => {
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -88,7 +105,7 @@ const CoverSection: React.FC = () => {
         >
           <FormattedMessage
             id="coverGreeting"
-            values={{ name: "Gábor Ulenius" }}
+            values={{ name: "Gábor" }}
           />
         </Typography>
         <Link

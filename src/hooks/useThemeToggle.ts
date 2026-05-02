@@ -1,7 +1,5 @@
 import { atomWithStorage, createJSONStorage } from "jotai/utils";
 import { useAtom } from "jotai";
-import { useFireflyEffect } from "./useFireflyEffect";
-import { useEffect } from "react";
 
 export type Theme = "light" | "dark";
 
@@ -28,10 +26,6 @@ const themeAtom = atomWithStorage<Theme>(
 
 export const useThemeToggle = () => {
   const [selectedTheme, setSelectedTheme] = useAtom(themeAtom);
-  const { setFirefliesEnabled } = useFireflyEffect();
-  useEffect(() => {
-    setFirefliesEnabled(selectedTheme === "dark");
-  }, [selectedTheme, setFirefliesEnabled]);
 
   return {
     selectedTheme,

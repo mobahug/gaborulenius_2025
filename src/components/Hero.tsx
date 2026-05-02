@@ -4,15 +4,13 @@ import BirdManager, { SectionInfo } from "./BirdManager";
 import { useBirdEffect } from "../hooks/useBirdEffect";
 import React from "react";
 import { useActiveNavScrollSpy } from "../hooks/useActiveNavLink";
+import HomeSection from "./sections/HomeSection";
+import AboutSection from "./sections/AboutSection";
+import ProjectsSection from "./sections/ProjectsSection";
+import QualificationSection from "./sections/QualificationSection";
+import SkillsSection from "./sections/SkillsSection";
+import ContactSection from "./sections/ContactSection";
 
-const HomeSection = React.lazy(() => import("./sections/HomeSection"));
-const AboutSection = React.lazy(() => import("./sections/AboutSection"));
-const ProjectsSection = React.lazy(() => import("./sections/ProjectsSection"));
-const QualificationSection = React.lazy(
-  () => import("./sections/QualificationSection"),
-);
-const SkillsSection = React.lazy(() => import("./sections/SkillsSection"));
-const ContactSection = React.lazy(() => import("./sections/ContactSection"));
 const Footer = React.lazy(() => import("./Footer"));
 
 export default function Hero() {
@@ -24,15 +22,18 @@ export default function Hero() {
   const contactRef = useRef<HTMLDivElement>(null!);
   const footRef = useRef<HTMLDivElement>(null!);
 
-  const sections: SectionInfo[] = [
-    { id: "home", ref: homeRef },
-    { id: "about", ref: aboutRef },
-    { id: "projects", ref: projectsRef },
-    { id: "experience", ref: experienceRef },
-    { id: "skills", ref: skillsRef },
-    { id: "contact", ref: contactRef },
-    { id: "footer", ref: footRef },
-  ];
+  const sections: SectionInfo[] = useMemo(
+    () => [
+      { id: "home", ref: homeRef },
+      { id: "about", ref: aboutRef },
+      { id: "projects", ref: projectsRef },
+      { id: "experience", ref: experienceRef },
+      { id: "skills", ref: skillsRef },
+      { id: "contact", ref: contactRef },
+      { id: "footer", ref: footRef },
+    ],
+    [],
+  );
 
   const { birdEnabled } = useBirdEffect();
   const navSectionRefs = useMemo(
@@ -62,7 +63,9 @@ export default function Hero() {
           <ContactSection innerRef={contactRef} />
         </Stack>
       </Container>
-      <Footer innerRef={footRef} />
+      <React.Suspense fallback={null}>
+        <Footer innerRef={footRef} />
+      </React.Suspense>
     </>
   );
 }

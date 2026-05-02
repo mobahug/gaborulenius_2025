@@ -1,4 +1,4 @@
-import { atom, useAtom } from "jotai";
+import { atom, useAtom, useSetAtom } from "jotai";
 
 const firefliesEnabledAtom = atom<boolean>(true);
 
@@ -12,3 +12,5 @@ export const useFireflyEffect = () => {
 
   return { firefliesEnabled, toggleFireflyEffects, setFirefliesEnabled };
 };
+
+export const useSetFirefliesEnabled = () => useSetAtom(firefliesEnabledAtom);

@@ -38,12 +38,12 @@ const expansiveDrift = keyframes`
 
 const gentleGlow = keyframes`
   0%, 100% {
-    box-shadow: 0 0 4px 1px var(--glowColorDim), 0 0 2px 0.5px var(--baseColor);
-    opacity: 0.6;
+    opacity: 0.35;
+    transform: scale(0.8);
   }
   50% {
-    box-shadow: 0 0 12px 4px var(--glowColorBright), 0 0 6px 2px var(--baseColor);
-    opacity: 1;
+    opacity: 0.95;
+    transform: scale(1.4);
   }
 `;
 
@@ -58,6 +58,8 @@ const FirefliesContainer = styled(Box)({
 });
 
 interface FireflyDotProps {
+  startTop: string;
+  startLeft: string;
   startX: string;
   startY: string;
   point1X: string;
@@ -85,6 +87,8 @@ interface FireflyDotProps {
 const FireflyDot = styled(Box, {
   shouldForwardProp: (prop) =>
     ![
+      "startTop",
+      "startLeft",
       "startX",
       "startY",
       "point1X",
@@ -109,6 +113,8 @@ const FireflyDot = styled(Box, {
 })<FireflyDotProps>(
   ({
     startX,
+    startTop,
+    startLeft,
     startY,
     point1X,
     point1Y,
@@ -145,20 +151,30 @@ const FireflyDot = styled(Box, {
     "--glowColorBright": glowColorBright,
 
     position: "absolute",
-    top: `${Math.random() * 100}vh`,
-    left: `${Math.random() * 100}vw`,
+    top: startTop,
+    left: startLeft,
     width: size,
     height: size,
     backgroundColor: baseColor,
     borderRadius: "50%",
     opacity: 0,
-    willChange: "transform, opacity, box-shadow",
-    animation: `
-      ${expansiveDrift} ${driftDuration} infinite linear,
-      ${gentleGlow} ${glowDuration} infinite ease-in-out
-    `,
-    animationDelay: `${driftDelay}, ${glowDelay}`,
-    animationDirection: `${animationDirection}, normal`,
+    willChange: "transform, opacity",
+    animation: `${expansiveDrift} ${driftDuration} infinite linear`,
+    animationDelay: driftDelay,
+    animationDirection,
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      inset: "-6px",
+      borderRadius: "50%",
+      background:
+        "radial-gradient(circle, var(--glowColorBright) 0%, var(--glowColorDim) 45%, transparent 72%)",
+      opacity: 0.35,
+      transform: "scale(0.8)",
+      willChange: "transform, opacity",
+      animation: `${gentleGlow} ${glowDuration} infinite ease-in-out`,
+      animationDelay: glowDelay,
+    },
   }),
 );
 
@@ -170,33 +186,39 @@ export interface FirefliesProps {
   minMaxOpacity?: [number, number];
 }
 
+const DEFAULT_MIN_MAX_OPACITY: [number, number] = [0.4, 0.8];
+
 const Fireflies: React.FC<FirefliesProps> = ({
   sx,
-  count = 40,
+  count = 70,
   baseColor = "#DAF7A6",
   glowColor = "#FFFACD",
-  minMaxOpacity = [0.4, 0.8],
+  minMaxOpacity = DEFAULT_MIN_MAX_OPACITY,
 }) => {
   const fireflies = React.useMemo(() => {
     return Array.from({ length: count }).map((_, i) => {
       const fireflySize = `${Math.random() * 1.8 + 0.8}px`;
 
-      const driftDur = `${Math.random() * 40 + 60}s`;
-      const driftDel = `${Math.random() * 90}s`;
+      const driftDurationSeconds = Math.random() * 40 + 60;
+      const driftDelaySeconds = Math.random() * 30 - 25;
+      const driftDur = `${driftDurationSeconds}s`;
+      const driftDel = `${driftDelaySeconds}s`;
 
-      const randomScreenPoint = (allowOffscreenFactor = 1.5) => ({
-        x: `${Math.random() * (100 * allowOffscreenFactor) - 50 * (allowOffscreenFactor - 1)}vw`,
-        y: `${Math.random() * (100 * allowOffscreenFactor) - 50 * (allowOffscreenFactor - 1)}vh`,
+      // Returns a translate offset centered around 0 so drift is symmetric
+      // around the firefly's start position (otherwise the cloud skews right/down).
+      const randomDrift = (rangeVw: number) => ({
+        x: `${Math.random() * rangeVw - rangeVw / 2}vw`,
+        y: `${Math.random() * rangeVw - rangeVw / 2}vh`,
       });
 
-      const startPos = randomScreenPoint(2);
-      const p1 = randomScreenPoint(1.2);
-      const p2 = randomScreenPoint(1.2);
-      const p3 = randomScreenPoint(1.2);
-      const endPos = randomScreenPoint(2);
+      const startPos = randomDrift(60);
+      const p1 = randomDrift(40);
+      const p2 = randomDrift(40);
+      const p3 = randomDrift(40);
+      const endPos = randomDrift(60);
 
       const glowDur = `${Math.random() * 6 + 4}s`;
-      const glowDel = `${driftDel + Math.random() * 5}s`;
+      const glowDel = `${driftDelaySeconds + Math.random() * 5}s`;
 
       const peakOpacity =
         Math.random() * (minMaxOpacity[1] - minMaxOpacity[0]) +
@@ -213,6 +235,8 @@ const Fireflies: React.FC<FirefliesProps> = ({
       return {
         id: `firefly-${i}`,
         size: fireflySize,
+        startTop: `${Math.random() * 100}vh`,
+        startLeft: `${Math.random() * 100}vw`,
         startX: startPos.x,
         startY: startPos.y,
         point1X: p1.x,

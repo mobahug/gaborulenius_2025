@@ -17,6 +17,9 @@ const fall3 = keyframes`
   100% { transform: translate3d(-230px, 100vh, 0) rotate(-70deg);opacity: 0; }
 `;
 
+const LEAF_ANIMATIONS = [fall1, fall2, fall3];
+const LEAF_COUNT = 10;
+
 const LeavesContainer = styled(Box)(() => ({
   position: "fixed",
   top: 0,
@@ -32,18 +35,21 @@ type LeafProps = {
   left: number;
   size: number;
   delay: number;
+  duration: number;
 };
 const LeafImg = styled("img", {
   shouldForwardProp: (prop) =>
-    !["animation", "left", "size", "delay"].includes(prop as string),
-})<LeafProps>(({ animation, left, size, delay }) => ({
+    !["animation", "left", "size", "delay", "duration"].includes(
+      prop as string,
+    ),
+})<LeafProps>(({ animation, left, size, delay, duration }) => ({
   position: "absolute",
   top: "-50px",
   left: `${left}vw`,
   width: `${size}px`,
   opacity: 0.7,
   pointerEvents: "none",
-  animation: `${animation} ${15 + Math.random() * 5}s infinite ease-in-out`,
+  animation: `${animation} ${duration}s infinite ease-in-out`,
   animationDelay: `${delay}s`,
 }));
 
@@ -52,33 +58,37 @@ export type LeavesProps = {
 };
 const Leaves: React.FC<LeavesProps> = ({ sx }) => {
   const { selectedTheme } = useThemeToggle();
-  const animations = [fall1, fall2, fall3];
-  const leafCount = 10;
+  const leaves = React.useMemo(
+    () =>
+      Array.from({ length: LEAF_COUNT }).map((_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        size: 12 + Math.random() * 8,
+        delay: Math.random() * 10,
+        duration: 15 + Math.random() * 5,
+        animation: LEAF_ANIMATIONS[i % LEAF_ANIMATIONS.length],
+      })),
+    [],
+  );
 
   return (
     <LeavesContainer sx={sx}>
-      {Array.from({ length: leafCount }).map((_, i) => {
-        const left = Math.random() * 100;
-        const size = 12 + Math.random() * 8;
-        const delay = Math.random() * 10;
-        const animation = animations[i % animations.length];
-
-        return (
-          <LeafImg
-            key={i}
-            src={
-              selectedTheme === "dark"
-                ? "/gaborulenius/dark-leaf.webp"
-                : "/gaborulenius/light-leaf.webp"
-            }
-            animation={animation}
-            left={left}
-            size={size}
-            delay={delay}
-            alt="falling leaf"
-          />
-        );
-      })}
+      {leaves.map(({ id, animation, left, size, delay, duration }) => (
+        <LeafImg
+          key={id}
+          src={
+            selectedTheme === "dark"
+              ? "/gaborulenius/dark-leaf.webp"
+              : "/gaborulenius/light-leaf.webp"
+          }
+          animation={animation}
+          left={left}
+          size={size}
+          delay={delay}
+          duration={duration}
+          alt="falling leaf"
+        />
+      ))}
     </LeavesContainer>
   );
 };

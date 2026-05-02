@@ -2,7 +2,6 @@ import {
   useMediaQuery,
   Paper,
   Typography,
-  Box,
   Stack,
   Button,
   useTheme,
@@ -36,16 +35,7 @@ const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
             component="h2"
             gutterBottom
           >
-            <FormattedMessage
-              id="homeGreeting"
-              values={{
-                name: (
-                  <Box component="span" sx={{ color: "primary.main" }}>
-                    Gábor Ulenius
-                  </Box>
-                ),
-              }}
-            />
+            <FormattedMessage id="homeGreeting" />
           </Typography>
         </motion.div>
         <motion.div custom={2} variants={fadeUp}>

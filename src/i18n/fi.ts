@@ -26,9 +26,9 @@ export default {
   labelLeaves: "Lehdet",
   labelFireflies: "Tulikärpäset",
   /* ---------- Etu otsikot ---------- */
-  homeGreeting: "Hei, olen {name}",
+  homeGreeting: "…Full-Stack-kehittäjä Espoosta.",
   homeSubtitle:
-    "Full-Stack -kehittäjä Tieto Caretechilla Espoossa, erikoistunut pilvinatiiveihin ja tekoälypohjaisiin terveydenhuollon ratkaisuihin.",
+    "Töissä Tieto Caretechilla, rakentamassa pilvinatiiveja ja tekoälypohjaisia terveydenhuollon ratkaisuja.",
   homeBtnExplore: "Tutustu töihini",
   homeBtnDownloadCv: "Lataa CV:ni",
   /* ---------- Minusta otsikot ---------- */

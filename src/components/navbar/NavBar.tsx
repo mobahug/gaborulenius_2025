@@ -25,146 +25,181 @@ export const NavBar: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+  const [mobileDrawerLoaded, setMobileDrawerLoaded] = useState(false);
   const [settingsDialogOpen, setSettingsDialogOpen] = useState(false);
+  const [settingsDialogLoaded, setSettingsDialogLoaded] = useState(false);
   const { selectedTheme, toggleTheme } = useThemeToggle();
 
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioSrcRef = useRef<string | null>(null);
 
-  const toggleMobileDrawer = (open: boolean) => () => setMobileDrawerOpen(open);
-  const handleOpenSettings = () => setSettingsDialogOpen(true);
+  const toggleMobileDrawer = (open: boolean) => () => {
+    if (open) {
+      setMobileDrawerLoaded(true);
+    }
+    setMobileDrawerOpen(open);
+  };
+  const handleOpenSettings = () => {
+    setSettingsDialogLoaded(true);
+    setSettingsDialogOpen(true);
+  };
   const handleCloseSettings = () => setSettingsDialogOpen(false);
 
-  const initializeAudio = useCallback(() => {
-    const newSrc =
+  const getAudioSrc = useCallback(
+    () =>
       selectedTheme === "dark"
         ? "/gaborulenius/jungle-music-night.mp3"
-        : "/gaborulenius/jungle-music.mp3";
+        : "/gaborulenius/jungle-music.mp3",
+    [selectedTheme],
+  );
 
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.src = newSrc;
-      audioRef.current.load();
-      if (isPlaying) {
-        audioRef.current.play().catch((err) => {
-          if (err.name !== "AbortError") console.error(err);
-        });
-      }
-    } else {
-      audioRef.current = new Audio(newSrc);
-      audioRef.current.loop = true;
-      audioRef.current.preload = "auto";
-      if (isPlaying) {
-        audioRef.current.play().catch((err) => {
-          if (err.name !== "AbortError") console.error(err);
-        });
-      }
+  const ensureAudio = useCallback(() => {
+    const newSrc = getAudioSrc();
+    const audio = audioRef.current ?? new Audio();
+
+    if (!audioRef.current) {
+      audio.loop = true;
+      audio.preload = "none";
+      audioRef.current = audio;
     }
-  }, [isPlaying, selectedTheme]);
+
+    if (audioSrcRef.current !== newSrc) {
+      audio.pause();
+      audio.src = newSrc;
+      audioSrcRef.current = newSrc;
+    }
+
+    return audio;
+  }, [getAudioSrc]);
 
   useEffect(() => {
-    initializeAudio();
     return () => {
       audioRef.current?.pause();
     };
-  }, [initializeAudio, selectedTheme]);
+  }, []);
 
-  const handlePlayPause = () => {
+  useEffect(() => {
     if (!audioRef.current) {
-      initializeAudio();
+      return;
     }
 
-    if (audioRef.current) {
-      if (audioRef.current.paused) {
-        audioRef.current
-          .play()
-          .then(() => setIsPlaying(true))
-          .catch((err) => {
-            if (err.name !== "AbortError") console.error(err);
-          });
-      } else {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      }
+    const audio = ensureAudio();
+
+    if (isPlaying) {
+      audio.play().catch((err) => {
+        if (err.name !== "AbortError") console.error(err);
+      });
+    }
+  }, [ensureAudio, isPlaying]);
+
+  const handlePlayPause = () => {
+    const audio = ensureAudio();
+
+    if (audio.paused) {
+      audio
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => {
+          if (err.name !== "AbortError") console.error(err);
+        });
+    } else {
+      audio.pause();
+      setIsPlaying(false);
     }
   };
 
   return (
     <>
-      <ShowAfterCover>
-        <AppBar
-          position="fixed"
-          elevation={0}
-          sx={{
-            px: 2,
-            borderRadius: 0,
-            boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-            backdropFilter: "blur(10px)",
-            height: isMobile ? "72px" : "64px",
-            py: 0,
-            justifyContent: "center",
-          }}
-        >
-          <Toolbar
-            disableGutters
+      <React.Suspense fallback={null}>
+        <ShowAfterCover>
+          <AppBar
+            position="fixed"
+            elevation={0}
             sx={{
-              minHeight: "72px",
-              px: 1.5,
+              px: 2,
+              borderRadius: 0,
+              boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+              backdropFilter: "blur(10px)",
+              height: isMobile ? "72px" : "64px",
               py: 0,
-              justifyContent: isMobile ? "space-between" : "center",
+              justifyContent: "center",
             }}
           >
-            {isMobile ? (
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  justifyContent: "space-between",
-                }}
-              >
-                <MuiLink href="#home" underline="none">
-                  <Avatar
-                    src="/gaborulenius/profile-small.webp"
-                    alt="Profile"
-                    sx={{
-                      width: 44,
-                      height: 44,
-                      border: `2px solid ${theme.palette.mode === "dark" ? darkColors.accent : lightColors.accent}`,
-                    }}
+            <Toolbar
+              disableGutters
+              sx={{
+                minHeight: "72px",
+                px: 1.5,
+                py: 0,
+                justifyContent: isMobile ? "space-between" : "center",
+              }}
+            >
+              {isMobile ? (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <MuiLink href="#home" underline="none">
+                    <Avatar
+                      src="/gaborulenius/profile-small.webp"
+                      alt="Profile"
+                      sx={{
+                        width: 44,
+                        height: 44,
+                        border: `2px solid ${theme.palette.mode === "dark" ? darkColors.accent : lightColors.accent}`,
+                      }}
+                    />
+                  </MuiLink>
+                  <IconButton color="inherit" onClick={handlePlayPause}>
+                    {isPlaying ? (
+                      <PauseCircleOutlineIcon fontSize="large" />
+                    ) : (
+                      <PlayCircleOutlineIcon fontSize="large" />
+                    )}
+                  </IconButton>
+                  <IconButton color="inherit" onClick={toggleMobileDrawer(true)}>
+                    <MenuIcon fontSize="large" />
+                  </IconButton>
+                </Box>
+              ) : (
+                <React.Suspense fallback={null}>
+                  <DesktopNavItems
+                    selectedThemeVariant={selectedTheme}
+                    onToggleTheme={toggleTheme}
+                    onOpenSettings={handleOpenSettings}
+                    isPlayingAudio={isPlaying}
+                    onToggleAudio={handlePlayPause}
                   />
-                </MuiLink>
-                <IconButton color="inherit" onClick={handlePlayPause}>
-                  {isPlaying ? (
-                    <PauseCircleOutlineIcon fontSize="large" />
-                  ) : (
-                    <PlayCircleOutlineIcon fontSize="large" />
-                  )}
-                </IconButton>
-                <IconButton color="inherit" onClick={toggleMobileDrawer(true)}>
-                  <MenuIcon fontSize="large" />
-                </IconButton>
-              </Box>
-            ) : (
-              <DesktopNavItems
-                selectedThemeVariant={selectedTheme}
-                onToggleTheme={toggleTheme}
-                onOpenSettings={handleOpenSettings}
-                isPlayingAudio={isPlaying}
-                onToggleAudio={handlePlayPause}
-              />
-            )}
-          </Toolbar>
-        </AppBar>
-      </ShowAfterCover>
-      <MobileDrawer
-        open={mobileDrawerOpen}
-        onClose={toggleMobileDrawer(false)}
-        onOpen={toggleMobileDrawer(true)}
-        isPlayingAudio={isPlaying}
-        onToggleAudio={handlePlayPause}
-      />
-      <SettingsDialog open={settingsDialogOpen} onClose={handleCloseSettings} />
+                </React.Suspense>
+              )}
+            </Toolbar>
+          </AppBar>
+        </ShowAfterCover>
+      </React.Suspense>
+      {mobileDrawerLoaded ? (
+        <React.Suspense fallback={null}>
+          <MobileDrawer
+            open={mobileDrawerOpen}
+            onClose={toggleMobileDrawer(false)}
+            onOpen={toggleMobileDrawer(true)}
+            isPlayingAudio={isPlaying}
+            onToggleAudio={handlePlayPause}
+          />
+        </React.Suspense>
+      ) : null}
+      {settingsDialogLoaded ? (
+        <React.Suspense fallback={null}>
+          <SettingsDialog
+            open={settingsDialogOpen}
+            onClose={handleCloseSettings}
+          />
+        </React.Suspense>
+      ) : null}
     </>
   );
 };
