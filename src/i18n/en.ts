@@ -27,7 +27,7 @@ export default {
   /* ---------- Home titles ---------- */
   homeGreeting: "Hello, I’m {name}",
   homeSubtitle:
-    "Full-Stack Developer at Tietoevry Care, specializing in cloud-native and AI-based healthcare solutions.",
+    "Full-Stack Developer at Tieto Caretech in Espoo, Finland, specializing in cloud-native and AI-based healthcare solutions.",
   homeBtnExplore: "Explore My Work",
   homeBtnDownloadCv: "Download My CV",
   /* ---------- About titles ---------- */
@@ -56,8 +56,8 @@ export default {
   qualificationHeadingTimeline: "Full Timeline",
 
   /* Event titles + dates */
-  eventTietoevryTitle: "Full-Stack Developer – Tietoevry Oyj",
-  eventTietoevryWhen: "Espoo, 2023 – Present",
+  eventTietoCaretechTitle: "Full-Stack Developer – Tieto Caretech",
+  eventTietoCaretechWhen: "Espoo, 2023 – Present",
 
   eventAnyhauTitle: "Full-Stack Developer – Anyhau Oy",
   eventAnyhauWhen: "Espoo, 2022 – 2023",
@@ -91,16 +91,16 @@ export default {
   eventBkszcWhen: "Budapest, 2011 – 2016",
 
   /* Event details */
-  eventTietoevryP1:
+  eventTietoCaretechP1:
     "I work as a Full-Stack Developer in the healthcare domain, building cloud-native, AI-powered solutions that improve the accessibility and usability of patient data across the Nordic region.",
-  eventTietoevryP2:
+  eventTietoCaretechP2:
     "My daily stack includes React, TypeScript, Node.js, GraphQL, PostgreSQL, Docker, Kubernetes, Terraform and Azure DevOps in Agile-Scrum teams.",
-  eventTietoevryNotable: "Notable contributions:",
-  eventTietoevryB1:
+  eventTietoCaretechNotable: "Notable contributions:",
+  eventTietoCaretechB1:
     "Developed an LLM-powered AI solution showcased at ICT Days, Finland’s largest healthcare-tech event.",
-  eventTietoevryB2:
+  eventTietoCaretechB2:
     "Contributed to the HUS DataLake, enabling real-time access to healthcare data across multiple systems.",
-  eventTietoevryB3:
+  eventTietoCaretechB3:
     "Built an AI proof of concept that helps doctors find diagnoses faster through medical documents.",
   eventAnyhauP1:
     "Built a green-field web application for booking animal-related services, in collaboration with the 2022 *Diili* winner, using Next.js, Material UI and MongoDB. The platform lets providers list services and customers book and pay online.",
@@ -176,21 +176,21 @@ export default {
   headingEffects: "Effects",
 
   /*Links */
-  linkThumbnailTitleTietoevryHus:
+  linkThumbnailTitleTietoCaretechHus:
     "An agile and cost-effective way to combine patient data from different systems? It already exists and this is how it works",
-  linkThumbnailDescriptionTietoevryHus:
+  linkThumbnailDescriptionTietoCaretechHus:
     "Finnish healthcare and the healthcare information systems suffer from the same basic problem: fragmentation.",
-  linkThumbnailTitleTietoevryPoc:
+  linkThumbnailTitleTietoCaretechPoc:
     "Generative AI pilot assists clinicians at New Children’s Hospital",
-  linkThumbnailDescriptionTietoevryPoc:
-    "Learn how a GenAI pilot developed by Tietoevry is helping clinicians from New Children’s Hospital find the information faster in the HUS databank",
+  linkThumbnailDescriptionTietoCaretechPoc:
+    "An LLM-based pilot helps clinicians at Helsinki’s New Children’s Hospital find the right information faster in medical documents.",
   linkThumbnailTitleAnyhau: "Anyhau",
   linkThumbnailDescriptionAnyhau: "Find the best services for your pet",
   linkThumbnailTitleHive: "Hive Helsinki",
   linkThumbnailDescriptionHive:
     "Hive Helsinki is a new kind of coding school that preps you to launch your future-proof career through collaborative, project-based learning.",
-  linkThumbnailTitleGabor: "Far from the A4 way into a programming career",
+  linkThumbnailTitleGabor: "A non-traditional journey into coding and AI",
   linkThumbnailDescriptionGabor:
-    "Gàbor is living proof that there is more than one way into programming. His curiosity and ambition to learn has taken him on an interesting career path.",
+    "Gàbor shares how he moved into software development and now builds AI solutions at Tieto Caretech.",
   linkThumbnailReadingTime: "{minutes} min read",
 } as const;

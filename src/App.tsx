@@ -14,7 +14,11 @@ const App: React.FC = () => {
   return (
     <Box id="scrolly-container" sx={{ position: "relative" }}>
       <NavBar />
-      <Box sx={{ position: "relative", zIndex: 2 }}>
+      <Box
+        component="main"
+        id="main-content"
+        sx={{ position: "relative", zIndex: 2 }}
+      >
         <CoverSection />
         <Hero />
       </Box>

@@ -72,7 +72,9 @@ const QualificationSection = ({
   return (
     <>
       <Paper
+        component="section"
         id="experience"
+        aria-label="Experience and qualifications"
         ref={innerRef}
         sx={{ pt: 0, width: { xs: "100%", md: "80%" }, mx: "auto" }}
       >

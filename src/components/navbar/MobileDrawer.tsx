@@ -54,7 +54,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
   const { birdEnabled, toggleBirdEffects } = useBirdEffect();
   const { leavesEnabled, toggleLeavesEffects } = useLeavesEffect();
   const { firefliesEnabled, toggleFireflyEffects } = useFireflyEffect();
-  const { currentActiveSectionId, setActiveSectionId } = useActiveNavLink();
+  const { currentActiveSectionId, requestActiveSection } = useActiveNavLink();
 
   const isDark = theme.palette.mode === "dark";
   const drawerBackgroundColor = isDark
@@ -119,14 +119,17 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
       {/* Navigation List */}
       <List disablePadding sx={{ px: 1.5 }}>
         {navLinks.map(({ id, href }) => {
+          const isActive = currentActiveSectionId === href;
+
           return (
             <ListItem key={id} disablePadding sx={{ mb: 0.5 }}>
               <ListItemButton
                 component="a"
                 href={href}
-                selected={currentActiveSectionId === href}
+                selected={isActive}
+                aria-current={isActive ? "page" : undefined}
                 onClick={() => {
-                  setActiveSectionId(href);
+                  requestActiveSection(href);
                   onClose();
                 }}
                 sx={{
@@ -138,6 +141,14 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
                   "&:hover": {
                     backgroundColor: alpha(accentColor, 0.12),
                     color: accentColor,
+                  },
+                  "&.Mui-selected": {
+                    backgroundColor: alpha(accentColor, 0.16),
+                    boxShadow: `inset 3px 0 0 ${accentColor}`,
+                    color: accentColor,
+                  },
+                  "&.Mui-selected:hover": {
+                    backgroundColor: alpha(accentColor, 0.2),
                   },
                   "&.Mui-focusVisible": {
                     backgroundColor: alpha(accentColor, 0.2),

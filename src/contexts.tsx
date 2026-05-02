@@ -36,10 +36,6 @@ export const projects: Project[] = [
   },
   {
     id: "projectMedicalPocTitle",
-    hrefEN:
-      "https://www.tietoevry.com/en/success-stories/2024/generative-ai-pilot-assists-clinicians-at-new-childrens-hospital/",
-    hrefFI:
-      "https://www.tietoevry.com/fi/asiakkaitamme/2024/generatiivinen-tekoaly-auttaa-kliinikoita-paatoksenteossa-uudessa-lastensairaalassa/",
   },
   { id: "projectIctDaysTitle" },
   {
@@ -52,8 +48,8 @@ export const projects: Project[] = [
 export const highlightedEvents: TimelineEvent[] = [
   {
     icon: <WorkIcon sx={{ fontSize: { xs: 28, md: 18 } }} />,
-    titleId: "eventTietoevryTitle",
-    whenId: "eventTietoevryWhen",
+    titleId: "eventTietoCaretechTitle",
+    whenId: "eventTietoCaretechWhen",
     details: (
       <>
         <Typography
@@ -64,8 +60,8 @@ export const highlightedEvents: TimelineEvent[] = [
                 : lightColors.textLight,
           }}
         >
-          <FormattedMessage id="eventTietoevryP1" />
-          <FormattedMessage id="eventTietoevryP2" />
+          <FormattedMessage id="eventTietoCaretechP1" />
+          <FormattedMessage id="eventTietoCaretechP2" />
         </Typography>
         <Typography
           sx={{
@@ -76,7 +72,7 @@ export const highlightedEvents: TimelineEvent[] = [
             fontWeight: 600,
           }}
         >
-          <FormattedMessage id="eventTietoevryNotable" />
+          <FormattedMessage id="eventTietoCaretechNotable" />
         </Typography>
         <List
           sx={{
@@ -91,25 +87,25 @@ export const highlightedEvents: TimelineEvent[] = [
         >
           <ListItem>
             <ListItemText
-              primary={<FormattedMessage id="eventTietoevryB1" />}
+              primary={<FormattedMessage id="eventTietoCaretechB1" />}
             />
           </ListItem>
           <ListItem>
             <ListItemText
-              primary={<FormattedMessage id="eventTietoevryB2" />}
+              primary={<FormattedMessage id="eventTietoCaretechB2" />}
             />
           </ListItem>
           <ListItem>
             <ListItemText
-              primary={<FormattedMessage id="eventTietoevryB3" />}
+              primary={<FormattedMessage id="eventTietoCaretechB3" />}
             />
           </ListItem>
         </List>
         <Grid container spacing={5} sx={{ pt: 8 }}>
           <Grid size={{ xs: 12, sm: 6 }}>
             <LinkThumbnail
-              id="linkThumbnailTitleTietoevryHus"
-              descriptionId="linkThumbnailDescriptionTietoevryHus"
+              id="linkThumbnailTitleTietoCaretechHus"
+              descriptionId="linkThumbnailDescriptionTietoCaretechHus"
               image="https://www.tietoevry.com/siteassets/images--videos/04-industries/healthcare-and-welfare/main/19--web-2560x1440-2.jpg?quality=80&width=1920&format=webp"
               urlEN="https://www.tietoevry.com/en/newsroom/all-news-and-releases/articles/2021/an-agile-and-cost-effective-way-to-combine-patient-data-from-different-systems-it-already-exists-and-this-is-how-it-works/"
               urlFI="https://www.tietoevry.com/fi/asiakkaitamme/2019/HUS-kehittaa-kliinisen-datan-hyodyntamista-tietoallas-ratkaisulla/"
@@ -120,11 +116,9 @@ export const highlightedEvents: TimelineEvent[] = [
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
             <LinkThumbnail
-              id="linkThumbnailTitleTietoevryPoc"
-              descriptionId="linkThumbnailDescriptionTietoevryPoc"
+              id="linkThumbnailTitleTietoCaretechPoc"
+              descriptionId="linkThumbnailDescriptionTietoCaretechPoc"
               image="https://www.tietoevry.com/siteassets/images--videos/05-businesses/tietoevry-care/success-stories/hus-children-and-adolescents-hospital/lanu_11.jpg?quality=80&width=1920&format=webp"
-              urlEN="https://www.tietoevry.com/en/success-stories/2024/generative-ai-pilot-assists-clinicians-at-new-childrens-hospital/"
-              urlFI="https://www.tietoevry.com/fi/asiakkaitamme/2024/generatiivinen-tekoaly-auttaa-kliinikoita-paatoksenteossa-uudessa-lastensairaalassa/"
               readingMinutes={4}
               isArticle={true}
               date="03.2024"
@@ -246,8 +240,8 @@ export const highlightedEvents: TimelineEvent[] = [
 export const allEvents: TimelineEvent[] = [
   {
     icon: <WorkIcon sx={{ fontSize: { xs: 28, md: 18 } }} />,
-    titleId: "eventTietoevryTitle",
-    whenId: "eventTietoevryWhen",
+    titleId: "eventTietoCaretechTitle",
+    whenId: "eventTietoCaretechWhen",
     details: (
       <>
         <Typography
@@ -258,8 +252,8 @@ export const allEvents: TimelineEvent[] = [
                 : lightColors.textLight,
           }}
         >
-          <FormattedMessage id="eventTietoevryP1" />
-          <FormattedMessage id="eventTietoevryP2" />
+          <FormattedMessage id="eventTietoCaretechP1" />
+          <FormattedMessage id="eventTietoCaretechP2" />
         </Typography>
         <Typography
           sx={{
@@ -270,7 +264,7 @@ export const allEvents: TimelineEvent[] = [
             fontWeight: 600,
           }}
         >
-          <FormattedMessage id="eventTietoevryNotable" />
+          <FormattedMessage id="eventTietoCaretechNotable" />
         </Typography>
         <List
           sx={{
@@ -285,25 +279,25 @@ export const allEvents: TimelineEvent[] = [
         >
           <ListItem>
             <ListItemText
-              primary={<FormattedMessage id="eventTietoevryB1" />}
+              primary={<FormattedMessage id="eventTietoCaretechB1" />}
             />
           </ListItem>
           <ListItem>
             <ListItemText
-              primary={<FormattedMessage id="eventTietoevryB2" />}
+              primary={<FormattedMessage id="eventTietoCaretechB2" />}
             />
           </ListItem>
           <ListItem>
             <ListItemText
-              primary={<FormattedMessage id="eventTietoevryB3" />}
+              primary={<FormattedMessage id="eventTietoCaretechB3" />}
             />
           </ListItem>
         </List>
         <Grid container spacing={5} sx={{ pt: 8 }}>
           <Grid size={{ xs: 12, sm: 6 }}>
             <LinkThumbnail
-              id="linkThumbnailTitleTietoevryHus"
-              descriptionId="linkThumbnailDescriptionTietoevryHus"
+              id="linkThumbnailTitleTietoCaretechHus"
+              descriptionId="linkThumbnailDescriptionTietoCaretechHus"
               image="https://www.tietoevry.com/siteassets/images--videos/04-industries/healthcare-and-welfare/main/19--web-2560x1440-2.jpg?quality=80&width=1920&format=webp"
               urlEN="https://www.tietoevry.com/en/newsroom/all-news-and-releases/articles/2021/an-agile-and-cost-effective-way-to-combine-patient-data-from-different-systems-it-already-exists-and-this-is-how-it-works/"
               urlFI="https://www.tietoevry.com/fi/asiakkaitamme/2019/HUS-kehittaa-kliinisen-datan-hyodyntamista-tietoallas-ratkaisulla/"
@@ -314,11 +308,9 @@ export const allEvents: TimelineEvent[] = [
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
             <LinkThumbnail
-              id="linkThumbnailTitleTietoevryPoc"
-              descriptionId="linkThumbnailDescriptionTietoevryPoc"
+              id="linkThumbnailTitleTietoCaretechPoc"
+              descriptionId="linkThumbnailDescriptionTietoCaretechPoc"
               image="https://www.tietoevry.com/siteassets/images--videos/05-businesses/tietoevry-care/success-stories/hus-children-and-adolescents-hospital/lanu_11.jpg?quality=80&width=1920&format=webp"
-              urlEN="https://www.tietoevry.com/en/success-stories/2024/generative-ai-pilot-assists-clinicians-at-new-childrens-hospital/"
-              urlFI="https://www.tietoevry.com/fi/asiakkaitamme/2024/generatiivinen-tekoaly-auttaa-kliinikoita-paatoksenteossa-uudessa-lastensairaalassa/"
               readingMinutes={4}
               isArticle={true}
               date="03.2024"

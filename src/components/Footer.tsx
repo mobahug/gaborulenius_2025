@@ -92,7 +92,7 @@ const Footer = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
               <FormattedMessage id="footerNavProjects" />
             </Link>
             <Link
-              href="mailto:you@example.com"
+              href="mailto:gaborulenius@gmail.com"
               underline="none"
               color="inherit"
               variant="body1"
@@ -112,6 +112,7 @@ const Footer = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
             <IconButton
               href="https://www.linkedin.com/in/g%C3%A0bor-horv%C3%A0th-ulenius-07526719a/"
               target="_blank"
+              rel="me noopener noreferrer"
               aria-label="LinkedIn"
             >
               <LinkedInIcon sx={{ fontSize: 32 }} />
@@ -119,6 +120,7 @@ const Footer = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
             <IconButton
               href="https://github.com/mobahug"
               target="_blank"
+              rel="me noopener noreferrer"
               aria-label="GitHub"
             >
               <GitHubIcon sx={{ fontSize: 32 }} />
@@ -126,6 +128,7 @@ const Footer = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
             <IconButton
               href="https://www.instagram.com/mobahug/"
               target="_blank"
+              rel="me noopener noreferrer"
               aria-label="Instagram"
             >
               <InstagramIcon sx={{ fontSize: 32 }} />
@@ -133,6 +136,7 @@ const Footer = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
             <IconButton
               href="https://www.youtube.com/@mobahug"
               target="_blank"
+              rel="me noopener noreferrer"
               aria-label="YouTube"
             >
               <YouTubeIcon sx={{ fontSize: 32 }} />

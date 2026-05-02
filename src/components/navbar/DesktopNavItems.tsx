@@ -4,6 +4,7 @@ import {
   IconButton,
   Avatar,
   Link as MuiLink,
+  alpha,
   useTheme,
 } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -34,7 +35,17 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
   onToggleAudio,
 }) => {
   const theme = useTheme();
-  const { currentActiveSectionId, setActiveSectionId } = useActiveNavLink();
+  const { currentActiveSectionId, requestActiveSection } = useActiveNavLink();
+  const activeColor =
+    theme.palette.mode === "dark" ? darkColors.accent : lightColors.accent;
+  const activeHoverColor =
+    theme.palette.mode === "dark"
+      ? darkColors.accentHover
+      : lightColors.accentHover;
+  const inactiveColor =
+    theme.palette.mode === "dark"
+      ? darkColors.textLight
+      : lightColors.textLight;
 
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
@@ -46,40 +57,37 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
             key={id}
             href={href}
             underline="none"
+            aria-current={isActive ? "page" : undefined}
             onClick={() => {
-              setActiveSectionId(href);
+              requestActiveSection(href);
             }}
             sx={{
               fontSize: "0.9rem",
               fontWeight: 700,
-              color: isActive
-                ? theme.palette.mode === "dark"
-                  ? darkColors.accent
-                  : lightColors.accent
-                : theme.palette.mode === "dark"
-                  ? darkColors.textLight
-                  : lightColors.textLight,
+              color: isActive ? activeColor : inactiveColor,
               position: "relative",
+              transition: "color 0.18s ease, background-color 0.18s ease",
               "&:hover": {
-                color:
-                  theme.palette.mode === "dark"
-                    ? darkColors.accentHover
-                    : lightColors.accentHover,
+                color: activeHoverColor,
+                backgroundColor: alpha(activeColor, 0.08),
               },
-              "&::after": isActive
-                ? {
-                    content: '""',
-                    position: "absolute",
-                    bottom: -4,
-                    left: 0,
-                    width: "100%",
-                    height: 2,
-                    backgroundColor:
-                      theme.palette.mode === "dark"
-                        ? darkColors.accent
-                        : lightColors.accent,
-                  }
-                : undefined,
+              "&:focus-visible": {
+                outline: `2px solid ${alpha(activeColor, 0.55)}`,
+                outlineOffset: 3,
+              },
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                bottom: 4,
+                left: 12,
+                width: "calc(100% - 24px)",
+                height: 2,
+                borderRadius: 1,
+                backgroundColor: activeColor,
+                transform: isActive ? "scaleX(1)" : "scaleX(0)",
+                transformOrigin: "center",
+                transition: "transform 0.18s ease",
+              },
             }}
           >
             <FormattedMessage id={id} />

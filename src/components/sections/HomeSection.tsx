@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { FormattedMessage } from "react-intl";
-import { fadeUp } from "../Sections";
+import { fadeUp } from "../sectionMotion";
 import SearchIcon from "@mui/icons-material/Search";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
@@ -23,18 +23,25 @@ const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
       viewport={{ once: true }}
     >
       <Paper
+        component="section"
         id="home"
+        aria-labelledby="home-heading"
         ref={innerRef}
         sx={{ width: { xs: "100%", md: "80%" }, mx: "auto" }}
       >
         <motion.div custom={1} variants={fadeUp}>
-          <Typography variant="h4" gutterBottom>
+          <Typography
+            id="home-heading"
+            variant="h4"
+            component="h2"
+            gutterBottom
+          >
             <FormattedMessage
               id="homeGreeting"
               values={{
                 name: (
                   <Box component="span" sx={{ color: "primary.main" }}>
-                    Gábor
+                    Gábor Ulenius
                   </Box>
                 ),
               }}
@@ -64,6 +71,7 @@ const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
               component="a"
               href="/gaborulenius/Gabor_Ulenius_-_Full_Stack_Developer.pdf"
               target="_blank"
+              rel="noopener noreferrer"
               download
               startIcon={<FileDownloadIcon />}
             >

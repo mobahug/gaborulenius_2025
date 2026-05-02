@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
 import { categories } from "../../contexts";
-import { fadeUp } from "../Sections";
+import { fadeUp } from "../sectionMotion";
 
 const SkillsSection = ({
   innerRef,
@@ -19,12 +19,19 @@ const SkillsSection = ({
       viewport={{ once: true }}
     >
       <Paper
+        component="section"
         id="skills-tools"
+        aria-labelledby="skills-heading"
         ref={innerRef}
         sx={{ width: { xs: "100%", md: "80%" }, mx: "auto" }}
       >
         <motion.div custom={1} variants={fadeUp}>
-          <Typography variant="h4" gutterBottom>
+          <Typography
+            id="skills-heading"
+            variant="h4"
+            component="h2"
+            gutterBottom
+          >
             <FormattedMessage id="skillsToolsHeading" />
           </Typography>
         </motion.div>

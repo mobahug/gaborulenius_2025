@@ -10,7 +10,7 @@ import { Typography, Box, useTheme, alpha } from "@mui/material";
 import { motion } from "framer-motion";
 import { FormattedMessage } from "react-intl";
 import { TimelineEvent } from "../../contexts";
-import { fadeUp } from "../Sections";
+import { fadeUp } from "../sectionMotion";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { colors as lightColors } from "../../colors";
@@ -39,7 +39,12 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
       viewport={{ once: true }}
     >
       <motion.div custom={1} variants={fadeUp}>
-        <Typography variant="h4" gutterBottom>
+        <Typography
+          id={`${titleId}-heading`}
+          variant="h4"
+          component="h2"
+          gutterBottom
+        >
           <FormattedMessage id={titleId} />
         </Typography>
       </motion.div>

@@ -28,7 +28,7 @@ export default {
   /* ---------- Etu otsikot ---------- */
   homeGreeting: "Hei, olen {name}",
   homeSubtitle:
-    "Full-Stack -kehittäjä Tietoevry Carella, olen erikoistunut pilvinatiiveihin ja tekoälypohjaisiin terveydenhuollon ratkaisuihin",
+    "Full-Stack -kehittäjä Tieto Caretechilla Espoossa, erikoistunut pilvinatiiveihin ja tekoälypohjaisiin terveydenhuollon ratkaisuihin.",
   homeBtnExplore: "Tutustu töihini",
   homeBtnDownloadCv: "Lataa CV:ni",
   /* ---------- Minusta otsikot ---------- */
@@ -58,8 +58,8 @@ export default {
   qualificationHeadingTimeline: "Koko aikajana",
 
   /* Tapahtumien otsikot + ajankohdat */
-  eventTietoevryTitle: "Full-Stack -kehittäjä – Tietoevry Oyj",
-  eventTietoevryWhen: "Espoo, 2023 – Nykyhetki",
+  eventTietoCaretechTitle: "Full-Stack -kehittäjä – Tieto Caretech",
+  eventTietoCaretechWhen: "Espoo, 2023 – Nykyhetki",
 
   eventAnyhauTitle: "Full-Stack -kehittäjä – Anyhau Oy",
   eventAnyhauWhen: "Espoo, 2022 – 2023",
@@ -92,16 +92,16 @@ export default {
   eventBkszcWhen: "Budapest, 2011 – 2016",
 
   /* Tapahtuminen yksityiset otsikot */
-  eventTietoevryP1:
+  eventTietoCaretechP1:
     "Työskentelen full stack -kehittäjänä terveydenhuollon alueella rakentaen pilvinatiiveja, tekoälypohjaisia ratkaisuja, jotka parantavat potilasdatan saavutettavuutta ja käytettävyyttä Pohjoismaissa.",
-  eventTietoevryP2:
+  eventTietoCaretechP2:
     "Teknologiastackini kattaa Reactin, TypeScriptin, Node.js:n, GraphQL:n, PostgreSQL:n, Dockerin, Kubernetesin, Terraformin ja Azure DevOpsin ketterissä Scrum-tiimeissä.",
-  eventTietoevryNotable: "Merkittäviä saavutuksia:",
-  eventTietoevryB1:
+  eventTietoCaretechNotable: "Merkittäviä saavutuksia:",
+  eventTietoCaretechB1:
     "Kehitin LLM-pohjaisen AI-ratkaisun ICT Days-tapahtumassa, Suomen suurimmassa sote-IT-tapahtumassa.",
-  eventTietoevryB2:
+  eventTietoCaretechB2:
     "Osallistuin HUS DataLaken kehitykseen mahdollistaen reaaliaikaisen terveysdatan saatavuuden useista järjestelmistä.",
-  eventTietoevryB3:
+  eventTietoCaretechB3:
     "Rakensin tekoäly-PoC:n, joka auttaa lääkäreitä löytämään diagnooseja nopeammin lääketieteellisistä asiakirjoista.",
   eventAnyhauP1:
     "Rakensin uuden verkkosovelluksen eläinpalvelujen varaamiseen yhteistyössä vuoden 2022 *Diili*-voittajan kanssa. Alusta (Next.js, Material UI, MongoDB) mahdollistaa palveluntarjoajien listaukset ja asiakkaiden verkkomaksut.",
@@ -178,20 +178,21 @@ export default {
   headingEffects: "Efektit",
 
   /* Linkit */
-  linkThumbnailTitleTietoevryHus: "HUS kehittää kliinisen datan hyödyntämistä",
-  linkThumbnailDescriptionTietoevryHus:
+  linkThumbnailTitleTietoCaretechHus:
+    "HUS kehittää kliinisen datan hyödyntämistä",
+  linkThumbnailDescriptionTietoCaretechHus:
     "Ratkaisu mahdollistaa suurten tietomassojen analysoinnin terveydenhuoltoa koskevien ennusteiden ja merkittävien innovaatioiden luomiseksi.",
-  linkThumbnailTitleTietoevryPoc:
+  linkThumbnailTitleTietoCaretechPoc:
     "Generatiivinen tekoäly auttaa kliinikoita päätöksenteossa",
-  linkThumbnailDescriptionTietoevryPoc:
-    "Generatiiviseen tekoälyyn pohjautuva sovellus vähentää tiedonhakuun kuluvaa aikaa ja kokoaa jatkossa ohjeet eri lähteistä yhteen.",
+  linkThumbnailDescriptionTietoCaretechPoc:
+    "LLM-pohjainen pilotti auttaa Helsingin Uuden lastensairaalan kliinikoita löytämään oikean tiedon nopeammin lääketieteellisistä asiakirjoista.",
   linkThumbnailTitleAnyhau: "Anyhau",
   linkThumbnailDescriptionAnyhau: "Löydä parhaat palvelut lemmikillesi",
   linkThumbnailTitleHive: "Hive Helsinki",
   linkThumbnailDescriptionHive:
     "Hive Helsinki on uudenlainen koodauskoulu, joka valmistaa sinua tulevaisuudenkestävään uraan yhteistyöhön perustuvan, projektipohjaisen oppimisen avulla.",
-  linkThumbnailTitleGabor: "Kauas A4-urasta ohjelmointiin",
+  linkThumbnailTitleGabor: "Epätavanomainen matka koodaukseen ja tekoälyyn",
   linkThumbnailDescriptionGabor:
-    "Gàbor on elävä todiste siitä, että ohjelmointiin on monta tietä. Hänen uteliaisuutensa ja oppimisen halunsa ovat johdattaneet hänet mielenkiintoiselle urapolulle.",
+    "Gàbor kertoo urapolustaan ohjelmoinnin pariin ja AI-ratkaisuista Tieto Caretechilla.",
   linkThumbnailReadingTime: "lukuaika {minutes} min ",
 } as const;

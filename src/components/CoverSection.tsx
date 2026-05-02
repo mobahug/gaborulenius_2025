@@ -59,7 +59,7 @@ const CoverSection: React.FC = () => {
     >
       <Box sx={{ maxWidth: 600 }}>
         <Avatar
-          alt="Gabor"
+          alt="Gabor Ulenius"
           src="/gaborulenius/profile-small.webp"
           sx={{
             width: { xs: 140, sm: 150, md: 160 },
@@ -86,7 +86,10 @@ const CoverSection: React.FC = () => {
             mb: 2,
           }}
         >
-          <FormattedMessage id="coverGreeting" values={{ name: "Gábor" }} />
+          <FormattedMessage
+            id="coverGreeting"
+            values={{ name: "Gábor Ulenius" }}
+          />
         </Typography>
         <Link
           href="#home"

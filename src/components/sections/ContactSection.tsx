@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { FormattedMessage } from "react-intl";
-import { fadeUp } from "../Sections";
+import { fadeUp } from "../sectionMotion";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
@@ -26,7 +26,9 @@ const ContactSection = ({
       viewport={{ once: true }}
     >
       <Paper
+        component="section"
         id="contact"
+        aria-labelledby="contact-heading"
         ref={innerRef}
         sx={{
           minWidth: isSmallScreen ? null : 700,
@@ -35,7 +37,12 @@ const ContactSection = ({
         }}
       >
         <motion.div custom={1} variants={fadeUp}>
-          <Typography variant="h4" gutterBottom>
+          <Typography
+            id="contact-heading"
+            variant="h4"
+            component="h2"
+            gutterBottom
+          >
             <FormattedMessage id="contactHeading" />
           </Typography>
         </motion.div>
@@ -63,6 +70,7 @@ const ContactSection = ({
               component="a"
               href="https://www.linkedin.com/in/g%C3%A0bor-horv%C3%A0th-ulenius-07526719a/"
               target="_blank"
+              rel="me noopener noreferrer"
               startIcon={<LinkedInIcon />}
             >
               <FormattedMessage id="contactBtnLinkedIn" />

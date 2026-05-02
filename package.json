@@ -2,6 +2,7 @@
   "homepage": "http://mobahug.github.io/gaborulenius",
   "name": "gaborulenius",
   "private": true,
+  "license": "UNLICENSED",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

@@ -14,7 +14,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import { motion } from "framer-motion";
 import { FormattedMessage } from "react-intl";
-import { fadeUp } from "../Sections";
+import { fadeUp } from "../sectionMotion";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
 
@@ -51,12 +51,19 @@ const AboutSection = ({
       viewport={{ once: true }}
     >
       <Paper
+        component="section"
         id="about"
+        aria-labelledby="about-heading"
         ref={innerRef}
         sx={{ width: { xs: "100%", md: "80%" }, mx: "auto" }}
       >
         <motion.div custom={1} variants={fadeUp}>
-          <Typography variant="h4" gutterBottom>
+          <Typography
+            id="about-heading"
+            variant="h4"
+            component="h2"
+            gutterBottom
+          >
             <FormattedMessage id="aboutHeading" />
           </Typography>
         </motion.div>
@@ -108,11 +115,11 @@ const AboutSection = ({
                 id="linkThumbnailTitleGabor"
                 descriptionId="linkThumbnailDescriptionGabor"
                 image="/gaborulenius/profile2-small.webp"
-                urlEN="https://www.tietoevry.com/en/meet-our-people/2024/06/gabor-horvath-ulenius-far-from-the-a4-way-into-a-programming-career"
-                urlFI="https://www.tietoevry.com/fi/blogi/2024/06/gabor-horvath-ulenius-kauas-a4-urasta-ohjelmointiin/"
+                urlEN="https://careers.tieto.com/career-story/2025-5/gabor-horvath-ulenius-a-non-traditional-journey-into-coding"
+                urlFI="https://careers.tieto.com/career-story/2025-5/gabor-horvath-ulenius-a-non-traditional-journey-into-coding"
                 readingMinutes={3}
                 isArticle={true}
-                date="06.2024"
+                date="05.2025"
                 height={isMobile ? 140 : 210}
               />
             </motion.div>

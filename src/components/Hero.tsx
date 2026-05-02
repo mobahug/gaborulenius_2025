@@ -1,8 +1,9 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { Container, Stack } from "@mui/material";
 import BirdManager, { SectionInfo } from "./BirdManager";
 import { useBirdEffect } from "../hooks/useBirdEffect";
 import React from "react";
+import { useActiveNavScrollSpy } from "../hooks/useActiveNavLink";
 
 const HomeSection = React.lazy(() => import("./sections/HomeSection"));
 const AboutSection = React.lazy(() => import("./sections/AboutSection"));
@@ -34,6 +35,19 @@ export default function Hero() {
   ];
 
   const { birdEnabled } = useBirdEffect();
+  const navSectionRefs = useMemo(
+    () => [
+      homeRef,
+      aboutRef,
+      projectsRef,
+      experienceRef,
+      skillsRef,
+      contactRef,
+    ],
+    [aboutRef, contactRef, experienceRef, homeRef, projectsRef, skillsRef],
+  );
+
+  useActiveNavScrollSpy(navSectionRefs);
 
   return (
     <>

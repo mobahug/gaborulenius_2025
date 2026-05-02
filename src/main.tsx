@@ -6,12 +6,14 @@ import { Provider as JotaiProvider } from "jotai";
 import { I18nWrapper } from "./i18n/i18nWrapper";
 import { SelectedThemeProvider } from "./components/SelectedThemeProvider";
 import { VideoScroller } from "./components/VideoScroller";
+import Seo from "./components/Seo";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <JotaiProvider>
       <I18nWrapper>
         <SelectedThemeProvider>
+          <Seo />
           <VideoScroller />
           <CssBaseline />
           <App />

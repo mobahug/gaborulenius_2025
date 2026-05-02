@@ -2,16 +2,6 @@ import React from "react";
 import { TransitionProps } from "@mui/material/transitions";
 import { Slide } from "@mui/material";
 
-// TODO: add this to helper.ts file
-export const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" },
-  }),
-};
-
 export const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement;
