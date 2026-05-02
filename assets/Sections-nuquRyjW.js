@@ -1,1 +1,0 @@
-import{R as o,j as s}from"./vendor-framer-motion-C79tgHH9.js";import{ab as e}from"./vendor-mui-B3zjS1Y6.js";const d={hidden:{opacity:0,y:30},visible:(i=1)=>({opacity:1,y:0,transition:{delay:i*.2,duration:.6,ease:"easeOut"}})},p=o.forwardRef(function(t,a){return s.jsx(e,{direction:"up",ref:a,...t})});export{p as T,d as f};
