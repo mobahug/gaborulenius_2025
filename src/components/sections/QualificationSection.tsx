@@ -1,18 +1,16 @@
-import {
-  Box,
-  useMediaQuery,
-  Paper,
-  Tabs,
-  Tab,
-  Dialog,
-  DialogTitle,
-  IconButton,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button,
-  useTheme,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { TimelineEvent, highlightedEvents, allEvents } from "../../contexts";
@@ -43,11 +41,7 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-const QualificationSection = ({
-  innerRef,
-}: {
-  innerRef: React.Ref<HTMLDivElement>;
-}) => {
+const QualificationSection = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(false);
@@ -73,9 +67,7 @@ const QualificationSection = ({
     <>
       <Paper
         component="section"
-        id="experience"
         aria-label="Experience and qualifications"
-        ref={innerRef}
         sx={{ pt: 0, width: { xs: "100%", md: "80%" }, mx: "auto" }}
       >
         <Tabs
@@ -162,6 +154,7 @@ const QualificationDialog: React.FC<QualificationDialogProps> = ({
     >
       <DialogTitle
         id="qualification-dialog-title"
+        component="h3"
         sx={{
           display: "flex",
           alignItems: "center",

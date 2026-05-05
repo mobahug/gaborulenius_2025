@@ -1,13 +1,11 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Link,
-  IconButton,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -16,14 +14,12 @@ import { colors as lightColors } from "../colors";
 import { colors as darkColors } from "../colorsDark";
 import { FormattedMessage, useIntl } from "react-intl";
 
-const Footer = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
+const Footer = () => {
   const intl = useIntl();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box
-      id="footer"
-      ref={innerRef}
       component="footer"
       sx={{
         backgroundColor:
@@ -50,6 +46,7 @@ const Footer = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
             <Typography
               fontWeight={theme.typography.fontWeightBold}
               variant="h4"
+              component="p"
               sx={{
                 color:
                   theme.palette.mode === "dark"

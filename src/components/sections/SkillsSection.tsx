@@ -1,31 +1,25 @@
-import { Paper, Typography, Stack, Box, Chip, useTheme } from "@mui/material";
-import { motion } from "framer-motion";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 import { FormattedMessage } from "react-intl";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
 import { categories } from "../../contexts";
-import { fadeUp } from "../sectionMotion";
+import AnimatedReveal from "../AnimatedReveal";
 
-const SkillsSection = ({
-  innerRef,
-}: {
-  innerRef: React.Ref<HTMLDivElement>;
-}) => {
+const SkillsSection = () => {
   const theme = useTheme();
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
+    <AnimatedReveal>
       <Paper
         component="section"
-        id="skills-tools"
         aria-labelledby="skills-heading"
-        ref={innerRef}
         sx={{ width: { xs: "100%", md: "80%" }, mx: "auto" }}
       >
-        <motion.div custom={1} variants={fadeUp}>
+        <AnimatedReveal order={1}>
           <Typography
             id="skills-heading"
             variant="h4"
@@ -34,10 +28,10 @@ const SkillsSection = ({
           >
             <FormattedMessage id="skillsToolsHeading" />
           </Typography>
-        </motion.div>
+        </AnimatedReveal>
         <Stack spacing={4}>
           {categories.map((cat, idx) => (
-            <motion.div key={cat.id} custom={idx + 2} variants={fadeUp}>
+            <AnimatedReveal key={cat.id} order={idx + 2}>
               <Typography
                 variant="h6"
                 sx={{
@@ -84,11 +78,11 @@ const SkillsSection = ({
                   </Box>
                 ))}
               </Box>
-            </motion.div>
+            </AnimatedReveal>
           ))}
         </Stack>
       </Paper>
-    </motion.div>
+    </AnimatedReveal>
   );
 };
 

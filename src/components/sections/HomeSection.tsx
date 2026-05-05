@@ -1,26 +1,20 @@
-import {
-  useMediaQuery,
-  Paper,
-  Typography,
-  Stack,
-  Button,
-  useTheme,
-} from "@mui/material";
-import { motion } from "framer-motion";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import { FormattedMessage } from "react-intl";
-import { fadeUp } from "../sectionMotion";
 import SearchIcon from "@mui/icons-material/Search";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import { AnimatedReveal } from "../AnimatedReveal";
+import { assetUrl } from "../../utils/assets";
 
 const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
+    <AnimatedReveal>
       <Paper
         component="section"
         id="home"
@@ -28,7 +22,7 @@ const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
         ref={innerRef}
         sx={{ width: { xs: "100%", md: "80%" }, mx: "auto" }}
       >
-        <motion.div custom={1} variants={fadeUp}>
+        <AnimatedReveal order={1}>
           <Typography
             id="home-heading"
             variant="h4"
@@ -37,13 +31,13 @@ const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
           >
             <FormattedMessage id="homeGreeting" />
           </Typography>
-        </motion.div>
-        <motion.div custom={2} variants={fadeUp}>
+        </AnimatedReveal>
+        <AnimatedReveal order={2}>
           <Typography variant="body1" sx={{ mb: 4 }}>
             <FormattedMessage id="homeSubtitle" />
           </Typography>
-        </motion.div>
-        <motion.div custom={3} variants={fadeUp}>
+        </AnimatedReveal>
+        <AnimatedReveal order={3}>
           <Stack
             direction={isSmallScreen ? "column" : "row"}
             spacing={4}
@@ -59,7 +53,7 @@ const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
             <Button
               variant="contained"
               component="a"
-              href="/gaborulenius/Gabor_Ulenius_-_Full_Stack_Developer.pdf"
+              href={assetUrl("Gabor_Ulenius_-_Full_Stack_Developer.pdf")}
               target="_blank"
               rel="noopener noreferrer"
               download
@@ -68,9 +62,9 @@ const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
               <FormattedMessage id="homeBtnDownloadCv" />
             </Button>
           </Stack>
-        </motion.div>
+        </AnimatedReveal>
       </Paper>
-    </motion.div>
+    </AnimatedReveal>
   );
 };
 

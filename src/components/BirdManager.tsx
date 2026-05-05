@@ -52,7 +52,11 @@ export default function BirdManager({ sections }: { sections: SectionInfo[] }) {
       sections.forEach(({ ref }) => {
         const el = ref.current;
         if (!el) return;
-        const r = el.getBoundingClientRect();
+        // Sections may be wrapped in a DeferredSection container that fills
+        // the full grid width; the visible card is the inner <section> Paper
+        // at ~80% width. Prefer that element so the bird lands on the card.
+        const measuredEl = el.querySelector("section") ?? el;
+        const r = measuredEl.getBoundingClientRect();
         if (r.top >= 0 && r.top < bestTop && r.top < window.innerHeight) {
           bestTop = r.top;
           bestRect = r;

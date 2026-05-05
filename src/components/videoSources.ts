@@ -1,9 +1,10 @@
 import type { Theme } from "../hooks/useThemeToggle";
+import { assetUrl } from "../utils/assets";
 
 export const getVideoSrc = (selectedTheme: Theme) =>
   selectedTheme === "dark"
-    ? "/gaborulenius/gemini-jungle-dark.mp4"
-    : "/gaborulenius/gemini-jungle-light.mp4";
+    ? assetUrl("gemini-jungle-dark-scrub.mp4")
+    : assetUrl("gemini-jungle-light-scrub.mp4");
 
 export const getAlternateVideoSrc = (selectedTheme: Theme) =>
   getVideoSrc(selectedTheme === "dark" ? "light" : "dark");

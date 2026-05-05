@@ -1,20 +1,21 @@
 import {
-  type MutableRefObject,
   useCallback,
   useEffect,
   useMemo,
   useRef,
+  useState,
+  type RefCallback,
 } from "react";
-import ScrollyVideoCore from "scrolly-video/dist/ScrollyVideo.js";
 import { Theme, useThemeToggle } from "../hooks/useThemeToggle";
 import { getVideoSrc } from "./videoSources";
 
-type ScrollyVideoInstance = InstanceType<typeof ScrollyVideoCore>;
-
-type ScrollyVideoLayer = {
+type VideoLayer = {
   theme: Theme;
   src: string;
 };
+
+const SEEK_DELTA_SECONDS = 0.008;
+const SCROLL_DELTA = 0.001;
 
 const getScrollVideoPercentage = () => {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -26,14 +27,39 @@ const getScrollVideoPercentage = () => {
   return Math.min(1, Math.max(0, window.scrollY / maxScroll));
 };
 
+const seekVideo = (
+  video: HTMLVideoElement | null,
+  percentage: number,
+  force = false,
+) => {
+  if (!video || !Number.isFinite(video.duration) || video.duration <= 0) {
+    return;
+  }
+
+  const targetTime = Math.min(
+    Math.max(video.duration * percentage, 0),
+    Math.max(video.duration - 0.02, 0),
+  );
+
+  if (!force && Math.abs(video.currentTime - targetTime) < SEEK_DELTA_SECONDS) {
+    return;
+  }
+
+  try {
+    video.currentTime = targetTime;
+  } catch {
+    /* ignore transient seek failures (e.g. mid-load) */
+  }
+};
+
 export const VideoScroller = () => {
   const { selectedTheme } = useThemeToggle();
+  const [mountedThemes, setMountedThemes] = useState<Theme[]>([selectedTheme]);
+  const [visibleTheme, setVisibleTheme] = useState(selectedTheme);
+  const selectedThemeRef = useRef(selectedTheme);
   const videoPercentageRef = useRef(getScrollVideoPercentage());
-  const lightContainerRef = useRef<HTMLDivElement | null>(null);
-  const darkContainerRef = useRef<HTMLDivElement | null>(null);
-  const lightVideoRef = useRef<ScrollyVideoInstance | null>(null);
-  const darkVideoRef = useRef<ScrollyVideoInstance | null>(null);
-  const layers = useMemo<ScrollyVideoLayer[]>(
+  const videoRefs = useRef<Partial<Record<Theme, HTMLVideoElement | null>>>({});
+  const layers = useMemo<VideoLayer[]>(
     () => [
       { theme: "light", src: getVideoSrc("light") },
       { theme: "dark", src: getVideoSrc("dark") },
@@ -41,68 +67,64 @@ export const VideoScroller = () => {
     [],
   );
 
-  const setLayerPercentage = useCallback((percentage: number) => {
-    lightVideoRef.current?.setVideoPercentage(percentage, { jump: true });
-    darkVideoRef.current?.setVideoPercentage(percentage, { jump: true });
+  const updateVideoPercentage = useCallback((force = false) => {
+    const nextPercentage = getScrollVideoPercentage();
+
+    if (
+      !force &&
+      Math.abs(nextPercentage - videoPercentageRef.current) < SCROLL_DELTA
+    ) {
+      return;
+    }
+
+    videoPercentageRef.current = nextPercentage;
+    const activeVideo = videoRefs.current[selectedThemeRef.current] ?? null;
+    seekVideo(activeVideo, nextPercentage, force);
   }, []);
 
-  const updateVideoPercentage = useCallback(
-    (force = false) => {
-      const nextPercentage = getScrollVideoPercentage();
-
-      if (
-        !force &&
-        Math.abs(nextPercentage - videoPercentageRef.current) < 0.001
-      ) {
-        return;
-      }
-
-      videoPercentageRef.current = nextPercentage;
-      setLayerPercentage(nextPercentage);
-    },
-    [setLayerPercentage],
+  const setVideoRef = useCallback(
+    (theme: Theme): RefCallback<HTMLVideoElement> =>
+      (video) => {
+        videoRefs.current[theme] = video;
+        seekVideo(video, videoPercentageRef.current, true);
+      },
+    [],
   );
 
   useEffect(() => {
-    const createLayer = (
-      container: HTMLDivElement | null,
-      src: string,
-      instanceRef: MutableRefObject<ScrollyVideoInstance | null>,
-    ) => {
-      if (!container) {
-        return;
+    selectedThemeRef.current = selectedTheme;
+    setMountedThemes((themes) =>
+      themes.includes(selectedTheme) ? themes : [...themes, selectedTheme],
+    );
+
+    // Force-seek the now-active video to the current scroll position so the
+    // next frame it renders matches what the user sees. The `seeked` listener
+    // on the <video> element will flip visibleTheme once that frame is ready,
+    // avoiding a one-frame flash of the previously-cached frame.
+    const targetVideo = videoRefs.current[selectedTheme];
+    if (targetVideo) {
+      seekVideo(targetVideo, videoPercentageRef.current, true);
+      // If the video is already at the target frame, seeked won't fire — flip immediately.
+      const targetTime = Math.min(
+        Math.max(targetVideo.duration * videoPercentageRef.current, 0),
+        Math.max(targetVideo.duration - 0.02, 0),
+      );
+      if (
+        targetVideo.readyState >= 2 &&
+        Math.abs(targetVideo.currentTime - targetTime) < SEEK_DELTA_SECONDS
+      ) {
+        setVisibleTheme(selectedTheme);
       }
+    }
 
-      instanceRef.current?.destroy();
-
-      const instance = new ScrollyVideoCore({
-        src,
-        scrollyVideoContainer: container,
-        sticky: false,
-        full: true,
-        cover: true,
-        trackScroll: false,
-        lockScroll: false,
-        onReady: () => {
-          instance.setVideoPercentage(videoPercentageRef.current, {
-            jump: true,
-          });
-        },
-      });
-      instanceRef.current = instance;
-    };
-
-    createLayer(lightContainerRef.current, getVideoSrc("light"), lightVideoRef);
-    createLayer(darkContainerRef.current, getVideoSrc("dark"), darkVideoRef);
-    updateVideoPercentage(true);
+    const frameId = window.requestAnimationFrame(() => {
+      updateVideoPercentage(true);
+    });
 
     return () => {
-      lightVideoRef.current?.destroy();
-      darkVideoRef.current?.destroy();
-      lightVideoRef.current = null;
-      darkVideoRef.current = null;
+      window.cancelAnimationFrame(frameId);
     };
-  }, [updateVideoPercentage]);
+  }, [selectedTheme, updateVideoPercentage]);
 
   useEffect(() => {
     let animationFrameId: number | null = null;
@@ -146,30 +168,50 @@ export const VideoScroller = () => {
   }, [updateVideoPercentage]);
 
   return (
-    <div aria-hidden="true" style={{ height: "100vh", pointerEvents: "none" }}>
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 0,
-          overflow: "hidden",
-          pointerEvents: "none",
-        }}
-      >
-        {layers.map(({ theme }) => (
-          <div
+    <div
+      aria-hidden="true"
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 0,
+        overflow: "hidden",
+        pointerEvents: "none",
+      }}
+    >
+      {layers
+        .filter(({ theme }) => mountedThemes.includes(theme))
+        .map(({ theme, src }) => (
+          <video
             key={theme}
-            ref={theme === "dark" ? darkContainerRef : lightContainerRef}
+            ref={setVideoRef(theme)}
+            src={src}
+            muted
+            playsInline
+            preload="auto"
+            onLoadedMetadata={() => updateVideoPercentage(true)}
+            onLoadedData={() => {
+              updateVideoPercentage(true);
+              if (selectedThemeRef.current === theme) {
+                setVisibleTheme(theme);
+              }
+            }}
+            onSeeked={() => {
+              if (selectedThemeRef.current === theme) {
+                setVisibleTheme(theme);
+              }
+            }}
             style={{
               position: "absolute",
               inset: 0,
-              opacity: selectedTheme === theme ? 1 : 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              opacity: visibleTheme === theme ? 1 : 0,
               transition: "opacity 450ms ease",
               pointerEvents: "none",
             }}
           />
         ))}
-      </div>
     </div>
   );
 };

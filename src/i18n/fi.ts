@@ -72,7 +72,8 @@ export default {
   projectExplorerCapabilityCloudTitle: "Pilvialusta",
   projectExplorerCapabilityCloudBody:
     "Data pysyy käytettävissä offline-tilassa; yhteyden palatessa Supabase, Auth0 ja EAS-buildit tukevat synkronointia, turvallista pääsyä ja myöhempää tarkastelua.",
-  projectExplorerWhyHeading: "Rakennettu syrjäiseen luonnonsuojelun kenttätyöhön",
+  projectExplorerWhyHeading:
+    "Rakennettu syrjäiseen luonnonsuojelun kenttätyöhön",
   projectExplorerDialogIntro:
     "The Explorer on React Native- ja Expo-pohjainen kenttätyökalu ympäristöretkille, joissa yhteys voi kadota. Sovellus pitää paikallisen datan ensisijaisesti luotettavana, tallentaa GPS-reittejä etu- ja taustatilassa, kerää rakenteisia luonnonsuojeluhavaintoja median ja ekologisten alueiden kanssa sekä synkronoi Supabasen ja Auth0:n kautta, kun yhteys on taas käytettävissä.",
   projectExplorerDetailMobileHeading: "Syrjäinen kenttätallennus",

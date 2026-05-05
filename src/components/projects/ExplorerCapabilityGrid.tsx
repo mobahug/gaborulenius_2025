@@ -1,4 +1,6 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 import { FormattedMessage } from "react-intl";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";

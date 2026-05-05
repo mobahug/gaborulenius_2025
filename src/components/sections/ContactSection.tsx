@@ -1,42 +1,29 @@
-import {
-  useMediaQuery,
-  Paper,
-  Typography,
-  Stack,
-  Button,
-  useTheme,
-} from "@mui/material";
-import { motion } from "framer-motion";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import { FormattedMessage } from "react-intl";
-import { fadeUp } from "../sectionMotion";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import AnimatedReveal from "../AnimatedReveal";
 
-const ContactSection = ({
-  innerRef,
-}: {
-  innerRef: React.Ref<HTMLDivElement>;
-}) => {
+const ContactSection = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
+    <AnimatedReveal>
       <Paper
         component="section"
-        id="contact"
         aria-labelledby="contact-heading"
-        ref={innerRef}
         sx={{
           minWidth: isSmallScreen ? null : 700,
           width: { xs: "100%", md: "80%" },
           mx: "auto",
         }}
       >
-        <motion.div custom={1} variants={fadeUp}>
+        <AnimatedReveal order={1}>
           <Typography
             id="contact-heading"
             variant="h4"
@@ -45,13 +32,13 @@ const ContactSection = ({
           >
             <FormattedMessage id="contactHeading" />
           </Typography>
-        </motion.div>
-        <motion.div custom={2} variants={fadeUp}>
+        </AnimatedReveal>
+        <AnimatedReveal order={2}>
           <Typography variant="body1" pb={4}>
             <FormattedMessage id="contactIntro" />
           </Typography>
-        </motion.div>
-        <motion.div custom={4} variants={fadeUp}>
+        </AnimatedReveal>
+        <AnimatedReveal order={4}>
           <Stack
             direction={isSmallScreen ? "column" : "row"}
             spacing={4}
@@ -76,9 +63,9 @@ const ContactSection = ({
               <FormattedMessage id="contactBtnLinkedIn" />
             </Button>
           </Stack>
-        </motion.div>
+        </AnimatedReveal>
       </Paper>
-    </motion.div>
+    </AnimatedReveal>
   );
 };
 

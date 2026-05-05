@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Button,
-  Box,
-  List,
-  ListItemButton,
-  ListItemText,
-  Divider,
-  Stack,
-  FormControlLabel,
-  Switch,
-  Typography,
-  IconButton,
-  useTheme,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Divider from "@mui/material/Divider";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Stack from "@mui/material/Stack";
+import Switch from "@mui/material/Switch";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CloseIcon from "@mui/icons-material/Close";
 import { FormattedMessage } from "react-intl";
@@ -61,7 +59,7 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({ open, onClose }) => {
       onClose={onClose}
       aria-labelledby="settings-dialog-title"
     >
-      <DialogTitle sx={{ py: 4, px: 0 }} id="settings-dialog-title">
+      <DialogTitle component="div" sx={{ py: 4, px: 0 }}>
         <Box
           sx={{
             display: "flex",
@@ -79,7 +77,9 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({ open, onClose }) => {
               }}
             />
             <Typography
+              id="settings-dialog-title"
               variant="h6"
+              component="h3"
               fontWeight={600}
               sx={{
                 color:

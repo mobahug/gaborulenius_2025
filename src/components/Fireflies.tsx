@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { styled, keyframes, alpha } from "@mui/system";
-import { SxProps, Theme } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material/styles";
 
 const expansiveDrift = keyframes`
   0% {

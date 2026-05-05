@@ -1,20 +1,17 @@
 import React from "react";
-import {
-  SwipeableDrawer,
-  List,
-  ListItemButton,
-  ListItem,
-  ListItemText,
-  Divider,
-  Box,
-  IconButton,
-  Stack,
-  FormControlLabel,
-  Switch,
-  Typography,
-  useTheme,
-  alpha,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Stack from "@mui/material/Stack";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import Switch from "@mui/material/Switch";
+import Typography from "@mui/material/Typography";
+import { alpha, useTheme } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";

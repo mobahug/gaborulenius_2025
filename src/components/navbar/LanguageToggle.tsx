@@ -1,11 +1,8 @@
 import React from "react";
-import {
-  Button,
-  ButtonGroup,
-  ButtonGroupProps,
-  Theme,
-  SxProps,
-} from "@mui/material";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
+import type { SxProps, Theme } from "@mui/material/styles";
 import { useAtom } from "jotai";
 import { localeAtom } from "../../hooks/localeAtom";
 

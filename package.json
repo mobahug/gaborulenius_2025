@@ -9,6 +9,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lighthouse:mobile": "npx -y lighthouse@13.0.2 http://127.0.0.1:4173/gaborulenius/ --form-factor=mobile --screenEmulation.mobile --throttling-method=simulate --output=json --output-path=.lighthouse/mobile.json --chrome-flags=\"--headless --disable-extensions\" && node scripts/assert-lighthouse.mjs .lighthouse/mobile.json",
+    "lighthouse:assert": "node scripts/assert-lighthouse.mjs .lighthouse/mobile.json",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,css,md}'",
     "preview": "vite preview",
     "predeploy": "npm run build",
@@ -24,8 +26,7 @@
     "jotai": "^2.12.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-intl": "^7.1.11",
-    "scrolly-video": "^0.0.24"
+    "react-intl": "^7.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

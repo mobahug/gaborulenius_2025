@@ -1,8 +1,9 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { styled, keyframes } from "@mui/system";
-import { SxProps, Theme } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material/styles";
 import { useThemeToggle } from "../hooks/useThemeToggle";
+import { assetUrl } from "../utils/assets";
 
 const fall1 = keyframes`
   0%   { transform: translate3d(300px, 0, 0)   rotate(0deg);   opacity: 0.7; }
@@ -78,15 +79,16 @@ const Leaves: React.FC<LeavesProps> = ({ sx }) => {
           key={id}
           src={
             selectedTheme === "dark"
-              ? "/gaborulenius/dark-leaf.webp"
-              : "/gaborulenius/light-leaf.webp"
+              ? assetUrl("dark-leaf-small.webp")
+              : assetUrl("light-leaf-small.webp")
           }
+          aria-hidden="true"
           animation={animation}
           left={left}
           size={size}
           delay={delay}
           duration={duration}
-          alt="falling leaf"
+          alt=""
         />
       ))}
     </LeavesContainer>

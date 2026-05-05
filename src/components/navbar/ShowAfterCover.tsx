@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ReactElement, useRef } from "react";
-import { Slide } from "@mui/material";
-import { COVER_THRESHOLD } from "./navConstants";
+import Slide from "@mui/material/Slide";
+import { getCoverVisibility } from "./navConstants";
 
 type ShowAfterCoverProps = { children: ReactElement };
 
@@ -12,7 +12,8 @@ const ShowAfterCover: React.FC<ShowAfterCoverProps> = ({ children }) => {
     let animationFrameId: number | null = null;
 
     const updateVisible = () => {
-      const nextVisible = window.scrollY > COVER_THRESHOLD;
+      // Reveal once the cover has nearly finished fading out.
+      const nextVisible = getCoverVisibility() < 0.05;
 
       if (visibleRef.current === nextVisible) {
         return;

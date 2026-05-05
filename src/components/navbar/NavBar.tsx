@@ -1,20 +1,19 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Avatar,
-  Box,
-  useTheme,
-  useMediaQuery,
-  Link as MuiLink,
-} from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import MuiLink from "@mui/material/Link";
+import Toolbar from "@mui/material/Toolbar";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
 import { useThemeToggle } from "../../hooks/useThemeToggle";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
+import { assetUrl } from "../../utils/assets";
 
 const ShowAfterCover = React.lazy(() => import("./ShowAfterCover"));
 const SettingsDialog = React.lazy(() => import("./SettingsDialog"));
@@ -49,8 +48,8 @@ export const NavBar: React.FC = () => {
   const getAudioSrc = useCallback(
     () =>
       selectedTheme === "dark"
-        ? "/gaborulenius/jungle-music-night.mp3"
-        : "/gaborulenius/jungle-music.mp3",
+        ? assetUrl("jungle-music-night.mp3")
+        : assetUrl("jungle-music.mp3"),
     [selectedTheme],
   );
 
@@ -146,7 +145,7 @@ export const NavBar: React.FC = () => {
                 >
                   <MuiLink href="#home" underline="none">
                     <Avatar
-                      src="/gaborulenius/profile-small.webp"
+                      src={assetUrl("profile-160.webp")}
                       alt="Profile"
                       sx={{
                         width: 44,
@@ -162,7 +161,10 @@ export const NavBar: React.FC = () => {
                       <PlayCircleOutlineIcon fontSize="large" />
                     )}
                   </IconButton>
-                  <IconButton color="inherit" onClick={toggleMobileDrawer(true)}>
+                  <IconButton
+                    color="inherit"
+                    onClick={toggleMobileDrawer(true)}
+                  >
                     <MenuIcon fontSize="large" />
                   </IconButton>
                 </Box>

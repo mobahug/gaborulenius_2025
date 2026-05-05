@@ -1,5 +1,6 @@
 import React from "react";
 import { styled, keyframes } from "@mui/material/styles";
+import { assetUrl } from "../utils/assets";
 
 const FRAME_COUNT = 8;
 const FRAME_W = 32;
@@ -26,7 +27,7 @@ const Sprite = styled("div")(({ theme }) => {
     pointerEvents: "none",
     willChange: "background-position, transform",
 
-    backgroundImage: `url("/gaborulenius/BirdSpriteBigFlying.png")`,
+    backgroundImage: `url("${assetUrl("BirdSpriteBigFlying.png")}")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: `${SHEET_W}px ${FRAME_H}px`,
 

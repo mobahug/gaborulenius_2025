@@ -1,16 +1,80 @@
+import React from "react";
 import { useAtomValue } from "jotai";
 import { IntlProvider } from "react-intl";
 import { localeAtom } from "../hooks/localeAtom";
-import { messages } from "./messages";
+import { canPrefetchHeavyAsset } from "../utils/connection";
+import { loadMessages, preloadMessages, type AppMessages } from "./messages";
+
+type BrowserWindowWithIdleCallback = Window & {
+  requestIdleCallback?: (
+    callback: () => void,
+    options?: { timeout: number },
+  ) => number;
+  cancelIdleCallback?: (handle: number) => void;
+};
 
 export function I18nWrapper({ children }: React.PropsWithChildren) {
   const locale = useAtomValue(localeAtom);
+  const [messages, setMessages] = React.useState<AppMessages | null>(null);
+
+  React.useEffect(() => {
+    let active = true;
+
+    setMessages(null);
+    void loadMessages(locale).then((loadedMessages) => {
+      if (active) {
+        setMessages(loadedMessages);
+      }
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [locale]);
+
+  React.useEffect(() => {
+    if (!canPrefetchHeavyAsset()) {
+      return;
+    }
+
+    const alternateLocale = locale === "fi" ? "en" : "fi";
+    const windowWithIdleCallback = window as BrowserWindowWithIdleCallback;
+    let idleCallbackHandle: number | null = null;
+    let timeoutId: number | null = null;
+
+    const prefetchAlternateLocale = () => {
+      preloadMessages(alternateLocale);
+    };
+
+    if (windowWithIdleCallback.requestIdleCallback) {
+      idleCallbackHandle = windowWithIdleCallback.requestIdleCallback(
+        prefetchAlternateLocale,
+        { timeout: 3000 },
+      );
+    } else {
+      timeoutId = window.setTimeout(prefetchAlternateLocale, 3000);
+    }
+
+    return () => {
+      if (
+        idleCallbackHandle !== null &&
+        windowWithIdleCallback.cancelIdleCallback
+      ) {
+        windowWithIdleCallback.cancelIdleCallback(idleCallbackHandle);
+      }
+
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [locale]);
+
+  if (!messages) {
+    return null;
+  }
+
   return (
-    <IntlProvider
-      locale={locale}
-      messages={messages[locale]}
-      defaultLocale="en"
-    >
+    <IntlProvider locale={locale} messages={messages} defaultLocale="en">
       {children}
     </IntlProvider>
   );

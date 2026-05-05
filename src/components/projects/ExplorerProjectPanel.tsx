@@ -1,8 +1,9 @@
-import { Box, Button, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { motion } from "framer-motion";
 import { FormattedMessage } from "react-intl";
-import { fadeUp } from "../sectionMotion";
+import AnimatedReveal from "../AnimatedReveal";
 import ExplorerCapabilityGrid from "./ExplorerCapabilityGrid";
 import ExplorerCarousel from "./ExplorerCarousel";
 
@@ -14,7 +15,7 @@ const ExplorerProjectPanel = ({
   onDetailsClick,
 }: ExplorerProjectPanelProps) => {
   return (
-    <motion.div initial={false} animate="visible" custom={2} variants={fadeUp}>
+    <AnimatedReveal order={2}>
       <Box
         sx={{
           display: "grid",
@@ -58,7 +59,7 @@ const ExplorerProjectPanel = ({
         </Box>
         <ExplorerCapabilityGrid dense />
       </Box>
-    </motion.div>
+    </AnimatedReveal>
   );
 };
 

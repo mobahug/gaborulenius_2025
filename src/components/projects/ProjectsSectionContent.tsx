@@ -1,37 +1,29 @@
-import {
-  Box,
-  Paper,
-  Tab,
-  Tabs,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { motion } from "framer-motion";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import {
   useCallback,
   useEffect,
   useRef,
   useState,
-  type Ref,
   type SyntheticEvent,
   type UIEventHandler,
 } from "react";
 import { FormattedMessage } from "react-intl";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
-import { fadeUp } from "../sectionMotion";
+import AnimatedReveal from "../AnimatedReveal";
 import ExplorerProjectDialog from "./ExplorerProjectDialog";
 import ExplorerProjectPanel from "./ExplorerProjectPanel";
 import HobbyScrollHint from "./HobbyScrollHint";
 import ProjectTabPanel from "./ProjectTabPanel";
 import WorkProjectsPanel from "./WorkProjectsPanel";
 
-const ProjectsSectionContent = ({
-  innerRef,
-}: {
-  innerRef: Ref<HTMLDivElement>;
-}) => {
+const ProjectsSectionContent = () => {
   const theme = useTheme();
   const fullScreenDialog = useMediaQuery(theme.breakpoints.down("md"));
   const hobbyPanelRef = useRef<HTMLDivElement | null>(null);
@@ -86,16 +78,10 @@ const ProjectsSectionContent = ({
 
   return (
     <>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
+      <AnimatedReveal>
         <Paper
           component="section"
-          id="projects"
           aria-labelledby="projects-heading"
-          ref={innerRef}
           sx={{
             width: { xs: "100%", md: "80%" },
             height: { xs: "min(640px, calc(100svh - 48px))", sm: 640 },
@@ -135,15 +121,11 @@ const ProjectsSectionContent = ({
               flexDirection: "column",
             }}
           >
-            <motion.div custom={1} variants={fadeUp}>
-              <Typography
-                id="projects-heading"
-                variant="h4"
-                component="h2"
-              >
+            <AnimatedReveal order={1}>
+              <Typography id="projects-heading" variant="h4" component="h2">
                 <FormattedMessage id="projectHeading" />
               </Typography>
-            </motion.div>
+            </AnimatedReveal>
             <ProjectTabPanel value={tabIndex} index={0}>
               <WorkProjectsPanel accent={accent} />
             </ProjectTabPanel>
@@ -165,7 +147,7 @@ const ProjectsSectionContent = ({
             ) : null}
           </Box>
         </Paper>
-      </motion.div>
+      </AnimatedReveal>
       <ExplorerProjectDialog
         fullScreen={fullScreenDialog}
         open={explorerOpen}

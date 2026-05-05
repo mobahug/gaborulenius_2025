@@ -1,25 +1,23 @@
-import {
-  Paper,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Box,
-  useTheme,
-  Grid,
-  useMediaQuery,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
-import { motion } from "framer-motion";
 import { FormattedMessage } from "react-intl";
-import { fadeUp } from "../sectionMotion";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
 
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LinkThumbnail from "../LinkThumbnail";
+import { AnimatedReveal } from "../AnimatedReveal";
+import { assetUrl } from "../../utils/assets";
 
 const META_ITEMS = [
   {
@@ -36,28 +34,18 @@ const META_ITEMS = [
   },
 ];
 
-const AboutSection = ({
-  innerRef,
-}: {
-  innerRef: React.Ref<HTMLDivElement>;
-}) => {
+const AboutSection = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
+    <AnimatedReveal>
       <Paper
         component="section"
-        id="about"
         aria-labelledby="about-heading"
-        ref={innerRef}
         sx={{ width: { xs: "100%", md: "80%" }, mx: "auto" }}
       >
-        <motion.div custom={1} variants={fadeUp}>
+        <AnimatedReveal order={1}>
           <Typography
             id="about-heading"
             variant="h4"
@@ -66,10 +54,10 @@ const AboutSection = ({
           >
             <FormattedMessage id="aboutHeading" />
           </Typography>
-        </motion.div>
+        </AnimatedReveal>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }}>
-            <motion.div custom={2} variants={fadeUp}>
+            <AnimatedReveal order={2}>
               <Typography variant="body1" sx={{ lineHeight: 1.5 }}>
                 <FormattedMessage
                   id="aboutBody"
@@ -91,8 +79,8 @@ const AboutSection = ({
                   }}
                 />
               </Typography>
-            </motion.div>
-            <motion.div custom={4} variants={fadeUp}>
+            </AnimatedReveal>
+            <AnimatedReveal order={4}>
               <List>
                 {META_ITEMS.map(({ id, icon }) => (
                   <ListItem key={id} disablePadding>
@@ -107,14 +95,14 @@ const AboutSection = ({
                   </ListItem>
                 ))}
               </List>
-            </motion.div>
+            </AnimatedReveal>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
-            <motion.div custom={3} variants={fadeUp}>
+            <AnimatedReveal order={3}>
               <LinkThumbnail
                 id="linkThumbnailTitleGabor"
                 descriptionId="linkThumbnailDescriptionGabor"
-                image="/gaborulenius/profile2-small.webp"
+                image={assetUrl("profile2-small.webp")}
                 urlEN="https://careers.tieto.com/career-story/2025-5/gabor-horvath-ulenius-a-non-traditional-journey-into-coding"
                 urlFI="https://careers.tieto.com/career-story/2025-5/gabor-horvath-ulenius-a-non-traditional-journey-into-coding"
                 readingMinutes={3}
@@ -122,11 +110,11 @@ const AboutSection = ({
                 date="05.2025"
                 height={isMobile ? 140 : 210}
               />
-            </motion.div>
+            </AnimatedReveal>
           </Grid>
         </Grid>
       </Paper>
-    </motion.div>
+    </AnimatedReveal>
   );
 };
 

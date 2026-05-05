@@ -1,5 +1,6 @@
 import React from "react";
 import { styled, keyframes } from "@mui/material/styles";
+import { assetUrl } from "../utils/assets";
 
 const FRAME_COUNT = 2;
 const FRAME_WIDTH = 38;
@@ -20,7 +21,7 @@ const Sprite = styled("div")((props) => {
   return {
     width: FRAME_WIDTH,
     height: FRAME_HEIGHT,
-    backgroundImage: `url("/gaborulenius/BirdSpriteBigIdle.png")`,
+    backgroundImage: `url("${assetUrl("BirdSpriteBigIdle.png")}")`,
     backgroundRepeat: "no-repeat",
     backgroundSize: `auto 100%`,
     willChange: "background-position, transform",

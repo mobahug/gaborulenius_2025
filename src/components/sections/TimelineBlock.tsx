@@ -1,22 +1,19 @@
-import {
-  Timeline,
-  TimelineSeparator,
-  TimelineDot,
-  TimelineConnector,
-  TimelineContent,
-  TimelineItem,
-} from "@mui/lab";
-import { Typography, Box, useTheme, alpha } from "@mui/material";
-import { motion } from "framer-motion";
+import Timeline from "@mui/lab/Timeline";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineDot from "@mui/lab/TimelineDot";
+import TimelineItem from "@mui/lab/TimelineItem";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { alpha, useTheme } from "@mui/material/styles";
 import { FormattedMessage } from "react-intl";
 import { TimelineEvent } from "../../contexts";
-import { fadeUp } from "../sectionMotion";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
-
-const MotionTimelineItem = motion.create(TimelineItem);
+import AnimatedReveal from "../AnimatedReveal";
 
 type TimelineBlockProps = {
   titleId: string;
@@ -33,12 +30,8 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-    >
-      <motion.div custom={1} variants={fadeUp}>
+    <AnimatedReveal>
+      <AnimatedReveal order={1}>
         <Typography
           id={`${titleId}-heading`}
           variant="h4"
@@ -47,7 +40,7 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
         >
           <FormattedMessage id={titleId} />
         </Typography>
-      </motion.div>
+      </AnimatedReveal>
 
       <Timeline
         position={isSmallScreen ? "right" : "alternate"}
@@ -59,13 +52,10 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
         }}
       >
         {events.map((evt, i) => (
-          <MotionTimelineItem
+          <AnimatedReveal
             key={evt.titleId}
-            custom={i + 2}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            component={TimelineItem}
+            order={i + 2}
           >
             <TimelineSeparator>
               <TimelineDot
@@ -136,9 +126,9 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
                 </Box>
               </Box>
             </TimelineContent>
-          </MotionTimelineItem>
+          </AnimatedReveal>
         ))}
       </Timeline>
-    </motion.div>
+    </AnimatedReveal>
   );
 };

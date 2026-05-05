@@ -1,12 +1,9 @@
 import React from "react";
-import {
-  Box,
-  IconButton,
-  Avatar,
-  Link as MuiLink,
-  alpha,
-  useTheme,
-} from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import MuiLink from "@mui/material/Link";
+import { alpha, useTheme } from "@mui/material/styles";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -18,6 +15,7 @@ import { LanguageToggle } from "./LanguageToggle";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
 import { useActiveNavLink } from "../../hooks/useActiveNavLink";
+import { assetUrl } from "../../utils/assets";
 
 type DesktopNavItemsProps = {
   selectedThemeVariant: "light" | "dark";
@@ -112,7 +110,7 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
           }}
         >
           <Avatar
-            src="/gaborulenius/profile-small.webp"
+            src={assetUrl("profile-160.webp")}
             alt="Profile"
             sx={{
               width: 35,

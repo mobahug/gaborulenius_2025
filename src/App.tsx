@@ -1,11 +1,13 @@
-import { Box } from "@mui/material";
+import React from "react";
+import Box from "@mui/material/Box";
 import CoverSection from "./components/CoverSection";
 import Hero from "./components/Hero";
-import Leaves from "./components/Leaves";
-import Fireflies from "./components/Fireflies";
 import { useLeavesEffect } from "./hooks/useLeavesEffect";
 import { useFireflyEffect } from "./hooks/useFireflyEffect";
 import NavBar from "./components/navbar/NavBar";
+
+const Leaves = React.lazy(() => import("./components/Leaves"));
+const Fireflies = React.lazy(() => import("./components/Fireflies"));
 
 const App: React.FC = () => {
   const { leavesEnabled } = useLeavesEffect();
@@ -22,8 +24,10 @@ const App: React.FC = () => {
         <CoverSection />
         <Hero />
       </Box>
-      {firefliesEnabled && <Fireflies />}
-      {leavesEnabled && <Leaves />}
+      <React.Suspense fallback={null}>
+        {firefliesEnabled ? <Fireflies /> : null}
+        {leavesEnabled ? <Leaves /> : null}
+      </React.Suspense>
     </Box>
   );
 };

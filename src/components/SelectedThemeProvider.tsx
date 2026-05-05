@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@emotion/react";
+import { ThemeProvider } from "@mui/material/styles";
 import { useEffect, useMemo } from "react";
 import darkTheme from "../darkTheme";
 import { useSetFirefliesEnabled } from "../hooks/useFireflyEffect";

@@ -1,11 +1,9 @@
-import {
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  Typography,
-  Stack,
-} from "@mui/material";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useAtomValue } from "jotai";
 import { localeAtom } from "../hooks/localeAtom";
@@ -51,7 +49,7 @@ const LinkThumbnail: React.FC<LinkThumbnailProps> = ({
     <>
       <CardMedia component="img" height={height} image={image} alt={title} />
       <CardContent sx={{ pb: 2 }}>
-        <Typography variant="subtitle2" gutterBottom>
+        <Typography variant="subtitle2" component="h3" gutterBottom>
           <FormattedMessage id={id} />
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>

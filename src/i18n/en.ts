@@ -162,8 +162,7 @@ export default {
   eventAaltovoimaTitle: "Mover/Housekeeper – Aaltovoima Oy",
   eventAaltovoimaWhen: "Espoo, 2018 – 2019",
 
-  eventEnersenseTitle:
-    "Final Cleaner – Enersense International Oyj / VMP Oy",
+  eventEnersenseTitle: "Final Cleaner – Enersense International Oyj / VMP Oy",
   eventEnersenseWhen: "Rauma, 2017 – 2018",
 
   eventDeltamarinTitle: "Ship Designer – Deltamarin Oy",

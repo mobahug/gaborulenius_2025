@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import type { ReactNode, Ref, UIEventHandler } from "react";
 
 type ProjectTabPanelProps = {

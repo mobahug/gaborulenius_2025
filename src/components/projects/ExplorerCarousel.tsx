@@ -1,8 +1,12 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useCallback, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { assetUrl } from "../../utils/assets";
 import { explorerScreenshots } from "./explorerProjectData";
 
 const screenshotAspectRatio = "397 / 844";
@@ -81,7 +85,7 @@ const ExplorerCarousel = ({ large = false }: { large?: boolean }) => {
             >
               <Box
                 component="img"
-                src={`${import.meta.env.BASE_URL}${src}`}
+                src={assetUrl(src)}
                 alt={intl.formatMessage({ id: altId })}
                 loading={index === 0 ? "eager" : "lazy"}
                 decoding="async"

@@ -1,17 +1,16 @@
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
-import {
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Grid,
-  Box,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
 import { colors as lightColors } from "./colors";
 import { colors as darkColors } from "./colorsDark";
 import { FormattedMessage } from "react-intl";
 import LinkThumbnail from "./components/LinkThumbnail";
+import { assetUrl } from "./utils/assets";
 
 export type TimelineEvent = {
   icon: React.ReactNode;
@@ -149,7 +148,7 @@ export const highlightedEvents: TimelineEvent[] = [
             <LinkThumbnail
               id="linkThumbnailTitleAnyhau"
               descriptionId="linkThumbnailDescriptionAnyhau"
-              image="/gaborulenius/anyhau.webp"
+              image={assetUrl("anyhau.webp")}
               urlEN="https://app.anyhau.fi/en/partners"
               urlFI="https://app.anyhau.fi/partners"
             />
@@ -341,7 +340,7 @@ export const allEvents: TimelineEvent[] = [
             <LinkThumbnail
               id="linkThumbnailTitleAnyhau"
               descriptionId="linkThumbnailDescriptionAnyhau"
-              image="/gaborulenius/anyhau.webp"
+              image={assetUrl("anyhau.webp")}
               urlEN="https://app.anyhau.fi/en/partners"
               urlFI="https://app.anyhau.fi/partners"
             />
