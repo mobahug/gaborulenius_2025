@@ -582,6 +582,21 @@ export const categories = [
     ],
   },
   {
+    id: "skillsCatMobileCloud",
+    items: [
+      "React Native",
+      "Expo",
+      "EAS",
+      "MapLibre",
+      "Protomaps/PMTiles",
+      "Cloudflare Workers",
+      "Cloudflare R2",
+      "Supabase",
+      "Auth0",
+      "WeatherAPI",
+    ],
+  },
+  {
     id: "skillsCatBackend",
     items: [
       "Node.js/Express",

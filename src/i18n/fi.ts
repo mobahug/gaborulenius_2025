@@ -49,6 +49,88 @@ export default {
     "Tein yhteistyötä vuoden 2022 Diili-voittajan kanssa uuden alustan lanseeraamiseksi, jossa eläinpalvelujen tarjoajat voivat listata palvelunsa ja asiakkaat varata sekä maksaa verkossa",
   /* ---------- Aputekstit ---------- */
   projectHeading: "Projektit",
+  projectTabWork: "Työ",
+  projectTabHobby: "Harrastus",
+  projectHobbyScrollDownLabel: "Vieritä harrastusprojektin sisältöä",
+  projectExplorerTitle: "The Explorer",
+  projectExplorerSummary:
+    "Mobiilisovellus syrjäisiin luonnonsuojelun kenttäretkiin: GPS-reitit, ekologiset alueet, media ja rakenteiset ympäristöhavainnot tallentuvat luotettavasti offline-tilassa myöhempää synkronointia ja tarkastelua varten.",
+  projectExplorerButtonDetails: "Näytä tiedot",
+  projectExplorerGalleryLabel: "Explorer-mobiilisovelluksen kuvakaappaukset",
+  projectExplorerGalleryPrevious: "Edellinen kuvakaappaus",
+  projectExplorerGalleryNext: "Seuraava kuvakaappaus",
+  projectExplorerGalleryGoTo: "Näytä {title}",
+  projectExplorerCapabilityTopoTitle: "Offline-topografiset kartat",
+  projectExplorerCapabilityTopoBody:
+    "MapLibre + Protomaps/PMTiles mahdollistavat offline-topografiset kartat, ja Cloudflare R2/Workers toimittaa karttatiilet sekä aluekohtaiset lataukset kenttäkäyttöön.",
+  projectExplorerCapabilityPrecisionTitle: "Kenttätarkkuus",
+  projectExplorerCapabilityPrecisionBody:
+    "Korkean tarkkuuden GPS tallentaa reittejä myös taustalla, ja WGS84-geodeettiset viivain- ja etäisyyslaskelmat välttävät karkeat kartta-arviot.",
+  projectExplorerCapabilityCaptureTitle: "Rakenteinen kenttätallennus",
+  projectExplorerCapabilityCaptureBody:
+    "Luonnonsuojeluun suunnatut lokit kattavat eläimet, kasvillisuuden, vesinäytteet, uhat, reittipisteet, kuvat, hyönteiset, äänimuistiinpanot, sään ja ekologiset alueet.",
+  projectExplorerCapabilityCloudTitle: "Pilvialusta",
+  projectExplorerCapabilityCloudBody:
+    "Data pysyy käytettävissä offline-tilassa, ja Supabase, Auth0 sekä EAS-buildit tukevat synkronointia, turvallista pääsyä ja myöhempää tarkastelua.",
+  projectExplorerWhyHeading: "Rakennettu syrjäiseen luonnonsuojelun kenttätyöhön",
+  projectExplorerDialogIntro:
+    "The Explorer on ensimmäinen mobiilisovellukseni: React Native- ja Expo-pohjainen kenttätyökalu ympäristöretkille, joissa yhteys voi kadota. Sovellus pitää paikallisen datan ensisijaisesti luotettavana, tallentaa GPS-reittejä etu- ja taustatilassa, kerää rakenteisia luonnonsuojeluhavaintoja median ja ekologisten alueiden kanssa sekä synkronoi Supabasen ja Auth0:n kautta, kun yhteys on taas käytettävissä.",
+  projectExplorerDetailMobileHeading: "Syrjäinen kenttätallennus",
+  projectExplorerDetailMobileItemOffline:
+    "Local-first-retkidata pitää aktiiviset ja arkistoidut retket, lokit, alueet, reittipisteet ja median käytettävissä myös ilman verkkoyhteyttä.",
+  projectExplorerDetailMobileItemPrecision:
+    "Taustaseuranta tallentaa tarkkoja GPS-reittejä, merkitsee katkokset ja pysäytykset ilman virheellisiä yhdysviivoja sekä käyttää WGS84-geodeettisia mittauksia viivaimessa ja reittietäisyyksissä.",
+  projectExplorerDetailMobileItemCapture:
+    "Rakenteinen lokitus tukee eläimiä, kasvillisuutta, vettä ja hydrologiaa, uhkia, reittipisteitä, leiripaikkoja, kuvia, hyönteisiä, tageja, muistiinpanoja, säätä ja muokattavia lokitauluja.",
+  projectExplorerDetailInfraHeading: "Infrastruktuuri",
+  projectExplorerDetailInfraItemCloudflare:
+    "MapLibre-pohjakartat käyttävät Cloudflare R2/Workersin kautta toimitettuja Protomaps/PMTiles-karttatiiliä, topografista rinnevarjostusta, korkeuskäyriä ja offline-latausten hallintaa.",
+  projectExplorerDetailInfraItemSupabase:
+    "Supabase tallentaa retkien datan, median, RLS-käytännöt, Edge Functionit, synkronointitilan, PMTiles-tokenit ja säätilannekuvat.",
+  projectExplorerDetailInfraItemRelease:
+    "Auth0 turvaa kirjautumisen ja pilvipääsyn, ja EAS hoitaa Android-julkaisubuildit sekä tuotantoympäristön muuttujat.",
+  projectExplorerDetailWebHeading: "Tarkastelu ja raportointi",
+  projectExplorerDetailWebItemWorkspace:
+    "Read-only-web-suunta säilyttää kenttähavaintojen alkuperän ja auttaa tiimejä tarkastelemaan synkronoituja retkiä, lokeja, reittejä, alueita, kuvia ja rakenteista metadataa.",
+  projectExplorerDetailWebItemReporting:
+    "Raportointisuunta sisältää karttatarkastelun, dashboardit, GeoJSON/GPX/KML/CSV/ZIP-viennit, tulostettavat raportit, Auth0:n, Supabasen, MapLibren ja PMTilesin.",
+  projectExplorerStackHeading: "Teknologiat",
+  projectExplorerScreenshotHomeTitle: "Aktiivinen retki",
+  projectExplorerScreenshotHomeAlt:
+    "Explorerin etusivu aktiivisella retkikortilla, synkronointikehotteella ja kenttäyhteenvedolla",
+  projectExplorerScreenshotMapTrackingTitle: "Reaaliaikainen topokartta",
+  projectExplorerScreenshotMapTracking:
+    "Explorerin karttanäkymä GPS-seurannalla, reitillä, aluepeitolla ja lokimerkinnöillä",
+  projectExplorerScreenshotMeasureTitle: "Geodeettinen viivain",
+  projectExplorerScreenshotMeasureAlt:
+    "Explorerin etäisyysmittausnäkymä katkoviivasegmenteillä topografisen kartan päällä",
+  projectExplorerScreenshotLogTypeTitle: "Tieteellinen lokivalitsin",
+  projectExplorerScreenshotLogTypeAlt:
+    "Explorerin uuden lokin näkymä valittavilla tieteellisillä lokikategorioilla",
+  projectExplorerScreenshotCustomizeTitle: "Muokattava lokitaulu",
+  projectExplorerScreenshotCustomizeAlt:
+    "Explorerin asettelun muokkausnäkymä lokityyppien järjestämiseen ja piilottamiseen",
+  projectExplorerScreenshotLogDetailsTitle: "Lokin tiedot ja sää",
+  projectExplorerScreenshotLogDetailsAlt:
+    "Explorerin lokin tietonäkymä eläinhavainnon attribuuteilla, koordinaateilla, tageilla ja säädatalla",
+  projectExplorerScreenshotLogsOverviewTitle: "Kronologiset lokit",
+  projectExplorerScreenshotLogsOverview:
+    "Explorerin kronologinen lokinäkymä kenttämerkinnöillä",
+  projectExplorerScreenshotExpeditionsTitle: "Retkikirjasto",
+  projectExplorerScreenshotExpeditionsAlt:
+    "Explorerin retkilista aktiivisilla ja päättyneillä retkikorteilla",
+  projectExplorerScreenshotProfileTitle: "Tutkijaprofiili",
+  projectExplorerScreenshotProfileAlt:
+    "Explorerin profiilinäkymä tutkijatilastoilla ja kenttätyöyhteenvedolla",
+  projectExplorerScreenshotMapStoppedTitle: "Offline-karttakehote",
+  projectExplorerScreenshotMapStopped:
+    "Explorerin karttanäkymä pysäytetyllä GPS:llä ja offline-karttakehotteella",
+  projectExplorerScreenshotLogsSelectionTitle: "Vientivalinta",
+  projectExplorerScreenshotLogsSelection:
+    "Explorerin lokien vientivalinnan näkymä",
+  projectExplorerScreenshotLogsRecordsTitle: "Retkilokikortit",
+  projectExplorerScreenshotLogsRecords:
+    "Explorerin retkilokit kuva- ja havaintomerkinnöillä",
   buttonReadMore: "Lue lisää",
   noLinkAvailable: "(ei linkkiä saatavilla)",
 
@@ -155,6 +237,7 @@ export default {
 
   skillsToolsHeading: "Taidot ja työkalut",
   skillsCatFrontend: "Frontend kehitys",
+  skillsCatMobileCloud: "Mobiili, kartat ja pilvi",
   skillsCatBackend: "Taustajärjestelmät",
   skillsCatTools: "Työkalut",
 

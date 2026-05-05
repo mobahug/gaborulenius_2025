@@ -48,6 +48,88 @@ export default {
     "Worked with the 2022 “Diili” winner to launch a green-field platform for online animal-service bookings",
   /* ---------- Helpers ---------- */
   projectHeading: "Projects",
+  projectTabWork: "Work",
+  projectTabHobby: "Hobby",
+  projectHobbyScrollDownLabel: "Scroll hobby project content",
+  projectExplorerTitle: "The Explorer",
+  projectExplorerSummary:
+    "A mobile fieldwork app for remote conservation expeditions, built to capture reliable offline GPS trails, ecological zones, media, and structured environmental observations for later sync and review.",
+  projectExplorerButtonDetails: "View details",
+  projectExplorerGalleryLabel: "Explorer mobile app screenshots",
+  projectExplorerGalleryPrevious: "Previous screenshot",
+  projectExplorerGalleryNext: "Next screenshot",
+  projectExplorerGalleryGoTo: "Show {title}",
+  projectExplorerCapabilityTopoTitle: "Offline topographic maps",
+  projectExplorerCapabilityTopoBody:
+    "MapLibre + Protomaps/PMTiles power offline topographic maps, with Cloudflare R2/Workers serving tiles and country downloads for remote field use.",
+  projectExplorerCapabilityPrecisionTitle: "Field precision",
+  projectExplorerCapabilityPrecisionBody:
+    "High-accuracy foreground/background GPS records expedition trails, while WGS84 geodesic ruler and distance calculations avoid rough map approximations.",
+  projectExplorerCapabilityCaptureTitle: "Structured field capture",
+  projectExplorerCapabilityCaptureBody:
+    "Conservation-focused logs cover wildlife, vegetation, water samples, threats, waypoints, photos, insects, voice notes, weather, and ecological zones.",
+  projectExplorerCapabilityCloudTitle: "Cloud platform",
+  projectExplorerCapabilityCloudBody:
+    "Local data remains usable offline, then Supabase, Auth0, and EAS-backed builds support sync, secure access, and later review workflows.",
+  projectExplorerWhyHeading: "Built for remote conservation fieldwork",
+  projectExplorerDialogIntro:
+    "The Explorer is my first mobile app: a React Native and Expo field tool for environmental expeditions where connectivity can disappear. It keeps local data reliable first, records GPS trails across foreground and background sessions, captures structured conservation observations with media and ecological zones, and syncs through Supabase/Auth0 when the team has connectivity again.",
+  projectExplorerDetailMobileHeading: "Remote field capture",
+  projectExplorerDetailMobileItemOffline:
+    "Local-first expedition data keeps active and archived expeditions, logs, zones, trail points, and media usable in remote areas without network access.",
+  projectExplorerDetailMobileItemPrecision:
+    "Background tracking records high-accuracy GPS trails, marks gaps and stops instead of drawing false connectors, and uses WGS84 geodesic measurement for ruler and trail distances.",
+  projectExplorerDetailMobileItemCapture:
+    "Structured logging supports wildlife, vegetation, water and hydrology, threats, waypoints, campsites, photos, insects, tags, notes, weather snapshots, and custom log boards.",
+  projectExplorerDetailInfraHeading: "Infrastructure",
+  projectExplorerDetailInfraItemCloudflare:
+    "MapLibre basemaps use Protomaps/PMTiles delivered by Cloudflare R2/Workers with topographic hillshade, contour layers, and offline download controls.",
+  projectExplorerDetailInfraItemSupabase:
+    "Supabase stores expedition records, media, RLS policies, Edge Functions, sync state, PMTiles tokens, and weather snapshots.",
+  projectExplorerDetailInfraItemRelease:
+    "Auth0 secures sign-in and cloud access, while EAS handles Android release builds and production environment variables.",
+  projectExplorerDetailWebHeading: "Review and reporting",
+  projectExplorerDetailWebItemWorkspace:
+    "The read-only web direction preserves field provenance while helping teams review synced expeditions, logs, trails, zones, photos, and structured metadata.",
+  projectExplorerDetailWebItemReporting:
+    "The reporting direction includes map review, dashboards, GeoJSON/GPX/KML/CSV/ZIP exports, print-ready reports, Auth0, Supabase, MapLibre, and PMTiles.",
+  projectExplorerStackHeading: "Stack",
+  projectExplorerScreenshotHomeTitle: "Active expedition home",
+  projectExplorerScreenshotHomeAlt:
+    "Explorer home screen with active expedition card, sync prompt, and field summary",
+  projectExplorerScreenshotMapTrackingTitle: "Live topo map tracking",
+  projectExplorerScreenshotMapTracking:
+    "Explorer map view with GPS tracking, route, zone overlay, and log markers",
+  projectExplorerScreenshotMeasureTitle: "Geodesic ruler",
+  projectExplorerScreenshotMeasureAlt:
+    "Explorer measure distance screen with dashed ruler segments over a topographic map",
+  projectExplorerScreenshotLogTypeTitle: "Scientific log picker",
+  projectExplorerScreenshotLogTypeAlt:
+    "Explorer new log screen with selectable scientific log categories",
+  projectExplorerScreenshotCustomizeTitle: "Custom log board",
+  projectExplorerScreenshotCustomizeAlt:
+    "Explorer customize layout screen for reordering and hiding log types",
+  projectExplorerScreenshotLogDetailsTitle: "Log detail with weather",
+  projectExplorerScreenshotLogDetailsAlt:
+    "Explorer log detail screen with wildlife attributes, coordinates, tags, and weather data",
+  projectExplorerScreenshotLogsOverviewTitle: "Chronological logs",
+  projectExplorerScreenshotLogsOverview:
+    "Explorer chronological logs screen with field records",
+  projectExplorerScreenshotExpeditionsTitle: "Expedition library",
+  projectExplorerScreenshotExpeditionsAlt:
+    "Explorer expeditions list with active and ended expedition cards",
+  projectExplorerScreenshotProfileTitle: "Research profile",
+  projectExplorerScreenshotProfileAlt:
+    "Explorer profile screen with researcher stats and fieldwork summary",
+  projectExplorerScreenshotMapStoppedTitle: "Offline map prompt",
+  projectExplorerScreenshotMapStopped:
+    "Explorer map view with GPS stopped and offline map prompt",
+  projectExplorerScreenshotLogsSelectionTitle: "Export selection",
+  projectExplorerScreenshotLogsSelection:
+    "Explorer logs export selection screen",
+  projectExplorerScreenshotLogsRecordsTitle: "Expedition log cards",
+  projectExplorerScreenshotLogsRecords:
+    "Explorer expedition logs with photo and observation records",
   buttonReadMore: "Read More",
   noLinkAvailable: "(no link available)",
   qualificationTabHighlights: "Highlights",
@@ -153,6 +235,7 @@ export default {
   /* Skills & Tools */
   skillsToolsHeading: "Skills & Tools",
   skillsCatFrontend: "Frontend",
+  skillsCatMobileCloud: "Mobile, Maps & Cloud",
   skillsCatBackend: "Backend",
   skillsCatTools: "Tools",
 
