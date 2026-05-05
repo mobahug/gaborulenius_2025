@@ -1,1 +1,0 @@
-const e=300,a=[{id:"navHome",href:"#home"},{id:"navAbout",href:"#about"},{id:"navProjects",href:"#projects"},{id:"navExperience",href:"#experience"},{id:"navSkills",href:"#skills-tools"},{id:"navContact",href:"#contact"}],n=[{key:"effects",id:"tabsEffects"},{key:"appearance",id:"tabsAppearance"},{key:"language",id:"tabsLanguage"}];export{e as C,a as n,n as t};
