@@ -37,7 +37,7 @@ export default {
     "Osallistuin terveysdata-alustojen kehittämiseen Suomen suurimmille terveydenhuollon toimijoille parantaen datan saavutettavuutta <b>React</b>/<b>TypeScript</b>-käyttöliittymillä, <b>Node.js</b>-palveluilla, jaetuilla paketeilla ja <b>Azure</b>-infrastruktuurilla. Hallitsen <b>GraphQL:n</b>, <b>Dockerin</b>, <b>Kubernetesin</b>, <b>Terraformin</b>, <b>Helmin</b> ja pilvitoimituksen. Työskentelin LLM-pohjaisten tekoälyprototyyppien parissa, mm. ICT Days -demon ja Uuden lastensairaalan diagnoosityökalun, joka nopeuttaa oireisiin perustuvia hakuja.",
   aboutLocation: "Suomi, Espoo",
   aboutEducation: "Hive Helsinki Alumni",
-  aboutExperience: "Yli 3 vuotta työkokemusta",
+  aboutExperience: "3,5 vuotta työkokemusta",
   /* ---------- Projektien otsikot ---------- */
   projectHusDatalakeTitle:
     "Terveysdata-alustojen kehittäminen reaaliaikaiseen potilasdatan saatavuuteen suurille suomalaisille terveydenhuollon toimijoille",
