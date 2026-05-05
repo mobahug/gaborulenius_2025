@@ -24,5 +24,12 @@ export const SelectedThemeProvider = ({
     setFirefliesEnabled(selectedTheme === "dark");
   }, [selectedTheme, setFirefliesEnabled]);
 
+  // Mirror the active theme onto <html data-theme> so non-MUI surfaces
+  // (e.g. the pre-React cover section) can style themselves without
+  // pulling in jotai/MUI.
+  useEffect(() => {
+    document.documentElement.dataset.theme = selectedTheme;
+  }, [selectedTheme]);
+
   return <ThemeProvider theme={selectedMuiTheme}>{children}</ThemeProvider>;
 };

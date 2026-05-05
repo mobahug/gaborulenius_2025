@@ -74,8 +74,9 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
       onOpen={onOpen}
       disableSwipeToOpen
       swipeAreaWidth={0}
-      transitionDuration={{ enter: 350, exit: 300 }}
+      transitionDuration={{ enter: 220, exit: 180 }}
       ModalProps={{
+        keepMounted: true,
         BackdropProps: {
           sx: {
             backgroundColor: alpha(
@@ -96,7 +97,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
             borderBottomLeftRadius: theme.spacing(2.5),
             boxShadow: `0 8px 32px 0 ${alpha(theme.palette.common.black, 0.37)}`,
             p: theme.spacing(2, 0),
-            transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+            willChange: "transform",
           },
         },
       }}

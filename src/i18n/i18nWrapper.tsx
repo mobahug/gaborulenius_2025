@@ -3,7 +3,12 @@ import { useAtomValue } from "jotai";
 import { IntlProvider } from "react-intl";
 import { localeAtom } from "../hooks/localeAtom";
 import { canPrefetchHeavyAsset } from "../utils/connection";
-import { loadMessages, preloadMessages, type AppMessages } from "./messages";
+import {
+  getCachedMessages,
+  loadMessages,
+  preloadMessages,
+  type AppMessages,
+} from "./messages";
 
 type BrowserWindowWithIdleCallback = Window & {
   requestIdleCallback?: (
@@ -15,10 +20,25 @@ type BrowserWindowWithIdleCallback = Window & {
 
 export function I18nWrapper({ children }: React.PropsWithChildren) {
   const locale = useAtomValue(localeAtom);
-  const [messages, setMessages] = React.useState<AppMessages | null>(null);
+  const [messages, setMessages] = React.useState<AppMessages | null>(() =>
+    getCachedMessages(locale),
+  );
 
   React.useEffect(() => {
     let active = true;
+    const cached = getCachedMessages(locale);
+
+    // Mirror the active locale onto <html data-locale> so non-react-intl
+    // surfaces (e.g. the pre-React cover section) can react to language
+    // changes without importing jotai or react-intl.
+    document.documentElement.dataset.locale = locale;
+
+    if (cached) {
+      setMessages(cached);
+      return () => {
+        active = false;
+      };
+    }
 
     setMessages(null);
     void loadMessages(locale).then((loadedMessages) => {

@@ -1,24 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import CssBaseline from "@mui/material/CssBaseline";
-import App from "./App";
-import { Provider as JotaiProvider } from "jotai";
-import { I18nWrapper } from "./i18n/i18nWrapper";
-import { SelectedThemeProvider } from "./components/SelectedThemeProvider";
-import Seo from "./components/Seo";
-import DeferredVideoScroller from "./components/DeferredVideoScroller";
+import CoverSection from "./components/CoverSection";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+// Lazy boundary for the rest of the app so the cover (LCP element) can
+// paint without waiting for MUI/emotion/react-intl/jotai/theme code to
+// download, parse and evaluate.
+const AppShell = React.lazy(() => import("./AppShell"));
+
+const root = ReactDOM.createRoot(document.getElementById("root")!);
+
+root.render(
   <React.StrictMode>
-    <JotaiProvider>
-      <I18nWrapper>
-        <SelectedThemeProvider>
-          <Seo />
-          <DeferredVideoScroller />
-          <CssBaseline />
-          <App />
-        </SelectedThemeProvider>
-      </I18nWrapper>
-    </JotaiProvider>
+    <CoverSection />
+    <React.Suspense fallback={null}>
+      <AppShell />
+    </React.Suspense>
   </React.StrictMode>,
 );

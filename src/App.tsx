@@ -1,6 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import CoverSection from "./components/CoverSection";
 import Hero from "./components/Hero";
 import { useLeavesEffect } from "./hooks/useLeavesEffect";
 import { useFireflyEffect } from "./hooks/useFireflyEffect";
@@ -21,7 +20,6 @@ const App: React.FC = () => {
         id="main-content"
         sx={{ position: "relative", zIndex: 2 }}
       >
-        <CoverSection />
         <Hero />
       </Box>
       <React.Suspense fallback={null}>

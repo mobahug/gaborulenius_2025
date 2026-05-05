@@ -17,8 +17,13 @@ import { assetUrl } from "../../utils/assets";
 
 const ShowAfterCover = React.lazy(() => import("./ShowAfterCover"));
 const SettingsDialog = React.lazy(() => import("./SettingsDialog"));
-const MobileDrawer = React.lazy(() => import("./MobileDrawer"));
+const importMobileDrawer = () => import("./MobileDrawer");
+const MobileDrawer = React.lazy(importMobileDrawer);
 const DesktopNavItems = React.lazy(() => import("./DesktopNavItems"));
+
+type IdleWindow = Window & {
+  requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+};
 
 export const NavBar: React.FC = () => {
   const theme = useTheme();
@@ -32,6 +37,39 @@ export const NavBar: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioSrcRef = useRef<string | null>(null);
+
+  // Prefetch the mobile drawer chunk on idle so the first tap on the menu
+  // button doesn't have to wait for a network round-trip + parse before the
+  // open transition can start.
+  useEffect(() => {
+    if (!isMobile) return;
+    const w = window as IdleWindow;
+    if (w.requestIdleCallback) {
+      const handle = w.requestIdleCallback(
+        () => {
+          void importMobileDrawer();
+        },
+        { timeout: 2500 },
+      );
+      return () => {
+        if ("cancelIdleCallback" in window) {
+          (
+            window as Window & { cancelIdleCallback: (h: number) => void }
+          ).cancelIdleCallback(handle);
+        }
+      };
+    }
+    const id = window.setTimeout(() => {
+      void importMobileDrawer();
+    }, 2000);
+    return () => window.clearTimeout(id);
+  }, [isMobile]);
+
+  const prefetchMobileDrawer = useCallback(() => {
+    if (mobileDrawerLoaded) return;
+    void importMobileDrawer();
+    setMobileDrawerLoaded(true);
+  }, [mobileDrawerLoaded]);
 
   const toggleMobileDrawer = (open: boolean) => () => {
     if (open) {
@@ -163,6 +201,9 @@ export const NavBar: React.FC = () => {
                   </IconButton>
                   <IconButton
                     color="inherit"
+                    onPointerDown={prefetchMobileDrawer}
+                    onTouchStart={prefetchMobileDrawer}
+                    onMouseEnter={prefetchMobileDrawer}
                     onClick={toggleMobileDrawer(true)}
                   >
                     <MenuIcon fontSize="large" />
