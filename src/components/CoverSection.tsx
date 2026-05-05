@@ -76,7 +76,7 @@ const CoverSection: React.FC = () => {
     >
       <Box sx={{ maxWidth: 600 }}>
         <Avatar
-          alt="Gabor Ulenius"
+          alt="Gábor Ulenius"
           src="/gaborulenius/profile-small.webp"
           sx={{
             width: { xs: 140, sm: 150, md: 160 },

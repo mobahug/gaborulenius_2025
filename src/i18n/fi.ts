@@ -28,13 +28,13 @@ export default {
   /* ---------- Etu otsikot ---------- */
   homeGreeting: "…Full-Stack-kehittäjä Espoosta.",
   homeSubtitle:
-    "Töissä Tieto Caretechilla rakentamassa pilvinatiiveja terveysdata-alustoja, tekoälyprototyyppejä ja Azure/Kubernetes-toimitusta.",
+    "Töissä Tieto Caretechilla rakentamassa pilvinatiiveja terveysdata-alustoja, tekoälyprototyyppejä ja luotettavaa pilvitoimitusta.",
   homeBtnExplore: "Tutustu töihini",
   homeBtnDownloadCv: "Lataa CV:ni",
   /* ---------- Minusta otsikot ---------- */
   aboutHeading: "Minusta",
   aboutBody:
-    "Osallistuin terveysdata-alustojen kehittämiseen Suomen suurimmille terveydenhuollon toimijoille parantaen datan saavutettavuutta <b>React</b>/<b>TypeScript</b>-käyttöliittymillä, <b>Node.js</b>-palveluilla, jaetuilla paketeilla ja <b>Azure</b>-infrastruktuurilla. Hallitsen <b>GraphQL:n</b>, <b>Dockerin</b>, <b>Kubernetesin</b>, <b>Terraformin</b>, <b>Helmin</b> ja pilvitoimituksen. Työskentelin LLM-pohjaisten tekoälyprototyyppien parissa, mm. ICT Days -demon ja Uuden lastensairaalan diagnoosityökalun, joka nopeuttaa oireisiin perustuvia hakuja.",
+    "Osallistuin terveysdata-alustojen kehittämiseen Suomen suurimmille terveydenhuollon toimijoille parantaen datan saavutettavuutta moderneilla verkkosovelluksilla, taustapalveluilla, jaetuilla paketeilla ja pilvi-infrastruktuurilla. Kokemukseni kattaa frontend- ja backend-kehityksen, dataintegraatiot, julkaisuautomaation, valvonnan ja pilvitoimituksen. Työskentelin LLM-pohjaisten tekoälyprototyyppien parissa, mm. ICT Days -demon ja Uuden lastensairaalan diagnoosityökalun, joka nopeuttaa oireisiin perustuvia hakuja.",
   aboutLocation: "Suomi, Espoo",
   aboutEducation: "Hive Helsinki Alumni",
   aboutExperience: "3,5 vuotta työkokemusta",
@@ -42,11 +42,11 @@ export default {
   projectHusDatalakeTitle:
     "Terveysdata-alustojen kehittäminen reaaliaikaiseen potilasdatan saatavuuteen suurille suomalaisille terveydenhuollon toimijoille",
   projectMedicalPocTitle:
-    "Toimin avainroolissa tekoäly-PoC:n toteutuksessa Helsingin Uudessa lastensairaalassa. Tämä PoC nopeuttaa lääkäreiden diagnoosia lääketieteellisten asiakirjojen analyysillä.",
+    "Toimin avainroolissa tekoälyn proof of concept -toteutuksessa Helsingin Uudessa lastensairaalassa, auttaen kliinikoita löytämään olennaista tietoa nopeammin lääketieteellisistä asiakirjoista.",
   projectIctDaysTitle:
     "Osana tiimiä vaikutin merkittävästi LLM-pohjaisen tekoälyratkaisun kehitykseen ATK-päivät -tapahtumaa varten, joka on Suomen suurin sote-IT-tilaisuus.",
   projectAnyhauTitle:
-    "Tein yhteistyötä vuoden 2022 Diili-voittajan kanssa uuden alustan lanseeraamiseksi, jossa eläinpalvelujen tarjoajat voivat listata palvelunsa ja asiakkaat varata sekä maksaa verkossa",
+    "Tein yhteistyötä vuoden 2022 Diili-voittajan kanssa uuden verkkoalustan lanseeraamiseksi lemmikkipalvelujen varaamiseen",
   /* ---------- Aputekstit ---------- */
   projectHeading: "Projektit",
   projectTabWork: "Työ",
@@ -71,13 +71,13 @@ export default {
     "Luonnonsuojeluun suunnatut lokit kattavat eläimet, kasvillisuuden, vesinäytteet, uhat, reittipisteet, kuvat, hyönteiset, äänimuistiinpanot, sään ja ekologiset alueet.",
   projectExplorerCapabilityCloudTitle: "Pilvialusta",
   projectExplorerCapabilityCloudBody:
-    "Data pysyy käytettävissä offline-tilassa, ja Supabase, Auth0 sekä EAS-buildit tukevat synkronointia, turvallista pääsyä ja myöhempää tarkastelua.",
+    "Data pysyy käytettävissä offline-tilassa; yhteyden palatessa Supabase, Auth0 ja EAS-buildit tukevat synkronointia, turvallista pääsyä ja myöhempää tarkastelua.",
   projectExplorerWhyHeading: "Rakennettu syrjäiseen luonnonsuojelun kenttätyöhön",
   projectExplorerDialogIntro:
-    "The Explorer on ensimmäinen mobiilisovellukseni: React Native- ja Expo-pohjainen kenttätyökalu ympäristöretkille, joissa yhteys voi kadota. Sovellus pitää paikallisen datan ensisijaisesti luotettavana, tallentaa GPS-reittejä etu- ja taustatilassa, kerää rakenteisia luonnonsuojeluhavaintoja median ja ekologisten alueiden kanssa sekä synkronoi Supabasen ja Auth0:n kautta, kun yhteys on taas käytettävissä.",
+    "The Explorer on React Native- ja Expo-pohjainen kenttätyökalu ympäristöretkille, joissa yhteys voi kadota. Sovellus pitää paikallisen datan ensisijaisesti luotettavana, tallentaa GPS-reittejä etu- ja taustatilassa, kerää rakenteisia luonnonsuojeluhavaintoja median ja ekologisten alueiden kanssa sekä synkronoi Supabasen ja Auth0:n kautta, kun yhteys on taas käytettävissä.",
   projectExplorerDetailMobileHeading: "Syrjäinen kenttätallennus",
   projectExplorerDetailMobileItemOffline:
-    "Local-first-retkidata pitää aktiiviset ja arkistoidut retket, lokit, alueet, reittipisteet ja median käytettävissä myös ilman verkkoyhteyttä.",
+    "Local-first-tallennus pitää aktiiviset ja arkistoidut retket, lokit, alueet, reittipisteet ja median käytettävissä myös ilman verkkoyhteyttä.",
   projectExplorerDetailMobileItemPrecision:
     "Taustaseuranta tallentaa tarkkoja GPS-reittejä, merkitsee katkokset ja pysäytykset ilman virheellisiä yhdysviivoja sekä käyttää WGS84-geodeettisia mittauksia viivaimessa ja reittietäisyyksissä.",
   projectExplorerDetailMobileItemCapture:
@@ -91,9 +91,9 @@ export default {
     "Auth0 turvaa kirjautumisen ja pilvipääsyn, ja EAS hoitaa Android-julkaisubuildit sekä tuotantoympäristön muuttujat.",
   projectExplorerDetailWebHeading: "Tarkastelu ja raportointi",
   projectExplorerDetailWebItemWorkspace:
-    "Read-only-web-suunta säilyttää kenttähavaintojen alkuperän ja auttaa tiimejä tarkastelemaan synkronoituja retkiä, lokeja, reittejä, alueita, kuvia ja rakenteista metadataa.",
+    "Read-only-verkkonäkymä säilyttää kenttähavaintojen alkuperän ja auttaa tiimejä tarkastelemaan synkronoituja retkiä, lokeja, reittejä, alueita, kuvia ja rakenteista metadataa.",
   projectExplorerDetailWebItemReporting:
-    "Raportointisuunta sisältää karttatarkastelun, dashboardit, GeoJSON/GPX/KML/CSV/ZIP-viennit, tulostettavat raportit, Auth0:n, Supabasen, MapLibren ja PMTilesin.",
+    "Raportointinäkymä tukee karttatarkastelua, dashboardeja, GeoJSON/GPX/KML/CSV/ZIP-vientejä, tulostettavia raportteja, Auth0:ta, Supabasea, MapLibrea ja PMTilesia.",
   projectExplorerStackHeading: "Teknologiat",
   projectExplorerScreenshotHomeTitle: "Aktiivinen retki",
   projectExplorerScreenshotHomeAlt:
@@ -140,10 +140,10 @@ export default {
   qualificationHeadingTimeline: "Koko aikajana",
 
   /* Tapahtumien otsikot + ajankohdat */
-  eventTietoCaretechTitle: "Full-Stack -kehittäjä – Tieto Caretech",
+  eventTietoCaretechTitle: "Full-Stack-kehittäjä – Tieto Caretech",
   eventTietoCaretechWhen: "Espoo, 2023 – Nykyhetki",
 
-  eventAnyhauTitle: "Full-Stack -kehittäjä – Anyhau Oy",
+  eventAnyhauTitle: "Full-Stack-kehittäjä – Anyhau Oy",
   eventAnyhauWhen: "Espoo, 2022 – 2023",
 
   eventHiveTitle: "Ohjelmistokehittäjä – Hive Helsinki",
@@ -168,7 +168,7 @@ export default {
   eventEnersenseWhen: "Rauma, 2017 – 2018",
 
   eventDeltamarinTitle: "Laivasuunnittelija – Deltamarin Oy",
-  eventDeltamarinWhen: "Rauma, 2017 – 2017",
+  eventDeltamarinWhen: "Rauma, 2017",
 
   eventBkszcTitle: "Rakennusteknikko – BKSZC Schulek Frigyes",
   eventBkszcWhen: "Budapest, 2011 – 2016",
@@ -177,20 +177,20 @@ export default {
   eventTietoCaretechP1:
     "Työskentelen full stack -kehittäjänä terveydenhuollossa rakentaen pilvinatiiveja tuotteita, jotka helpottavat potilasdatan hakua, ylläpitoa ja toimitusta suurissa pohjoismaisissa terveydenhuollon ympäristöissä.",
   eventTietoCaretechP2:
-    "Teknologiastackini kattaa Reactin, TypeScriptin, Node.js:n, GraphQL:n, PostgreSQL:n, Dockerin, Kubernetesin, Terraformin, Helmin, Azuren ja Azure DevOpsin ketterissä Scrum-tiimeissä.",
+    "Päivittäinen työni kattaa frontend- ja backend-kehityksen, dataintegraatiot, pilvi-infrastruktuurin, julkaisuautomaation, valvonnan ja ketterän Scrum-toimituksen.",
   eventTietoCaretechNotable: "Merkittäviä saavutuksia:",
   eventTietoCaretechB1:
     "Kehitin LLM-pohjaisia AI-prototyyppejä, mukaan lukien ICT Days -demo ja Uuden lastensairaalan diagnoosityökalun proof of concept.",
   eventTietoCaretechB2:
-    "Tein merkittäviä muutoksia React-käyttöliittymäpaketteihin, Node.js-palveluihin ja jaettuihin työkaluihin potilasdatan hakua, integraatioita, julkaisuja ja valvontaa varten.",
+    "Tein merkittäviä muutoksia potilaskäyttöliittymiin, taustapalveluihin ja jaettuihin työkaluihin potilasdatan hakua, integraatioita, julkaisuja ja valvontaa varten.",
   eventTietoCaretechB3:
-    "Toteutin Azure/Kubernetes/Terraform-muutoksia QA- ja tuotantoympäristöihin, kuten AKS-päivityksiä, HAProxy-ingress-migraation, Elasticsearch/Kibana-ylläpitoa, yksityisverkkoasetuksia ja salaisuuksien rotaatiota.",
+    "Toteutin pilvi-infrastruktuurin ja tuotantoympäristöjen muutoksia QA- ja tuotantoympäristöihin, kuten alustapäivityksiä, liikenteen reititystä, hakupalveluiden ylläpitoa, yksityisverkkoasetuksia ja salaisuuksien rotaatiota.",
   eventAnyhauP1:
-    "Rakensin uuden verkkosovelluksen eläinpalvelujen varaamiseen yhteistyössä vuoden 2022 *Diili*-voittajan kanssa. Alusta (Next.js, Material UI, MongoDB) mahdollistaa palveluntarjoajien listaukset ja asiakkaiden verkkomaksut.",
+    "Rakensin uuden verkkosovelluksen lemmikkipalvelujen varaamiseen yhteistyössä vuoden 2022 Diili-voittajan kanssa. Alusta (Next.js, Material UI, MongoDB) mahdollistaa palveluntarjoajien listaukset ja asiakkaiden verkkomaksut.",
   eventHiveP1:
     "Suoritin projektipohjaisen ohjelman, joka painottui tiimityöhön, ongelmanratkaisuun ja itseohjautuvaan oppimiseen, kehittäen yhteistyö- ja kriittisen ajattelun taitojani oikeissa ohjelmistoprojekteissa.",
   eventSataEduP1:
-    "Suoritin TE-toimiston Sataedu-integraatiokoulutuksen (A2), joka sisälsi päivittäistä suomen kielen, työelämän sanaston ja yhteiskuntataitojen opetusta.",
+    "Suoritin TE-toimiston SataEdu-integraatiokoulutuksen (A2), joka sisälsi päivittäistä suomen kielen, työelämän sanaston ja yhteiskuntataitojen opetusta.",
   eventSataEduP2:
     "Sain A2-todistuksen ja jatkoin itseopiskelua saavuttaakseni sujuvan keskustelutason.",
   /* ─── Tekijä Rent ─────────────────────── */
@@ -253,11 +253,11 @@ export default {
   coverScroll: "Vieritä alas",
 
   /* Alatunniste */
-  footerJobTitle: "Full-Stack kehittäjä",
+  footerJobTitle: "Full-Stack-kehittäjä",
   footerNavAbout: "Tietoa",
   footerNavProjects: "Projektit",
   footerNavContact: "Ota yhteyttä",
-  footerCopyright: "© {year} Gabor Ulenius. Kaikki oikeudet pidätetään",
+  footerCopyright: "© {year} Gábor Ulenius. Kaikki oikeudet pidätetään",
   headingEffects: "Efektit",
 
   /* Linkit */
@@ -276,6 +276,6 @@ export default {
     "Hive Helsinki on uudenlainen koodauskoulu, joka valmistaa sinua tulevaisuudenkestävään uraan yhteistyöhön perustuvan, projektipohjaisen oppimisen avulla.",
   linkThumbnailTitleGabor: "Epätavanomainen matka koodaukseen ja tekoälyyn",
   linkThumbnailDescriptionGabor:
-    "Gàbor kertoo urapolustaan ohjelmoinnin pariin ja AI-ratkaisuista Tieto Caretechilla.",
-  linkThumbnailReadingTime: "lukuaika {minutes} min ",
+    "Gábor kertoo urapolustaan ohjelmoinnin pariin ja AI-ratkaisuista Tieto Caretechilla.",
+  linkThumbnailReadingTime: "lukuaika {minutes} min",
 } as const;

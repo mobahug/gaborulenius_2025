@@ -68,7 +68,7 @@ const Seo = () => {
 
     upsertCanonical();
     upsertMeta("name", "description", seo.description);
-    upsertMeta("name", "author", "Gabor Ulenius");
+    upsertMeta("name", "author", "Gábor Ulenius");
     upsertMeta("name", "keywords", RECRUITER_KEYWORDS);
     upsertMeta("name", "language", locale);
     upsertMeta("name", "robots", "index, follow, max-image-preview:large");

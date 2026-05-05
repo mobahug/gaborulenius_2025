@@ -1,7 +1,7 @@
 import type { AppLocale } from "./i18n/messages";
 
 export const SITE_URL = "https://mobahug.github.io/gaborulenius/";
-export const SITE_NAME = "Gabor Ulenius Portfolio";
+export const SITE_NAME = "Gábor Ulenius Portfolio";
 export const SOCIAL_IMAGE_URL = `${SITE_URL}jungle.png`;
 export const PROFILE_IMAGE_URL = `${SITE_URL}profile2-small.webp`;
 export const LINKEDIN_URL =
@@ -21,33 +21,30 @@ type SeoContent = {
 export const SEO_BY_LOCALE: Record<AppLocale, SeoContent> = {
   en: {
     title:
-      "Gabor Ulenius | Full-Stack Developer in Finland | React, TypeScript, Azure",
+      "Gábor Ulenius | Full-Stack Developer in Finland | Healthcare Data & AI",
     description:
-      "Portfolio of Gabor Ulenius, Full-Stack Developer in Espoo, Finland specializing in React, TypeScript, Node.js, Azure, Kubernetes, Terraform, healthcare data platforms and AI solutions.",
+      "Portfolio of Gábor Ulenius, Full-Stack Developer in Espoo, Finland specializing in healthcare data platforms, cloud delivery, web applications and AI solutions.",
     ogLocale: "en_US",
     ogLocaleAlternate: "fi_FI",
-    imageAlt: "Gabor Ulenius full-stack developer portfolio",
+    imageAlt: "Gábor Ulenius full-stack developer portfolio",
   },
   fi: {
     title:
-      "Gabor Ulenius | Full-Stack-kehittaja Suomessa | React, TypeScript, Azure",
+      "Gábor Ulenius | Full-Stack-kehittäjä Suomessa | Terveysdata ja tekoäly",
     description:
-      "Gabor Uleniuksen portfolio: Espoossa toimiva Full-Stack-kehittaja, jonka osaamista ovat React, TypeScript, Node.js, Azure, Kubernetes, Terraform, terveysdata-alustat ja tekoaly.",
+      "Gábor Uleniuksen portfolio: Espoossa toimiva Full-Stack-kehittäjä, jonka osaamista ovat terveysdata-alustat, pilvitoimitus, verkkosovellukset ja tekoäly.",
     ogLocale: "fi_FI",
     ogLocaleAlternate: "en_US",
-    imageAlt: "Gabor Uleniuksen full-stack-kehittajan portfolio",
+    imageAlt: "Gábor Uleniuksen full-stack-kehittäjän portfolio",
   },
 };
 
 export const RECRUITER_KEYWORDS = [
-  "Gabor Ulenius",
+  "Gábor Ulenius",
+  "Gábor Horváth-Ulenius",
   "Full-Stack Developer Finland",
-  "React developer",
-  "TypeScript developer",
-  "Node.js developer",
-  "Azure developer",
-  "Kubernetes developer",
-  "Terraform developer",
+  "web application developer",
+  "cloud delivery developer",
   "healthcare software developer",
   "AI developer",
   "Tieto Caretech",
@@ -65,7 +62,7 @@ export const getStructuredData = (locale: AppLocale) => {
         "@type": "ProfilePage",
         "@id": `${SITE_URL}#profile-page`,
         url: SITE_URL,
-        name: "Gabor Ulenius | Full-Stack Developer Portfolio",
+        name: "Gábor Ulenius | Full-Stack Developer Portfolio",
         description: seo.description,
         inLanguage: language,
         about: {
@@ -81,11 +78,11 @@ export const getStructuredData = (locale: AppLocale) => {
       {
         "@type": "Person",
         "@id": `${SITE_URL}#person`,
-        name: "Gabor Ulenius",
-        alternateName: "Gabor Horvath Ulenius",
+        name: "Gábor Ulenius",
+        alternateName: "Gábor Horváth-Ulenius",
         jobTitle: "Full-Stack Developer",
         description:
-          "Espoo-based Full-Stack Developer at Tieto Caretech working on cloud-native healthcare data platforms, AI prototypes and Azure/Kubernetes delivery for major Nordic healthcare environments.",
+          "Espoo-based Full-Stack Developer at Tieto Caretech working on cloud-native healthcare data platforms, AI prototypes and reliable cloud delivery for major Nordic healthcare environments.",
         url: SITE_URL,
         image: PROFILE_IMAGE_URL,
         email: "mailto:gaborulenius@gmail.com",
@@ -103,15 +100,11 @@ export const getStructuredData = (locale: AppLocale) => {
           name: "Tieto Caretech",
         },
         knowsAbout: [
-          "React",
-          "TypeScript",
-          "Node.js",
-          "GraphQL",
-          "Azure Cloud",
-          "Kubernetes",
-          "Docker",
-          "Terraform",
-          "Helm",
+          "Web application development",
+          "Backend services",
+          "Cloud delivery",
+          "Release automation",
+          "Observability",
           "Healthcare software",
           "Healthcare data platforms",
           "Generative AI",

@@ -27,7 +27,7 @@ export default {
   /* ---------- Home titles ---------- */
   homeGreeting: "…a Full-Stack Developer based in Espoo.",
   homeSubtitle:
-    "Currently at Tieto Caretech, building cloud-native healthcare data platforms, AI prototypes, and Azure/Kubernetes delivery.",
+    "Currently at Tieto Caretech, building cloud-native healthcare data platforms, AI prototypes, and reliable cloud delivery.",
   homeBtnExplore: "Explore My Work",
   homeBtnDownloadCv: "Download My CV",
   /* ---------- About titles ---------- */
@@ -41,11 +41,11 @@ export default {
   projectHusDatalakeTitle:
     "Contributing to healthcare data platforms for real-time patient data access at major Finnish healthcare providers",
   projectMedicalPocTitle:
-    "I played a key role in the implementation of an AI PoC at Helsinki's New Children's Hospital. This PoC speeds up doctors' diagnoses by analyzing medical documents.",
+    "Played a key role in an AI proof of concept at Helsinki’s New Children’s Hospital, helping clinicians find relevant information faster in medical documents.",
   projectIctDaysTitle:
     "As part of the team, I contributed significantly to the development of an LLM-based AI solution for the ATK-päivät event, which is Finland's largest healthcare IT event.",
   projectAnyhauTitle:
-    "Worked with the 2022 “Diili” winner to launch a green-field platform for online animal-service bookings",
+    "Worked with the 2022 Diili winner to launch a greenfield platform for online pet-service bookings",
   /* ---------- Helpers ---------- */
   projectHeading: "Projects",
   projectTabWork: "Work",
@@ -70,13 +70,13 @@ export default {
     "Conservation-focused logs cover wildlife, vegetation, water samples, threats, waypoints, photos, insects, voice notes, weather, and ecological zones.",
   projectExplorerCapabilityCloudTitle: "Cloud platform",
   projectExplorerCapabilityCloudBody:
-    "Local data remains usable offline, then Supabase, Auth0, and EAS-backed builds support sync, secure access, and later review workflows.",
+    "Local data remains usable offline; when connectivity returns, Supabase, Auth0, and EAS-backed builds support sync, secure access, and later review workflows.",
   projectExplorerWhyHeading: "Built for remote conservation fieldwork",
   projectExplorerDialogIntro:
-    "The Explorer is my first mobile app: a React Native and Expo field tool for environmental expeditions where connectivity can disappear. It keeps local data reliable first, records GPS trails across foreground and background sessions, captures structured conservation observations with media and ecological zones, and syncs through Supabase/Auth0 when the team has connectivity again.",
+    "The Explorer is a React Native and Expo field tool for environmental expeditions where connectivity can disappear. It keeps local data reliable first, records GPS trails across foreground and background sessions, captures structured conservation observations with media and ecological zones, and syncs through Supabase/Auth0 when the team has connectivity again.",
   projectExplorerDetailMobileHeading: "Remote field capture",
   projectExplorerDetailMobileItemOffline:
-    "Local-first expedition data keeps active and archived expeditions, logs, zones, trail points, and media usable in remote areas without network access.",
+    "Local-first storage keeps active and archived expeditions, logs, zones, trail points, and media usable in remote areas without network access.",
   projectExplorerDetailMobileItemPrecision:
     "Background tracking records high-accuracy GPS trails, marks gaps and stops instead of drawing false connectors, and uses WGS84 geodesic measurement for ruler and trail distances.",
   projectExplorerDetailMobileItemCapture:
@@ -90,9 +90,9 @@ export default {
     "Auth0 secures sign-in and cloud access, while EAS handles Android release builds and production environment variables.",
   projectExplorerDetailWebHeading: "Review and reporting",
   projectExplorerDetailWebItemWorkspace:
-    "The read-only web direction preserves field provenance while helping teams review synced expeditions, logs, trails, zones, photos, and structured metadata.",
+    "The read-only web companion preserves field provenance while helping teams review synced expeditions, logs, trails, zones, photos, and structured metadata.",
   projectExplorerDetailWebItemReporting:
-    "The reporting direction includes map review, dashboards, GeoJSON/GPX/KML/CSV/ZIP exports, print-ready reports, Auth0, Supabase, MapLibre, and PMTiles.",
+    "The reporting view supports map review, dashboards, GeoJSON/GPX/KML/CSV/ZIP exports, print-ready reports, Auth0, Supabase, MapLibre, and PMTiles.",
   projectExplorerStackHeading: "Stack",
   projectExplorerScreenshotHomeTitle: "Active expedition home",
   projectExplorerScreenshotHomeAlt:
@@ -163,11 +163,11 @@ export default {
   eventAaltovoimaWhen: "Espoo, 2018 – 2019",
 
   eventEnersenseTitle:
-    "Final Maintainer – Enersense International Oyj / VMP Oy",
+    "Final Cleaner – Enersense International Oyj / VMP Oy",
   eventEnersenseWhen: "Rauma, 2017 – 2018",
 
   eventDeltamarinTitle: "Ship Designer – Deltamarin Oy",
-  eventDeltamarinWhen: "Rauma, 2017 – 2017",
+  eventDeltamarinWhen: "Rauma, 2017",
 
   eventBkszcTitle: "Construction Technician – BKSZC Schulek Frigyes",
   eventBkszcWhen: "Budapest, 2011 – 2016",
@@ -176,16 +176,16 @@ export default {
   eventTietoCaretechP1:
     "I work as a Full-Stack Developer in the healthcare domain, building cloud-native products that make patient data easier to search, operate and deliver across major Nordic healthcare environments.",
   eventTietoCaretechP2:
-    "My daily stack includes React, TypeScript, Node.js, GraphQL, PostgreSQL, Docker, Kubernetes, Terraform, Helm, Azure and Azure DevOps in Agile-Scrum teams.",
+    "My daily work spans frontend and backend development, data integrations, cloud infrastructure, release automation, observability and Agile-Scrum delivery.",
   eventTietoCaretechNotable: "Notable contributions:",
   eventTietoCaretechB1:
     "Developed LLM-based AI prototypes, including an ICT Days demo and a New Children’s Hospital diagnostic-support proof of concept.",
   eventTietoCaretechB2:
-    "Made substantial contributions across React UI packages, Node.js services and shared tooling for patient-data search, integrations, releases and observability.",
+    "Made substantial contributions across patient-facing web applications, backend services and shared tooling for patient-data search, integrations, releases and observability.",
   eventTietoCaretechB3:
-    "Delivered Azure/Kubernetes/Terraform changes for QA and production environments, including AKS upgrades, HAProxy ingress migration, Elasticsearch/Kibana operations, private networking and secret rotation.",
+    "Delivered cloud infrastructure and production operations changes for QA and production environments, including platform upgrades, traffic routing, search operations, private networking and secret rotation.",
   eventAnyhauP1:
-    "Built a green-field web application for booking animal-related services, in collaboration with the 2022 *Diili* winner, using Next.js, Material UI and MongoDB. The platform lets providers list services and customers book and pay online.",
+    "Built a greenfield web application for booking pet-related services, in collaboration with the 2022 Diili winner, using Next.js, Material UI and MongoDB. The platform lets providers list services and customers book and pay online.",
   eventHiveP1:
     "Completed a project-based program focused on teamwork, problem-solving and self-directed learning, strengthening collaboration, critical thinking and adaptability in real-world software projects.",
   eventSataEduP1:
@@ -251,11 +251,11 @@ export default {
   coverScroll: "Scroll Down",
 
   /* Footer */
-  footerJobTitle: "Full-Stack developer",
+  footerJobTitle: "Full-Stack Developer",
   footerNavAbout: "About",
   footerNavProjects: "Projects",
   footerNavContact: "Contact me",
-  footerCopyright: "© {year} Gabor Ulenius. All rights reserved",
+  footerCopyright: "© {year} Gábor Ulenius. All rights reserved",
   headingEffects: "Effects",
 
   /*Links */
@@ -274,6 +274,6 @@ export default {
     "Hive Helsinki is a new kind of coding school that preps you to launch your future-proof career through collaborative, project-based learning.",
   linkThumbnailTitleGabor: "A non-traditional journey into coding and AI",
   linkThumbnailDescriptionGabor:
-    "Gàbor shares how he moved into software development and now builds AI solutions at Tieto Caretech.",
+    "Gábor shares how he moved into software development and now builds AI solutions at Tieto Caretech.",
   linkThumbnailReadingTime: "{minutes} min read",
 } as const;

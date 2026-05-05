@@ -57,7 +57,7 @@ const Footer = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
                     : lightColors.textLight,
               }}
             >
-              Gabor
+              Gábor
               <br />
               Ulenius
             </Typography>
