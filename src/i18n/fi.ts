@@ -28,19 +28,19 @@ export default {
   /* ---------- Etu otsikot ---------- */
   homeGreeting: "…Full-Stack-kehittäjä Espoosta.",
   homeSubtitle:
-    "Töissä Tieto Caretechilla, rakentamassa pilvinatiiveja ja tekoälypohjaisia terveydenhuollon ratkaisuja.",
+    "Töissä Tieto Caretechilla rakentamassa pilvinatiiveja terveysdata-alustoja, tekoälyprototyyppejä ja Azure/Kubernetes-toimitusta.",
   homeBtnExplore: "Tutustu töihini",
   homeBtnDownloadCv: "Lataa CV:ni",
   /* ---------- Minusta otsikot ---------- */
   aboutHeading: "Minusta",
   aboutBody:
-    "Osallistuin Suomen suurimman terveydenhuollon dataportaalin (HUS DataLake) kehittämiseen ja paransin datan saavutettavuutta. Hallitsen <b>Reactin</b>, <b>TypeScriptin</b>, <b>GraphQL:n</b>, <b>Node.js:n</b>, <b>Dockerin</b>, <b>Kubernetesin</b>, <b>Terraformin</b> ja <b>Azure-pilven</b>. Työskentelin LLM-pohjaisten tekoälyprototyyppien parissa, mm. ICT Days -demon ja Uuden lastensairaalan diagnoosityökalun, joka nopeuttaa oireisiin perustuvia hakuja.",
+    "Osallistuin terveysdata-alustojen kehittämiseen Suomen suurimmille terveydenhuollon toimijoille parantaen datan saavutettavuutta <b>React</b>/<b>TypeScript</b>-käyttöliittymillä, <b>Node.js</b>-palveluilla, jaetuilla paketeilla ja <b>Azure</b>-infrastruktuurilla. Hallitsen <b>GraphQL:n</b>, <b>Dockerin</b>, <b>Kubernetesin</b>, <b>Terraformin</b>, <b>Helmin</b> ja pilvitoimituksen. Työskentelin LLM-pohjaisten tekoälyprototyyppien parissa, mm. ICT Days -demon ja Uuden lastensairaalan diagnoosityökalun, joka nopeuttaa oireisiin perustuvia hakuja.",
   aboutLocation: "Suomi, Espoo",
   aboutEducation: "Hive Helsinki Alumni",
   aboutExperience: "Yli 3 vuotta työkokemusta",
   /* ---------- Projektien otsikot ---------- */
   projectHusDatalakeTitle:
-    "Osallistuminen HUS DataLake -alustan kehittämiseen reaaliaikaisen terveydenhuollon datan saatavuuden mahdollistamiseksi",
+    "Terveysdata-alustojen kehittäminen reaaliaikaiseen potilasdatan saatavuuteen suurille suomalaisille terveydenhuollon toimijoille",
   projectMedicalPocTitle:
     "Toimin avainroolissa tekoäly-PoC:n toteutuksessa Helsingin Uudessa lastensairaalassa. Tämä PoC nopeuttaa lääkäreiden diagnoosia lääketieteellisten asiakirjojen analyysillä.",
   projectIctDaysTitle:
@@ -175,16 +175,16 @@ export default {
 
   /* Tapahtuminen yksityiset otsikot */
   eventTietoCaretechP1:
-    "Työskentelen full stack -kehittäjänä terveydenhuollon alueella rakentaen pilvinatiiveja, tekoälypohjaisia ratkaisuja, jotka parantavat potilasdatan saavutettavuutta ja käytettävyyttä Pohjoismaissa.",
+    "Työskentelen full stack -kehittäjänä terveydenhuollossa rakentaen pilvinatiiveja tuotteita, jotka helpottavat potilasdatan hakua, ylläpitoa ja toimitusta suurissa pohjoismaisissa terveydenhuollon ympäristöissä.",
   eventTietoCaretechP2:
-    "Teknologiastackini kattaa Reactin, TypeScriptin, Node.js:n, GraphQL:n, PostgreSQL:n, Dockerin, Kubernetesin, Terraformin ja Azure DevOpsin ketterissä Scrum-tiimeissä.",
+    "Teknologiastackini kattaa Reactin, TypeScriptin, Node.js:n, GraphQL:n, PostgreSQL:n, Dockerin, Kubernetesin, Terraformin, Helmin, Azuren ja Azure DevOpsin ketterissä Scrum-tiimeissä.",
   eventTietoCaretechNotable: "Merkittäviä saavutuksia:",
   eventTietoCaretechB1:
-    "Kehitin LLM-pohjaisen AI-ratkaisun ICT Days-tapahtumassa, Suomen suurimmassa sote-IT-tapahtumassa.",
+    "Kehitin LLM-pohjaisia AI-prototyyppejä, mukaan lukien ICT Days -demo ja Uuden lastensairaalan diagnoosityökalun proof of concept.",
   eventTietoCaretechB2:
-    "Osallistuin HUS DataLaken kehitykseen mahdollistaen reaaliaikaisen terveysdatan saatavuuden useista järjestelmistä.",
+    "Tein merkittäviä muutoksia React-käyttöliittymäpaketteihin, Node.js-palveluihin ja jaettuihin työkaluihin potilasdatan hakua, integraatioita, julkaisuja ja valvontaa varten.",
   eventTietoCaretechB3:
-    "Rakensin tekoäly-PoC:n, joka auttaa lääkäreitä löytämään diagnooseja nopeammin lääketieteellisistä asiakirjoista.",
+    "Toteutin Azure/Kubernetes/Terraform-muutoksia QA- ja tuotantoympäristöihin, kuten AKS-päivityksiä, HAProxy-ingress-migraation, Elasticsearch/Kibana-ylläpitoa, yksityisverkkoasetuksia ja salaisuuksien rotaatiota.",
   eventAnyhauP1:
     "Rakensin uuden verkkosovelluksen eläinpalvelujen varaamiseen yhteistyössä vuoden 2022 *Diili*-voittajan kanssa. Alusta (Next.js, Material UI, MongoDB) mahdollistaa palveluntarjoajien listaukset ja asiakkaiden verkkomaksut.",
   eventHiveP1:

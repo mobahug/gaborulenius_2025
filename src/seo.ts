@@ -23,7 +23,7 @@ export const SEO_BY_LOCALE: Record<AppLocale, SeoContent> = {
     title:
       "Gabor Ulenius | Full-Stack Developer in Finland | React, TypeScript, Azure",
     description:
-      "Portfolio of Gabor Ulenius, Full-Stack Developer in Espoo, Finland specializing in React, TypeScript, Azure, Kubernetes, healthcare data and AI solutions.",
+      "Portfolio of Gabor Ulenius, Full-Stack Developer in Espoo, Finland specializing in React, TypeScript, Node.js, Azure, Kubernetes, Terraform, healthcare data platforms and AI solutions.",
     ogLocale: "en_US",
     ogLocaleAlternate: "fi_FI",
     imageAlt: "Gabor Ulenius full-stack developer portfolio",
@@ -32,7 +32,7 @@ export const SEO_BY_LOCALE: Record<AppLocale, SeoContent> = {
     title:
       "Gabor Ulenius | Full-Stack-kehittaja Suomessa | React, TypeScript, Azure",
     description:
-      "Gabor Uleniuksen portfolio: Espoossa toimiva Full-Stack-kehittaja, jonka osaamista ovat React, TypeScript, Azure, Kubernetes, terveysdata ja tekoaly.",
+      "Gabor Uleniuksen portfolio: Espoossa toimiva Full-Stack-kehittaja, jonka osaamista ovat React, TypeScript, Node.js, Azure, Kubernetes, Terraform, terveysdata-alustat ja tekoaly.",
     ogLocale: "fi_FI",
     ogLocaleAlternate: "en_US",
     imageAlt: "Gabor Uleniuksen full-stack-kehittajan portfolio",
@@ -44,7 +44,10 @@ export const RECRUITER_KEYWORDS = [
   "Full-Stack Developer Finland",
   "React developer",
   "TypeScript developer",
+  "Node.js developer",
   "Azure developer",
+  "Kubernetes developer",
+  "Terraform developer",
   "healthcare software developer",
   "AI developer",
   "Tieto Caretech",
@@ -82,7 +85,7 @@ export const getStructuredData = (locale: AppLocale) => {
         alternateName: "Gabor Horvath Ulenius",
         jobTitle: "Full-Stack Developer",
         description:
-          "Espoo-based Full-Stack Developer at Tieto Caretech working on cloud-native healthcare data platforms and AI solutions.",
+          "Espoo-based Full-Stack Developer at Tieto Caretech working on cloud-native healthcare data platforms, AI prototypes and Azure/Kubernetes delivery for major Nordic healthcare environments.",
         url: SITE_URL,
         image: PROFILE_IMAGE_URL,
         email: "mailto:gaborulenius@gmail.com",
@@ -108,6 +111,7 @@ export const getStructuredData = (locale: AppLocale) => {
           "Kubernetes",
           "Docker",
           "Terraform",
+          "Helm",
           "Healthcare software",
           "Healthcare data platforms",
           "Generative AI",

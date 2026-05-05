@@ -27,19 +27,19 @@ export default {
   /* ---------- Home titles ---------- */
   homeGreeting: "…a Full-Stack Developer based in Espoo.",
   homeSubtitle:
-    "Currently at Tieto Caretech, building cloud-native, AI-powered healthcare solutions.",
+    "Currently at Tieto Caretech, building cloud-native healthcare data platforms, AI prototypes, and Azure/Kubernetes delivery.",
   homeBtnExplore: "Explore My Work",
   homeBtnDownloadCv: "Download My CV",
   /* ---------- About titles ---------- */
   aboutHeading: "About Me",
   aboutBody:
-    "Contributed to Finland’s largest healthcare data platform (HUS DataLake), improving data accessibility. Proficient in <b>React</b>, <b>TypeScript</b>, <b>GraphQL</b>, <b>Node.js</b>, <b>Docker</b>, <b>Kubernetes</b>, <b>Terraform</b>, and <b>Azure Cloud</b>. Worked on LLM-based AI prototypes, including a demo at ICT Days and a diagnostic tool piloted at the New Children’s Hospital for faster symptom-based searches.",
+    "Contributed to healthcare data platforms for some of Finland’s largest healthcare providers, improving data accessibility through <b>React</b>/<b>TypeScript</b> UIs, <b>Node.js</b> services, shared packages, and <b>Azure</b> infrastructure. Proficient in <b>GraphQL</b>, <b>Docker</b>, <b>Kubernetes</b>, <b>Terraform</b>, <b>Helm</b>, and cloud delivery. Worked on LLM-based AI prototypes, including a demo at ICT Days and a diagnostic tool piloted at the New Children’s Hospital for faster symptom-based searches.",
   aboutLocation: "Finland, Espoo",
   aboutEducation: "Hive Helsinki Alumni",
   aboutExperience: "3+ years professional work experience",
   /* ---------- Project titles ---------- */
   projectHusDatalakeTitle:
-    "Contributing to the HUS DataLake platform for real-time healthcare data access",
+    "Contributing to healthcare data platforms for real-time patient data access at major Finnish healthcare providers",
   projectMedicalPocTitle:
     "I played a key role in the implementation of an AI PoC at Helsinki's New Children's Hospital. This PoC speeds up doctors' diagnoses by analyzing medical documents.",
   projectIctDaysTitle:
@@ -174,16 +174,16 @@ export default {
 
   /* Event details */
   eventTietoCaretechP1:
-    "I work as a Full-Stack Developer in the healthcare domain, building cloud-native, AI-powered solutions that improve the accessibility and usability of patient data across the Nordic region.",
+    "I work as a Full-Stack Developer in the healthcare domain, building cloud-native products that make patient data easier to search, operate and deliver across major Nordic healthcare environments.",
   eventTietoCaretechP2:
-    "My daily stack includes React, TypeScript, Node.js, GraphQL, PostgreSQL, Docker, Kubernetes, Terraform and Azure DevOps in Agile-Scrum teams.",
+    "My daily stack includes React, TypeScript, Node.js, GraphQL, PostgreSQL, Docker, Kubernetes, Terraform, Helm, Azure and Azure DevOps in Agile-Scrum teams.",
   eventTietoCaretechNotable: "Notable contributions:",
   eventTietoCaretechB1:
-    "Developed an LLM-powered AI solution showcased at ICT Days, Finland’s largest healthcare-tech event.",
+    "Developed LLM-based AI prototypes, including an ICT Days demo and a New Children’s Hospital diagnostic-support proof of concept.",
   eventTietoCaretechB2:
-    "Contributed to the HUS DataLake, enabling real-time access to healthcare data across multiple systems.",
+    "Made substantial contributions across React UI packages, Node.js services and shared tooling for patient-data search, integrations, releases and observability.",
   eventTietoCaretechB3:
-    "Built an AI proof of concept that helps doctors find diagnoses faster through medical documents.",
+    "Delivered Azure/Kubernetes/Terraform changes for QA and production environments, including AKS upgrades, HAProxy ingress migration, Elasticsearch/Kibana operations, private networking and secret rotation.",
   eventAnyhauP1:
     "Built a green-field web application for booking animal-related services, in collaboration with the 2022 *Diili* winner, using Next.js, Material UI and MongoDB. The platform lets providers list services and customers book and pay online.",
   eventHiveP1:
