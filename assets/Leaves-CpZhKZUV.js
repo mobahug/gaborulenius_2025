@@ -1,4 +1,4 @@
-import{a as h,j as n}from"./vendor-react-CptINutj.js";import{u as g}from"./AppShell-Do6j-NiE.js";import{a as i}from"./index-BwsKwa91.js";import{k as s}from"./vendor-emotion-CS1ZSvAf.js";import{s as d,d as u}from"./vendor-mui-DXoPst2b.js";import"./vendor-intl-yz93lFsZ.js";import"./vendor-mui-icons-C4syp0xR.js";const x=s`
+import{a as h,j as n}from"./vendor-react-CptINutj.js";import{u as g}from"./AppShell-DnlMFVfr.js";import{a as i}from"./index-CmkDY4KZ.js";import{k as s}from"./vendor-emotion-CS1ZSvAf.js";import{s as d,d as u}from"./vendor-mui-DXoPst2b.js";import"./vendor-intl-yz93lFsZ.js";import"./vendor-mui-icons-C4syp0xR.js";const x=s`
   0%   { transform: translate3d(300px, 0, 0)   rotate(0deg);   opacity: 0.7; }
   100% { transform: translate3d(-350px, 100vh, 0) rotate(90deg);  opacity: 0; }
 `,y=s`
