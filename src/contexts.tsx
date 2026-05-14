@@ -35,6 +35,10 @@ export const projects: Project[] = [
   },
   {
     id: "projectMedicalPocTitle",
+    hrefEN:
+      "https://www.tietoevry.com/en/newsroom/all-news-and-releases/articles/2024/02/ai-powered-healthcare/",
+    hrefFI:
+      "https://www.tietoevry.com/en/newsroom/all-news-and-releases/articles/2024/02/ai-powered-healthcare/",
   },
   { id: "projectIctDaysTitle" },
   {
@@ -118,6 +122,8 @@ export const highlightedEvents: TimelineEvent[] = [
               id="linkThumbnailTitleTietoCaretechPoc"
               descriptionId="linkThumbnailDescriptionTietoCaretechPoc"
               image="https://www.tietoevry.com/siteassets/images--videos/05-businesses/tietoevry-care/success-stories/hus-children-and-adolescents-hospital/lanu_11.jpg?quality=80&width=1920&format=webp"
+              urlEN="https://www.tietoevry.com/en/newsroom/all-news-and-releases/articles/2024/02/ai-powered-healthcare/"
+              urlFI="https://www.tietoevry.com/en/newsroom/all-news-and-releases/articles/2024/02/ai-powered-healthcare/"
               readingMinutes={4}
               isArticle={true}
               date="03.2024"
@@ -310,6 +316,8 @@ export const allEvents: TimelineEvent[] = [
               id="linkThumbnailTitleTietoCaretechPoc"
               descriptionId="linkThumbnailDescriptionTietoCaretechPoc"
               image="https://www.tietoevry.com/siteassets/images--videos/05-businesses/tietoevry-care/success-stories/hus-children-and-adolescents-hospital/lanu_11.jpg?quality=80&width=1920&format=webp"
+              urlEN="https://www.tietoevry.com/en/newsroom/all-news-and-releases/articles/2024/02/ai-powered-healthcare/"
+              urlFI="https://www.tietoevry.com/en/newsroom/all-news-and-releases/articles/2024/02/ai-powered-healthcare/"
               readingMinutes={4}
               isArticle={true}
               date="03.2024"
