@@ -7,6 +7,9 @@ import {
   type RefCallback,
 } from "react";
 import { Theme, useThemeToggle } from "../hooks/useThemeToggle";
+import { setJungleVideo } from "../journey/jungleVideo";
+import { onAfterSceneFrame } from "../journey/scrollTimeline";
+import { world } from "../journey/worldState";
 import { getVideoSrc } from "./videoSources";
 
 type VideoLayer = {
@@ -15,17 +18,7 @@ type VideoLayer = {
 };
 
 const SEEK_DELTA_SECONDS = 0.008;
-const SCROLL_DELTA = 0.001;
-
-const getScrollVideoPercentage = () => {
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-
-  if (maxScroll <= 0) {
-    return 0;
-  }
-
-  return Math.min(1, Math.max(0, window.scrollY / maxScroll));
-};
+const PROGRESS_DELTA = 0.0005;
 
 const seekVideo = (
   video: HTMLVideoElement | null,
@@ -52,12 +45,18 @@ const seekVideo = (
   }
 };
 
+/**
+ * The jungle walk. The video is scrubbed by `world.video`, which the stage
+ * director maps from the cover to the moment the bird's wing passes the lens
+ * in the portal. After that the jungle is gone and the video is no longer
+ * seeked.
+ */
 export const VideoScroller = () => {
   const { selectedTheme } = useThemeToggle();
   const [mountedThemes, setMountedThemes] = useState<Theme[]>([selectedTheme]);
   const [visibleTheme, setVisibleTheme] = useState(selectedTheme);
   const selectedThemeRef = useRef(selectedTheme);
-  const videoPercentageRef = useRef(getScrollVideoPercentage());
+  const progressRef = useRef(world.video);
   const videoRefs = useRef<Partial<Record<Theme, HTMLVideoElement | null>>>({});
   const layers = useMemo<VideoLayer[]>(
     () => [
@@ -67,26 +66,31 @@ export const VideoScroller = () => {
     [],
   );
 
-  const updateVideoPercentage = useCallback((force = false) => {
-    const nextPercentage = getScrollVideoPercentage();
-
+  const updateVideo = useCallback((force = false) => {
+    const nextProgress = world.video;
     if (
       !force &&
-      Math.abs(nextPercentage - videoPercentageRef.current) < SCROLL_DELTA
+      Math.abs(nextProgress - progressRef.current) < PROGRESS_DELTA
     ) {
       return;
     }
-
-    videoPercentageRef.current = nextPercentage;
+    progressRef.current = nextProgress;
     const activeVideo = videoRefs.current[selectedThemeRef.current] ?? null;
-    seekVideo(activeVideo, nextPercentage, force);
+    seekVideo(activeVideo, nextProgress, force);
+  }, []);
+
+  const markReady = useCallback((theme: Theme) => {
+    if (selectedThemeRef.current !== theme) return;
+    setVisibleTheme(theme);
+    setJungleVideo(videoRefs.current[theme] ?? null);
+    document.documentElement.dataset.videoReady = "true";
   }, []);
 
   const setVideoRef = useCallback(
     (theme: Theme): RefCallback<HTMLVideoElement> =>
       (video) => {
         videoRefs.current[theme] = video;
-        seekVideo(video, videoPercentageRef.current, true);
+        seekVideo(video, progressRef.current, true);
       },
     [],
   );
@@ -99,81 +103,47 @@ export const VideoScroller = () => {
 
     // Force-seek the now-active video to the current scroll position so the
     // next frame it renders matches what the user sees. The `seeked` listener
-    // on the <video> element will flip visibleTheme once that frame is ready,
-    // avoiding a one-frame flash of the previously-cached frame.
+    // flips visibleTheme once that frame is ready, avoiding a one-frame flash
+    // of the previously-cached frame.
     const targetVideo = videoRefs.current[selectedTheme];
     if (targetVideo) {
-      seekVideo(targetVideo, videoPercentageRef.current, true);
-      // If the video is already at the target frame, seeked won't fire — flip immediately.
+      seekVideo(targetVideo, progressRef.current, true);
       const targetTime = Math.min(
-        Math.max(targetVideo.duration * videoPercentageRef.current, 0),
+        Math.max(targetVideo.duration * progressRef.current, 0),
         Math.max(targetVideo.duration - 0.02, 0),
       );
       if (
         targetVideo.readyState >= 2 &&
         Math.abs(targetVideo.currentTime - targetTime) < SEEK_DELTA_SECONDS
       ) {
-        setVisibleTheme(selectedTheme);
+        markReady(selectedTheme);
       }
     }
 
     const frameId = window.requestAnimationFrame(() => {
-      updateVideoPercentage(true);
+      updateVideo(true);
     });
 
     return () => {
       window.cancelAnimationFrame(frameId);
     };
-  }, [selectedTheme, updateVideoPercentage]);
+  }, [markReady, selectedTheme, updateVideo]);
 
-  useEffect(() => {
-    let animationFrameId: number | null = null;
+  useEffect(() => onAfterSceneFrame(() => updateVideo()), [updateVideo]);
 
-    const requestVideoPercentageUpdate = () => {
-      if (animationFrameId !== null) {
-        return;
-      }
-
-      animationFrameId = window.requestAnimationFrame(() => {
-        animationFrameId = null;
-        updateVideoPercentage();
-      });
-    };
-
-    const requestForcedVideoPercentageUpdate = () => {
-      if (animationFrameId !== null) {
-        window.cancelAnimationFrame(animationFrameId);
-      }
-
-      animationFrameId = window.requestAnimationFrame(() => {
-        animationFrameId = null;
-        updateVideoPercentage(true);
-      });
-    };
-
-    updateVideoPercentage(true);
-    window.addEventListener("scroll", requestVideoPercentageUpdate, {
-      passive: true,
-    });
-    window.addEventListener("resize", requestForcedVideoPercentageUpdate);
-
-    return () => {
-      if (animationFrameId !== null) {
-        window.cancelAnimationFrame(animationFrameId);
-      }
-
-      window.removeEventListener("scroll", requestVideoPercentageUpdate);
-      window.removeEventListener("resize", requestForcedVideoPercentageUpdate);
-    };
-  }, [updateVideoPercentage]);
+  useEffect(
+    () => () => {
+      setJungleVideo(null);
+    },
+    [],
+  );
 
   return (
     <div
       aria-hidden="true"
       style={{
-        position: "fixed",
+        position: "absolute",
         inset: 0,
-        zIndex: 0,
         overflow: "hidden",
         pointerEvents: "none",
       }}
@@ -188,18 +158,12 @@ export const VideoScroller = () => {
             muted
             playsInline
             preload="auto"
-            onLoadedMetadata={() => updateVideoPercentage(true)}
+            onLoadedMetadata={() => updateVideo(true)}
             onLoadedData={() => {
-              updateVideoPercentage(true);
-              if (selectedThemeRef.current === theme) {
-                setVisibleTheme(theme);
-              }
+              updateVideo(true);
+              markReady(theme);
             }}
-            onSeeked={() => {
-              if (selectedThemeRef.current === theme) {
-                setVisibleTheme(theme);
-              }
-            }}
+            onSeeked={() => markReady(theme)}
             style={{
               position: "absolute",
               inset: 0,

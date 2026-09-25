@@ -1,15 +1,15 @@
 import React from "react";
 
 type DeferredSectionHeights = {
-  desktop: number;
-  mobile: number;
-  tablet: number;
+  desktop: number | string;
+  mobile: number | string;
+  tablet: number | string;
 };
 
 type DeferredSectionProps = {
   children: React.ReactNode;
   id: string;
-  innerRef: React.Ref<HTMLDivElement>;
+  innerRef?: React.Ref<HTMLDivElement>;
   minHeights: DeferredSectionHeights;
 };
 

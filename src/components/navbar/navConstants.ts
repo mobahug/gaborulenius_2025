@@ -26,8 +26,8 @@ export const getCoverVisibility = () => {
 export const navLinks = [
   { id: "navHome", href: "#home" },
   { id: "navAbout", href: "#about" },
-  { id: "navProjects", href: "#projects" },
   { id: "navExperience", href: "#experience" },
+  { id: "navProjects", href: "#projects" },
   { id: "navSkills", href: "#skills" },
   { id: "navContact", href: "#contact" },
 ];

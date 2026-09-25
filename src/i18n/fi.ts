@@ -49,9 +49,6 @@ export default {
     "Tein yhteistyötä vuoden 2022 Diili-voittajan kanssa uuden verkkoalustan lanseeraamiseksi lemmikkipalvelujen varaamiseen",
   /* ---------- Aputekstit ---------- */
   projectHeading: "Projektit",
-  projectTabWork: "Työ",
-  projectTabHobby: "Harrastus",
-  projectHobbyScrollDownLabel: "Vieritä harrastusprojektin sisältöä",
   projectExplorerTitle: "The Explorer",
   projectExplorerSummary:
     "Mobiilisovellus syrjäisiin luonnonsuojelun kenttäretkiin: GPS-reitit, ekologiset alueet, media ja rakenteiset ympäristöhavainnot tallentuvat luotettavasti offline-tilassa myöhempää synkronointia ja tarkastelua varten.",
@@ -279,4 +276,31 @@ export default {
   linkThumbnailDescriptionGabor:
     "Gábor kertoo urapolustaan ohjelmoinnin pariin ja AI-ratkaisuista Tieto Caretechilla.",
   linkThumbnailReadingTime: "lukuaika {minutes} min",
+  /* ---------- Matka: Neural Decompiler ---------- */
+  neuralQuestion: "Mitä neuroverkko oikeastaan laskee?",
+  neuralTitle: "Neural Decompiler",
+  neuralTag: "Oma tutkimusprojekti · Mekanistinen tulkittavuus",
+  neuralSummary:
+    "Mekanistisen tulkittavuuden tutkimusprojekti, joka selvittää, voiko transformer-kielimallin oppimat laskutoimitukset muuttaa yhä täydellisemmiksi, kausaalisiksi ja ihmisen ymmärrettäviksi selityksiksi.",
+  neuralCaseStudy:
+    "Nykyinen tapaustutkimus seuraa, miten Pythia-70M valitsee monikkomuotoisen substantiivin lukusanan jälkeen: signaali jäljitetään vihjesanan koodauksesta tarkkaavaisuuspäiden ja MLP-neuronien kautta mallin tulosteeseen.",
+  neuralMethodHeading: "Miten tutkimus etenee",
+  neuralMethod1:
+    "Pieniä, toistettavia kokeita avoimilla Pythia-malleilla. Jokaisen kokeen kontrollit, kilpailevat selitykset ja onnistumiskriteerit kirjataan ennakkoon ennen ajoa.",
+  neuralMethod2:
+    "Ennusteet lukitaan ennen kuin vahvistusaineistoon kosketaan, ja jokainen johtopäätös rajataan niihin malleihin, tehtäviin, kehotteisiin ja interventioihin, joita todella testattiin.",
+  neuralMethod3:
+    "Negatiiviset ja ristiriitaiset tulokset säilytetään väiterekisterissä ja poikkeamarekisterissä sen sijaan, että ne jätettäisiin hiljaa pois.",
+  neuralRepoLink: "Tutustu tutkimukseen GitHubissa",
+  /* ---------- Matka: The Explorer / työ ---------- */
+  projectExplorerTag: "Harrastusprojekti · Mobiilisovellus kenttätyöhön",
+  projectWorkHeading: "Työprojektit",
+  workNodeHus: "Terveysdata-alustat",
+  workNodePoc: "Kliinisen tekoälyn konseptitodistus",
+  workNodeIct: "LLM-ratkaisu ATK-päiville",
+  workNodeAnyhau: "Anyhaun varausalusta",
+  /* ---------- Navigaation painikkeet ---------- */
+  navAudioPlay: "Toista viidakon ääniä",
+  navAudioPause: "Keskeytä viidakon äänet",
+  navMenu: "Avaa valikko",
 } as const;

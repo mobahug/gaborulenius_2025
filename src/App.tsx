@@ -23,8 +23,16 @@ const App: React.FC = () => {
         <Hero />
       </Box>
       <React.Suspense fallback={null}>
-        {firefliesEnabled ? <Fireflies /> : null}
-        {leavesEnabled ? <Leaves /> : null}
+        {firefliesEnabled ? (
+          <div className="journey-ambient--fireflies">
+            <Fireflies />
+          </div>
+        ) : null}
+        {leavesEnabled ? (
+          <div className="journey-ambient--leaves">
+            <Leaves />
+          </div>
+        ) : null}
       </React.Suspense>
     </Box>
   );

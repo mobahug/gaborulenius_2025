@@ -192,6 +192,23 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
+        background-color: #1e2a20;
+      }
+
+      html[data-theme="dark"] {
+        background-color: #0e1a18;
+      }
+
+      /* The cover is part of the document flow; keep it still when the
+         app's CSS baseline arrives. */
+      body {
+        margin: 0;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
       }
     </style>
   </head>

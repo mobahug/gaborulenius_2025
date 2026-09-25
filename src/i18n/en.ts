@@ -48,9 +48,6 @@ export default {
     "Worked with the 2022 Diili winner to launch a greenfield platform for online pet-service bookings",
   /* ---------- Helpers ---------- */
   projectHeading: "Projects",
-  projectTabWork: "Work",
-  projectTabHobby: "Hobby",
-  projectHobbyScrollDownLabel: "Scroll hobby project content",
   projectExplorerTitle: "The Explorer",
   projectExplorerSummary:
     "A mobile fieldwork app for remote conservation expeditions, built to capture reliable offline GPS trails, ecological zones, media, and structured environmental observations for later sync and review.",
@@ -275,4 +272,31 @@ export default {
   linkThumbnailDescriptionGabor:
     "Gábor shares how he moved into software development and now builds AI solutions at Tieto Caretech.",
   linkThumbnailReadingTime: "{minutes} min read",
+  /* ---------- Journey: Neural Decompiler ---------- */
+  neuralQuestion: "What is a neural network actually computing?",
+  neuralTitle: "Neural Decompiler",
+  neuralTag: "Personal research project · Mechanistic interpretability",
+  neuralSummary:
+    "A mechanistic-interpretability research project investigating whether the computations a transformer language model has learned can be turned into increasingly complete, causal and human-understandable explanations.",
+  neuralCaseStudy:
+    "The current case study follows how Pythia-70M picks a plural noun after a count word, tracing the signal from the cue's encoding through attention heads and MLP neurons to the model's output.",
+  neuralMethodHeading: "How the research works",
+  neuralMethod1:
+    "Small, reproducible experiments on open Pythia models, each preregistered with its controls, competing explanations and success criteria before it runs.",
+  neuralMethod2:
+    "Predictions are committed before the confirmation data is touched, and every conclusion is limited to the models, tasks, prompts and interventions actually tested.",
+  neuralMethod3:
+    "Negative and contradictory results stay on record in a claim registry and an anomaly registry instead of being quietly dropped.",
+  neuralRepoLink: "Explore the research on GitHub",
+  /* ---------- Journey: The Explorer / Work ---------- */
+  projectExplorerTag: "Hobby project · Mobile fieldwork app",
+  projectWorkHeading: "Work projects",
+  workNodeHus: "Healthcare data platforms",
+  workNodePoc: "Clinical AI proof of concept",
+  workNodeIct: "LLM solution for ATK-päivät",
+  workNodeAnyhau: "Anyhau booking platform",
+  /* ---------- Navigation controls ---------- */
+  navAudioPlay: "Play jungle sounds",
+  navAudioPause: "Pause jungle sounds",
+  navMenu: "Open menu",
 } as const;

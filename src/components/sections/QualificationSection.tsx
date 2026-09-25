@@ -11,14 +11,17 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { useRef, useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { TimelineEvent, highlightedEvents, allEvents } from "../../contexts";
 import { Transition } from "../Sections";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
 import CloseIcon from "@mui/icons-material/Close";
 import { TimelineBlock } from "./TimelineBlock";
+import { prefersReducedMotion } from "../../journey/device";
+import { clamp } from "../../journey/math";
+import { useScene } from "../../journey/useScene";
 
 type TabPanelProps = {
   children?: React.ReactNode;
@@ -49,6 +52,38 @@ const QualificationSection = () => {
     null,
   );
   const [tabIndex, setTabIndex] = useState(0);
+  const trailRef = useRef<HTMLElement>(null);
+
+  // "The Trail": the path between waypoints lights up to the middle of the
+  // screen, and each waypoint glows once the walker has reached it.
+  useScene(trailRef, (frame) => {
+    const section = trailRef.current;
+    if (!section) return;
+    const reduced = prefersReducedMotion();
+    const line = frame.viewport.vh * 0.58;
+    const fills = Array.from(
+      section.querySelectorAll<HTMLElement>(".trail-fill"),
+    );
+    const dots = Array.from(
+      section.querySelectorAll<HTMLElement>(".trail-dot"),
+    );
+    const fillRects = fills.map((fill) =>
+      fill.parentElement!.getBoundingClientRect(),
+    );
+    const dotRects = dots.map((dot) => dot.getBoundingClientRect());
+    fills.forEach((fill, index) => {
+      const rect = fillRects[index];
+      const amount = reduced
+        ? 1
+        : clamp((line - rect.top) / Math.max(1, rect.height));
+      fill.style.transform = `scaleY(${amount.toFixed(3)})`;
+    });
+    dots.forEach((dot, index) => {
+      const rect = dotRects[index];
+      const reached = reduced || rect.top + rect.height / 2 < line;
+      dot.classList.toggle("trail-dot--reached", reached);
+    });
+  });
 
   const handleOpen = (evt: TimelineEvent) => {
     setSelectedEvent(evt);
@@ -67,8 +102,23 @@ const QualificationSection = () => {
     <>
       <Paper
         component="section"
+        ref={trailRef}
         aria-label="Experience and qualifications"
-        sx={{ pt: 0, width: { xs: "100%", md: "80%" }, mx: "auto" }}
+        className="trail-panel"
+        sx={{
+          pt: 0,
+          width: { xs: "100%", md: "80%" },
+          mx: "auto",
+          borderRadius: "14px",
+          background:
+            theme.palette.mode === "dark"
+              ? "rgba(4, 12, 18, 0.74)"
+              : "rgba(10, 18, 12, 0.72)",
+          backdropFilter: "none",
+          border: "1px solid rgba(255, 255, 255, 0.07)",
+          boxShadow: "0 30px 80px rgba(0, 0, 0, 0.45)",
+          "&:hover": { transform: "none" },
+        }}
       >
         <Tabs
           value={tabIndex}
@@ -129,6 +179,7 @@ const QualificationDialog: React.FC<QualificationDialogProps> = ({
   event,
 }) => {
   const theme = useTheme();
+  const intl = useIntl();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Dialog
@@ -171,6 +222,7 @@ const QualificationDialog: React.FC<QualificationDialogProps> = ({
         <FormattedMessage id={event?.titleId} />
         <IconButton
           onClick={onClose}
+          aria-label={intl.formatMessage({ id: "buttonClose" })}
           sx={{
             top: 2,
             right: -5,

@@ -13,7 +13,6 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { colors as lightColors } from "../../colors";
 import { colors as darkColors } from "../../colorsDark";
-import AnimatedReveal from "../AnimatedReveal";
 
 type TimelineBlockProps = {
   titleId: string;
@@ -30,17 +29,15 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
 }) => {
   const theme = useTheme();
   return (
-    <AnimatedReveal>
-      <AnimatedReveal order={1}>
-        <Typography
-          id={`${titleId}-heading`}
-          variant="h4"
-          component="h2"
-          gutterBottom
-        >
-          <FormattedMessage id={titleId} />
-        </Typography>
-      </AnimatedReveal>
+    <div>
+      <Typography
+        id={`${titleId}-heading`}
+        variant="h4"
+        component="h2"
+        gutterBottom
+      >
+        <FormattedMessage id={titleId} />
+      </Typography>
 
       <Timeline
         position={isSmallScreen ? "right" : "alternate"}
@@ -52,13 +49,10 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
         }}
       >
         {events.map((evt, i) => (
-          <AnimatedReveal
-            key={evt.titleId}
-            component={TimelineItem}
-            order={i + 2}
-          >
+          <TimelineItem key={evt.titleId}>
             <TimelineSeparator>
               <TimelineDot
+                className="trail-dot"
                 sx={{
                   boxShadow: `0 0 8px ${alpha(theme.palette.mode === "dark" ? darkColors.accent : lightColors.accent, 0.5)}`,
                   bgcolor:
@@ -82,18 +76,35 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
               {i < events.length - 1 && (
                 <TimelineConnector
                   sx={{
+                    position: "relative",
+                    overflow: "hidden",
                     bgcolor:
                       theme.palette.mode === "dark"
                         ? darkColors.dividerBg
                         : lightColors.dividerBg,
                   }}
-                />
+                >
+                  <span className="trail-fill" aria-hidden="true" />
+                </TimelineConnector>
               )}
             </TimelineSeparator>
 
             <TimelineContent
               onClick={() => onClick(evt)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  onClick(evt);
+                }
+              }}
+              role="button"
+              tabIndex={0}
               sx={{
+                "&:focus-visible": {
+                  outline: (theme) => `2px solid ${theme.palette.primary.main}`,
+                  outlineOffset: 2,
+                  borderRadius: 0.5,
+                },
                 cursor: "pointer",
                 "&:hover": {
                   backgroundColor: "rgba(255,255,255,.04)",
@@ -104,6 +115,7 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
             >
               <Typography
                 variant="subtitle2"
+                component="h3"
                 sx={{ fontWeight: 700 }}
                 gutterBottom
               >
@@ -126,9 +138,9 @@ export const TimelineBlock: React.FC<TimelineBlockProps> = ({
                 </Box>
               </Box>
             </TimelineContent>
-          </AnimatedReveal>
+          </TimelineItem>
         ))}
       </Timeline>
-    </AnimatedReveal>
+    </div>
   );
 };

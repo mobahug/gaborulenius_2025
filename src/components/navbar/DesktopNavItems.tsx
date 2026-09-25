@@ -9,7 +9,7 @@ import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { navLinks } from "./navConstants";
 import { LanguageToggle } from "./LanguageToggle";
 import { colors as lightColors } from "../../colors";
@@ -33,6 +33,7 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
   onToggleAudio,
 }) => {
   const theme = useTheme();
+  const intl = useIntl();
   const { currentActiveSectionId, requestActiveSection } = useActiveNavLink();
   const activeColor =
     theme.palette.mode === "dark" ? darkColors.accent : lightColors.accent;
@@ -46,7 +47,9 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
       : lightColors.textLight;
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: 4 }}>
+    <Box
+      sx={{ display: "flex", alignItems: "center", gap: { md: 2.5, lg: 4 } }}
+    >
       <LanguageToggle />
       {navLinks.map(({ id, href }) => {
         const isActive = currentActiveSectionId === href;
@@ -62,6 +65,7 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
             sx={{
               fontSize: "0.9rem",
               fontWeight: 700,
+              whiteSpace: "nowrap",
               color: isActive ? activeColor : inactiveColor,
               position: "relative",
               transition: "color 0.18s ease, background-color 0.18s ease",
@@ -92,7 +96,16 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
           </MuiLink>
         );
       })}
-      <IconButton color="inherit" onClick={onToggleTheme}>
+      <IconButton
+        color="inherit"
+        onClick={onToggleTheme}
+        aria-label={intl.formatMessage({
+          id:
+            selectedThemeVariant === "dark"
+              ? "labelDaylightMode"
+              : "labelNightfallMode",
+        })}
+      >
         {selectedThemeVariant === "dark" ? (
           <LightModeOutlinedIcon />
         ) : (
@@ -120,6 +133,7 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
           />
           <IconButton
             onClick={onOpenSettings}
+            aria-label={intl.formatMessage({ id: "headingSettings" })}
             sx={{
               position: "absolute",
               top: 0,
@@ -130,14 +144,23 @@ const DesktopNavItems: React.FC<DesktopNavItemsProps> = ({
               bgcolor: "rgba(0,0,0,0)",
               transition: "background-color 0.3s, opacity 0.5s",
               opacity: 0,
-              "&:hover": { bgcolor: "rgba(0,0,0,0.5)", opacity: 1 },
+              "&:hover, &.Mui-focusVisible": {
+                bgcolor: "rgba(0,0,0,0.5)",
+                opacity: 1,
+              },
             }}
           >
             <SettingsIcon />
           </IconButton>
         </Box>
       </MuiLink>
-      <IconButton color="inherit" onClick={onToggleAudio}>
+      <IconButton
+        color="inherit"
+        onClick={onToggleAudio}
+        aria-label={intl.formatMessage({
+          id: isPlayingAudio ? "navAudioPause" : "navAudioPlay",
+        })}
+      >
         {isPlayingAudio ? (
           <PauseCircleOutlineIcon sx={{ fontSize: 32 }} />
         ) : (

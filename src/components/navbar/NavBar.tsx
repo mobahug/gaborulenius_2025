@@ -7,6 +7,7 @@ import MuiLink from "@mui/material/Link";
 import Toolbar from "@mui/material/Toolbar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import { useIntl } from "react-intl";
 import MenuIcon from "@mui/icons-material/Menu";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
@@ -27,7 +28,9 @@ type IdleWindow = Window & {
 
 export const NavBar: React.FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const intl = useIntl();
+  // Below ~1024px the full link row no longer fits; use the menu instead.
+  const isMobile = useMediaQuery("(max-width: 1023.95px)");
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [mobileDrawerLoaded, setMobileDrawerLoaded] = useState(false);
   const [settingsDialogOpen, setSettingsDialogOpen] = useState(false);
@@ -192,7 +195,13 @@ export const NavBar: React.FC = () => {
                       }}
                     />
                   </MuiLink>
-                  <IconButton color="inherit" onClick={handlePlayPause}>
+                  <IconButton
+                    color="inherit"
+                    onClick={handlePlayPause}
+                    aria-label={intl.formatMessage({
+                      id: isPlaying ? "navAudioPause" : "navAudioPlay",
+                    })}
+                  >
                     {isPlaying ? (
                       <PauseCircleOutlineIcon fontSize="large" />
                     ) : (
@@ -201,6 +210,7 @@ export const NavBar: React.FC = () => {
                   </IconButton>
                   <IconButton
                     color="inherit"
+                    aria-label={intl.formatMessage({ id: "navMenu" })}
                     onPointerDown={prefetchMobileDrawer}
                     onTouchStart={prefetchMobileDrawer}
                     onMouseEnter={prefetchMobileDrawer}
