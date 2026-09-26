@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mobahug.github.io/gaborulenius/sitemap.xml
+Sitemap: https://mobahug.github.io/gaborulenius_2025/sitemap.xml

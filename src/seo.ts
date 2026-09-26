@@ -1,6 +1,6 @@
 import type { AppLocale } from "./i18n/messages";
 
-export const SITE_URL = "https://mobahug.github.io/gaborulenius/";
+export const SITE_URL = "https://mobahug.github.io/gaborulenius_2025/";
 export const SITE_NAME = "Gábor Ulenius Portfolio";
 export const SOCIAL_IMAGE_URL = `${SITE_URL}jungle.png`;
 export const PROFILE_IMAGE_URL = `${SITE_URL}profile2-small.webp`;

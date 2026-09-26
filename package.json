@@ -1,5 +1,5 @@
 {
-  "homepage": "http://mobahug.github.io/gaborulenius",
+  "homepage": "http://mobahug.github.io/gaborulenius_2025",
   "name": "gaborulenius",
   "private": true,
   "license": "UNLICENSED",
@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "lighthouse:mobile": "npx -y lighthouse@13.0.2 http://127.0.0.1:4173/gaborulenius/ --form-factor=mobile --screenEmulation.mobile --throttling-method=simulate --output=json --output-path=.lighthouse/mobile.json --chrome-flags=\"--headless --disable-extensions\" && node scripts/assert-lighthouse.mjs .lighthouse/mobile.json",
+    "lighthouse:mobile": "npx -y lighthouse@13.0.2 http://127.0.0.1:4173/gaborulenius_2025/ --form-factor=mobile --screenEmulation.mobile --throttling-method=simulate --output=json --output-path=.lighthouse/mobile.json --chrome-flags=\"--headless --disable-extensions\" && node scripts/assert-lighthouse.mjs .lighthouse/mobile.json",
     "lighthouse:assert": "node scripts/assert-lighthouse.mjs .lighthouse/mobile.json",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,css,md}'",
     "preview": "vite preview",

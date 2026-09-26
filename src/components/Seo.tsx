@@ -71,8 +71,8 @@ const Seo = () => {
     upsertMeta("name", "author", "Gábor Ulenius");
     upsertMeta("name", "keywords", RECRUITER_KEYWORDS);
     upsertMeta("name", "language", locale);
-    upsertMeta("name", "robots", "index, follow, max-image-preview:large");
-    upsertMeta("name", "googlebot", "index, follow, max-image-preview:large");
+    upsertMeta("name", "robots", "noindex, follow");
+    upsertMeta("name", "googlebot", "noindex, follow");
     upsertMeta("property", "og:type", "website");
     upsertMeta("property", "og:site_name", SITE_NAME);
     upsertMeta("property", "og:locale", seo.ogLocale);
