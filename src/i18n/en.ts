@@ -29,7 +29,6 @@ export default {
   homeSubtitle:
     "Currently at Tieto Caretech, building cloud-native healthcare data platforms, AI prototypes, and reliable cloud delivery.",
   homeBtnExplore: "Explore My Work",
-  homeBtnDownloadCv: "Download My CV",
   /* ---------- About titles ---------- */
   aboutHeading: "About Me",
   aboutBody:

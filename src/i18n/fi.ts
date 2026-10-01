@@ -30,7 +30,6 @@ export default {
   homeSubtitle:
     "Töissä Tieto Caretechilla rakentamassa pilvinatiiveja terveysdata-alustoja, tekoälyprototyyppejä ja luotettavaa pilvitoimitusta.",
   homeBtnExplore: "Tutustu töihini",
-  homeBtnDownloadCv: "Lataa CV:ni",
   /* ---------- Minusta otsikot ---------- */
   aboutHeading: "Minusta",
   aboutBody:

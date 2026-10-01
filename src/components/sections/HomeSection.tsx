@@ -6,9 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { FormattedMessage } from "react-intl";
 import SearchIcon from "@mui/icons-material/Search";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { AnimatedReveal } from "../AnimatedReveal";
-import { assetUrl } from "../../utils/assets";
 
 const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
   const theme = useTheme();
@@ -49,17 +47,6 @@ const HomeSection = ({ innerRef }: { innerRef: React.Ref<HTMLDivElement> }) => {
               startIcon={<SearchIcon />}
             >
               <FormattedMessage id="homeBtnExplore" />
-            </Button>
-            <Button
-              variant="contained"
-              component="a"
-              href={assetUrl("Gabor_Ulenius_-_Full_Stack_Developer.pdf")}
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-              startIcon={<FileDownloadIcon />}
-            >
-              <FormattedMessage id="homeBtnDownloadCv" />
             </Button>
           </Stack>
         </AnimatedReveal>
